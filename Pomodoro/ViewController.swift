@@ -22,6 +22,8 @@ class ViewController: NSViewController {
         }
     }
 
-
+    override func awakeFromNib() {
+        self.view.window?.backgroundColor = NSColor.init(red: 32/255, green: 34/255, blue: 38/255, alpha: 1.0)
+    }
 }
 
