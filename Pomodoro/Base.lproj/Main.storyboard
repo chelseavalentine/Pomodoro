@@ -675,14 +675,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
-                                <rect key="frame" x="-2" y="32" width="424" height="121"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="45:00" id="mTF-lU-g6Y">
-                                    <font key="font" size="72" name="PTMono-Bold"/>
-                                    <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-Cx-3ky">
                                 <rect key="frame" x="10" y="177" width="37" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Focus" id="Ew3-MJ-mwl">
@@ -722,12 +714,17 @@
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.065484777092933655" green="0.066769659519195557" blue="0.069621935486793518" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
+                                <rect key="frame" x="0.0" y="38" width="420" height="110"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="45:00" id="mTF-lU-g6Y">
+                                    <font key="font" size="72" name="PTMono-Bold"/>
+                                    <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="5R7-fS-y33" firstAttribute="top" secondItem="jXw-Iq-TDK" secondAttribute="bottom" constant="2" id="2Od-9s-CDg"/>
-                            <constraint firstItem="5R7-fS-y33" firstAttribute="trailing" secondItem="jXw-Iq-TDK" secondAttribute="trailing" id="8KU-Gj-qrQ"/>
                             <constraint firstAttribute="bottom" secondItem="5R7-fS-y33" secondAttribute="bottom" id="RyG-zi-gvs"/>
-                            <constraint firstItem="5R7-fS-y33" firstAttribute="leading" secondItem="jXw-Iq-TDK" secondAttribute="leading" id="S3Z-7t-LdX"/>
                             <constraint firstItem="5R7-fS-y33" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="bPz-Za-Jvf"/>
                             <constraint firstItem="5R7-fS-y33" firstAttribute="trailing" secondItem="Gm8-os-ZEx" secondAttribute="trailing" id="irS-Bw-3ow"/>
                         </constraints>
@@ -735,6 +732,9 @@
                     <connections>
                         <outlet property="focusField" destination="Gm8-os-ZEx" id="Civ-H8-YI3"/>
                         <outlet property="focusTextField" destination="Gm8-os-ZEx" id="da7-p5-S5W"/>
+                        <outlet property="startButton" destination="mHF-fn-2fp" id="G9O-B9-iC6"/>
+                        <outlet property="timeField" destination="jXw-Iq-TDK" id="b5A-Zc-5Sp"/>
+                        <outlet property="timeTextField" destination="jXw-Iq-TDK" id="yxe-06-MXa"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

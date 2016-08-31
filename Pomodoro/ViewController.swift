@@ -9,20 +9,56 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
+    var count: Int = 45 * 60;
+    @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var focusTextField: NSTextField!
+    @IBOutlet weak var startButton: NSImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        // Initialize event listeners
+        // Listen for the keyup event
         NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
             self.keyUp(aEvent)
             return aEvent
         }
-
+        
+        // Initialize start button
+        let gesture = NSClickGestureRecognizer()
+        gesture.buttonMask = 0x1 // left mouse
+        gesture.target = self
+        gesture.action = #selector(ViewController.startPomodoro)
+        startButton.addGestureRecognizer(gesture)
+        
+        // Initialize time text field with time
+        var _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer() {
+        if (count > 0) {
+            let minutes = count / 60;
+            let seconds = count - (minutes * 60)
+            var minutesString: String;
+            var secondsString: String;
+            
+            if (minutes < 10) {
+                minutesString = "0\(minutes)"
+            } else {
+                minutesString = "\(minutes)"
+            }
+            
+            if (seconds < 10) {
+                secondsString = "0\(seconds)"
+            } else {
+                secondsString = "\(seconds)"
+            }
+            
+            timeTextField.stringValue = minutesString + ":" + secondsString
+            count -= 1
+            
+        }
     }
 
     override var representedObject: AnyObject? {
@@ -53,18 +89,24 @@ class ViewController: NSViewController {
     }
 
     override func keyUp(theEvent: NSEvent) {
-        print("hahaha")
         // Return was pressed
         if (theEvent.keyCode == 36) {
-            print("hell yea")
             if (focusTextField!.stringValue == "") {
                 print("Shit's empty")
             } else {
-                print("Great")
+                startPomodoro()
             }
             
             print(focusTextField!.stringValue)
         }
+    }
+    
+    func start(sender: NSGestureRecognizer) {
+        print("Ok starting")
+    }
+    
+    func startPomodoro() {
+        print("Ok starting")
     }
 }
 
