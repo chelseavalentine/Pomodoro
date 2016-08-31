@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -675,7 +675,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
                                 <rect key="frame" x="-2" y="32" width="424" height="121"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="45:00" id="mTF-lU-g6Y">
                                     <font key="font" size="72" name="PTMono-Bold"/>
@@ -691,7 +691,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx">
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx">
                                 <rect key="frame" x="12" y="152" width="410" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
                                     <font key="font" size="12" name="PTMono-Regular"/>
@@ -699,23 +699,38 @@
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textFieldCell>
                             </textField>
-                            <box fixedFrame="YES" placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-fS-y33">
+                            <box placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-fS-y33">
                                 <rect key="frame" x="-3" y="-4" width="426" height="36"/>
-                                <view key="contentView" id="sOb-IL-sa2">
+                                <view key="contentView" wantsLayer="YES" id="sOb-IL-sa2">
                                     <rect key="frame" x="1" y="1" width="424" height="34"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-fn-2fp">
+                                            <rect key="frame" x="383" y="1" width="36" height="36"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rlA-PG-sOh"/>
+                                        </imageView>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-RG-V5T">
+                                            <rect key="frame" x="351" y="1" width="36" height="36"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="listIcon" id="UDz-s1-sL3"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BXC-0S-GwD"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="f4m-l4-hmB"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.065484777092933655" green="0.066769659519195557" blue="0.069621935486793518" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AhF-Cw-Bxo">
-                                <rect key="frame" x="368" y="68" width="23" height="48"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="kDE-jQ-5v3">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="5R7-fS-y33" firstAttribute="top" secondItem="jXw-Iq-TDK" secondAttribute="bottom" constant="2" id="2Od-9s-CDg"/>
+                            <constraint firstItem="5R7-fS-y33" firstAttribute="trailing" secondItem="jXw-Iq-TDK" secondAttribute="trailing" id="8KU-Gj-qrQ"/>
+                            <constraint firstAttribute="bottom" secondItem="5R7-fS-y33" secondAttribute="bottom" id="RyG-zi-gvs"/>
+                            <constraint firstItem="5R7-fS-y33" firstAttribute="leading" secondItem="jXw-Iq-TDK" secondAttribute="leading" id="S3Z-7t-LdX"/>
+                            <constraint firstItem="5R7-fS-y33" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="bPz-Za-Jvf"/>
+                            <constraint firstItem="5R7-fS-y33" firstAttribute="trailing" secondItem="Gm8-os-ZEx" secondAttribute="trailing" id="irS-Bw-3ow"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -723,4 +738,8 @@
             <point key="canvasLocation" x="75" y="620"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="listIcon" width="17" height="9"/>
+        <image name="playIcon" width="16" height="17"/>
+    </resources>
 </document>
