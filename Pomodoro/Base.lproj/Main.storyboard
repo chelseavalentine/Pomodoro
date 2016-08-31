@@ -676,7 +676,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-Cx-3ky">
-                                <rect key="frame" x="10" y="177" width="37" height="17"/>
+                                <rect key="frame" x="12" y="171" width="56" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Focus" id="Ew3-MJ-mwl">
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
@@ -691,37 +691,45 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-fS-y33">
-                                <rect key="frame" x="-3" y="-4" width="426" height="36"/>
-                                <view key="contentView" wantsLayer="YES" id="sOb-IL-sa2">
-                                    <rect key="frame" x="1" y="1" width="424" height="34"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-fn-2fp">
-                                            <rect key="frame" x="383" y="1" width="36" height="36"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rlA-PG-sOh"/>
-                                        </imageView>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-RG-V5T">
-                                            <rect key="frame" x="351" y="1" width="36" height="36"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="listIcon" id="UDz-s1-sL3"/>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BXC-0S-GwD"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="f4m-l4-hmB"/>
-                                </constraints>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" red="0.065484777092933655" green="0.066769659519195557" blue="0.069621935486793518" alpha="1" colorSpace="calibratedRGB"/>
-                            </box>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
-                                <rect key="frame" x="0.0" y="38" width="420" height="110"/>
+                                <rect key="frame" x="31" y="38" width="357" height="110"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="45:00" id="mTF-lU-g6Y">
                                     <font key="font" size="72" name="PTMono-Bold"/>
                                     <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QaP-sg-Gzg">
+                                <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
+                                <view key="contentView" ambiguous="YES" id="YmJ-p1-3qT">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                            <box placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" borderWidth="0.0" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-fS-y33">
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
+                                <view key="contentView" wantsLayer="YES" id="sOb-IL-sa2">
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-fn-2fp">
+                                            <rect key="frame" x="372" y="2" width="25" height="27"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rlA-PG-sOh"/>
+                                        </imageView>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-RG-V5T">
+                                            <rect key="frame" x="338" y="2" width="26" height="26"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="listIcon" id="UDz-s1-sL3"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BXC-0S-GwD"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" red="0.065484777092933655" green="0.066769659519195557" blue="0.069621935486793518" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="5R7-fS-y33" secondAttribute="bottom" id="RyG-zi-gvs"/>
@@ -730,8 +738,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ProgressBar" destination="QaP-sg-Gzg" id="iYZ-R1-HaF"/>
                         <outlet property="focusField" destination="Gm8-os-ZEx" id="Civ-H8-YI3"/>
                         <outlet property="focusTextField" destination="Gm8-os-ZEx" id="da7-p5-S5W"/>
+                        <outlet property="progressBar" destination="QaP-sg-Gzg" id="PII-su-TNM"/>
                         <outlet property="startButton" destination="mHF-fn-2fp" id="G9O-B9-iC6"/>
                         <outlet property="timeField" destination="jXw-Iq-TDK" id="b5A-Zc-5Sp"/>
                         <outlet property="timeTextField" destination="jXw-Iq-TDK" id="yxe-06-MXa"/>

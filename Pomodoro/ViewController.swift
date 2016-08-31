@@ -9,10 +9,15 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    var count: Int = 45 * 60;
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var focusTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
+    @IBOutlet weak var progressBar: NSBox!
+    
+    var originalCount: Int = 1 * 60
+    var count: Int = 1 * 60
+    var pomodoroActive: Bool = false
+    var timer: NSTimer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +36,13 @@ class ViewController: NSViewController {
         gesture.target = self
         gesture.action = #selector(ViewController.startPomodoro)
         startButton.addGestureRecognizer(gesture)
-        
-        // Initialize time text field with time
-        var _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
     }
     
     func updateTimer() {
         if (count > 0) {
+            count -= 1
+            
+            // Update the time
             let minutes = count / 60;
             let seconds = count - (minutes * 60)
             var minutesString: String;
@@ -56,8 +61,12 @@ class ViewController: NSViewController {
             }
             
             timeTextField.stringValue = minutesString + ":" + secondsString
-            count -= 1
             
+            // Update the progress bar
+            var updatedProgress: NSRect = progressBar.frame
+            updatedProgress.size.width = 2.0
+            updatedProgress.size.width = self.view.frame.width - self.view.frame.width * (CGFloat(count) / CGFloat(originalCount))
+            progressBar.frame = updatedProgress
         }
     }
 
@@ -92,21 +101,56 @@ class ViewController: NSViewController {
         // Return was pressed
         if (theEvent.keyCode == 36) {
             if (focusTextField!.stringValue == "") {
-                print("Shit's empty")
+                let placeholderTextColor = NSColor(red: 255, green: 255, blue: 255, alpha: 1.0)
+                let placeholderFont: NSFont? = NSFont(name: "PT Mono Bold", size: 12)
+                let placeholderAttributes: [String: AnyObject] = [
+                    NSForegroundColorAttributeName: placeholderTextColor,
+                    NSFontAttributeName: placeholderFont!
+                ]
+                let placeholderAttributedString = NSAttributedString(string: "What are you going to do?", attributes: placeholderAttributes)
+                focusTextField.placeholderAttributedString = placeholderAttributedString
             } else {
                 startPomodoro()
+                focusTextField.enabled = false
             }
-            
-            print(focusTextField!.stringValue)
+        } else if (focusTextField!.stringValue == "") {
+            print("we're in")
+            let placeholderTextColor2 = NSColor(red: 255, green: 255, blue: 255, alpha: 0.65)
+            let placeholderFont2: NSFont? = NSFont(name: "PT Mono", size: 12)
+            let placeholderAttributes2: [String: AnyObject] = [
+                NSForegroundColorAttributeName: placeholderTextColor2,
+                NSFontAttributeName: placeholderFont2!
+            ]
+            let placeholderAttributedString2 = NSAttributedString(string: "What are you going to do?", attributes: placeholderAttributes2)
+            focusTextField.placeholderAttributedString = placeholderAttributedString2
         }
-    }
     
-    func start(sender: NSGestureRecognizer) {
-        print("Ok starting")
     }
     
     func startPomodoro() {
-        print("Ok starting")
+        if (!pomodoroActive) {
+            startTimer()
+        } else {
+            // Todo: find a better way to protect against multiple starts
+            // Start the timer again
+            if (startButton.image == NSImage(named: "pauseIcon") && timer != nil && count % 60 != 0) {
+                stopTimer()
+                startButton.image = NSImage(named: "playIcon")
+            }
+        }
+    }
+    
+    func startTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
+        pomodoroActive = true
+        startButton.image = NSImage(named: "pauseIcon")
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+        pomodoroActive = false
+        startButton.image = NSImage(named: "playIcon")
     }
 }
 
