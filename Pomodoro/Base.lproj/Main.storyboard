@@ -691,12 +691,12 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx">
-                                <rect key="frame" x="12" y="152" width="410" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
+                            <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
+                                <rect key="frame" x="12" y="152" width="394" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <box placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-fS-y33">
@@ -732,6 +732,10 @@
                             <constraint firstItem="5R7-fS-y33" firstAttribute="trailing" secondItem="Gm8-os-ZEx" secondAttribute="trailing" id="irS-Bw-3ow"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="focusField" destination="Gm8-os-ZEx" id="Civ-H8-YI3"/>
+                        <outlet property="focusTextField" destination="Gm8-os-ZEx" id="da7-p5-S5W"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
