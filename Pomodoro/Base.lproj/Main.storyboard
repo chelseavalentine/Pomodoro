@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -658,6 +659,7 @@
                         <rect key="contentRect" x="196" y="240" width="420" height="200"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="420" height="200"/>
+                        <value key="maxSize" type="size" width="420" height="200"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -676,15 +678,18 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-Cx-3ky">
-                                <rect key="frame" x="12" y="171" width="56" height="23"/>
+                                <rect key="frame" x="7" y="171" width="56" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Focus" id="Ew3-MJ-mwl">
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
-                                <rect key="frame" x="12" y="152" width="394" height="22"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
+                                <rect key="frame" x="6" y="152" width="408" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gm8-os-ZEx" secondAttribute="height" multiplier="195:11" id="4D7-gD-6ke"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -692,12 +697,15 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
-                                <rect key="frame" x="31" y="38" width="357" height="110"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="45:00" id="mTF-lU-g6Y">
+                                <rect key="frame" x="31" y="42" width="357" height="110"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="00:00" id="mTF-lU-g6Y">
                                     <font key="font" size="72" name="PTMono-Bold"/>
                                     <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <segue destination="dRj-qb-8hP" kind="show" id="QQQ-cI-epN"/>
+                                </connections>
                             </textField>
                             <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QaP-sg-Gzg">
                                 <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
@@ -708,34 +716,29 @@
                                 <color key="borderColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <box placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" borderWidth="0.0" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-fS-y33">
+                            <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="J67-od-744">
                                 <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
-                                <view key="contentView" wantsLayer="YES" id="sOb-IL-sa2">
+                                <view key="contentView" ambiguous="YES" id="8yD-ts-VbB">
                                     <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-fn-2fp">
-                                            <rect key="frame" x="372" y="2" width="25" height="27"/>
+                                            <rect key="frame" x="390" y="2" width="25" height="27"/>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rlA-PG-sOh"/>
                                         </imageView>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-RG-V5T">
-                                            <rect key="frame" x="338" y="2" width="26" height="26"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="listIcon" id="UDz-s1-sL3"/>
+                                            <rect key="frame" x="358" y="2" width="26" height="26"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="settingsIcon" id="UDz-s1-sL3"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BXC-0S-GwD"/>
+                                    <constraint firstAttribute="height" constant="30" id="6cN-cJ-nEP"/>
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" red="0.065484777092933655" green="0.066769659519195557" blue="0.069621935486793518" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="5R7-fS-y33" secondAttribute="bottom" id="RyG-zi-gvs"/>
-                            <constraint firstItem="5R7-fS-y33" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="bPz-Za-Jvf"/>
-                            <constraint firstItem="5R7-fS-y33" firstAttribute="trailing" secondItem="Gm8-os-ZEx" secondAttribute="trailing" id="irS-Bw-3ow"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ProgressBar" destination="QaP-sg-Gzg" id="iYZ-R1-HaF"/>
@@ -749,11 +752,116 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="620"/>
+            <point key="canvasLocation" x="75" y="611"/>
+        </scene>
+        <!--ViewController-->
+        <scene sceneID="Y66-S4-WvH">
+            <objects>
+                <viewController title="ResultsViewController" storyboardIdentifier="ResultsViewController" id="dRj-qb-8hP" userLabel="ViewController" customClass="ResultsViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" identifier="ResultsViewController" id="P5e-ef-c9C">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VCK-oS-BtI">
+                                <rect key="frame" x="6" y="146" width="56" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Focus" id="WWV-Up-so1">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqq-XW-IyW">
+                                <rect key="frame" x="6" y="94" width="56" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Result" id="VX3-hv-uJa">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="0.72119301557540894" green="0.91274964809417725" blue="0.52720290422439575" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6br-fT-T4n">
+                                <rect key="frame" x="6" y="127" width="388" height="23"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="iIs-Vz-WAW">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-vf-MFF" userLabel="Focus Text Field">
+                                <rect key="frame" x="6" y="76" width="394" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="LY4-NX-bq8"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What did you end up doing?" id="YOc-89-j7c">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="lrA-Xi-kVO">
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
+                                <view key="contentView" ambiguous="YES" id="eSo-GJ-CPE">
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2XR-0g-Zj6">
+                                            <rect key="frame" x="350" y="2" width="26" height="26"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="whiteResumeIcon" id="QFZ-TO-ctO"/>
+                                        </imageView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QhR-oH-LBW">
+                                            <rect key="frame" x="373" y="9" width="37" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Break" id="CIL-bv-pjg">
+                                                <font key="font" size="12" name="PTMono-Bold"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NvF-6X-xqB"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-84-ORo">
+                                <rect key="frame" x="0.0" y="30" width="420" height="2"/>
+                                <view key="contentView" ambiguous="YES" id="tyS-Rf-lva">
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-uh-Y7P">
+                                <rect key="frame" x="320" y="167" width="94" height="33"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="45:00" id="aRp-Za-jha">
+                                    <font key="font" size="24" name="PTMono-Bold"/>
+                                    <color key="textColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-14-dsY">
+                                <rect key="frame" x="6" y="176" width="336" height="18"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Work session 3" id="rHr-s4-I8z">
+                                    <font key="font" size="12" name="PTMono-Bold"/>
+                                    <color key="textColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6fV-vf-MFF" firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="yuN-JK-sMf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="CMk-0b-8oP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="576" y="611"/>
         </scene>
     </scenes>
     <resources>
-        <image name="listIcon" width="17" height="9"/>
         <image name="playIcon" width="16" height="17"/>
+        <image name="settingsIcon" width="16" height="16"/>
+        <image name="whiteResumeIcon" width="12" height="12"/>
     </resources>
 </document>

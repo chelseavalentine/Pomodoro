@@ -14,6 +14,9 @@
 		5EB6CE721D73048F002CA217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB6CE701D73048F002CA217 /* Main.storyboard */; };
 		5EB6CE7D1D73048F002CA217 /* PomodoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE7C1D73048F002CA217 /* PomodoroTests.swift */; };
 		5EB6CE881D73048F002CA217 /* PomodoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE871D73048F002CA217 /* PomodoroUITests.swift */; };
+		5EF7E4321D77F240000C9DB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */; };
+		5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7E4331D789E37000C9DB1 /* Helper.swift */; };
+		5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7E4351D78A644000C9DB1 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		5EB6CE831D73048F002CA217 /* PomodoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB6CE871D73048F002CA217 /* PomodoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroUITests.swift; sourceTree = "<group>"; };
 		5EB6CE891D73048F002CA217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		5EF7E4331D789E37000C9DB1 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		5EF7E4351D78A644000C9DB1 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				5EB6CE701D73048F002CA217 /* Main.storyboard */,
 				5EB6CE731D73048F002CA217 /* Info.plist */,
 				5EB6CE6B1D73048F002CA217 /* Pomodoro.xcdatamodeld */,
+				5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */,
+				5EF7E4331D789E37000C9DB1 /* Helper.swift */,
+				5EF7E4351D78A644000C9DB1 /* Strings.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -260,7 +269,10 @@
 			files = (
 				5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */,
 				5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */,
+				5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
+				5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */,
+				5EF7E4321D77F240000C9DB1 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +494,7 @@
 				5EB6CE8E1D73048F002CA217 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5EB6CE8F1D73048F002CA217 /* Build configuration list for PBXNativeTarget "PomodoroTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +503,7 @@
 				5EB6CE911D73048F002CA217 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5EB6CE921D73048F002CA217 /* Build configuration list for PBXNativeTarget "PomodoroUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +512,7 @@
 				5EB6CE941D73048F002CA217 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
