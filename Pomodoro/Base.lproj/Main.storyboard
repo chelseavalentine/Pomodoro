@@ -824,9 +824,9 @@
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-84-ORo">
-                                <rect key="frame" x="0.0" y="30" width="420" height="2"/>
+                                <rect key="frame" x="0.0" y="30" width="10" height="2"/>
                                 <view key="contentView" ambiguous="YES" id="tyS-Rf-lva">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="2"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="10" height="2"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -853,6 +853,14 @@
                             <constraint firstItem="6fV-vf-MFF" firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="yuN-JK-sMf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="breakIcon" destination="2XR-0g-Zj6" id="DBw-Gz-Mas"/>
+                        <outlet property="breakText" destination="QhR-oH-LBW" id="2W4-4F-78I"/>
+                        <outlet property="focusText" destination="6br-fT-T4n" id="ehs-Qc-ofd"/>
+                        <outlet property="resultTextField" destination="6fV-vf-MFF" id="OXt-ZM-vM6"/>
+                        <outlet property="workDuration" destination="FfM-uh-Y7P" id="aUV-7E-IHT"/>
+                        <outlet property="workProgressBar" destination="cxl-84-ORo" id="lC9-Lg-qot"/>
+                    </connections>
                 </viewController>
                 <customObject id="CMk-0b-8oP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

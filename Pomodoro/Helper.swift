@@ -51,6 +51,10 @@ class Helper {
         return count;
     }
     
+    func setWindowBackground(viewController: NSViewController) {
+        viewController.view.window?.backgroundColor = NSColor.init(red: 32/255, green: 34/255, blue: 38/255, alpha: 1.0)
+    }
+    
     func setPlaceholderFont(textField: NSTextField, string: String, bold: Bool) {
         var font: NSFont?
         var color: NSColor?
@@ -70,5 +74,17 @@ class Helper {
         
         let attributedString = NSAttributedString(string: string, attributes: attributes)
         textField.placeholderAttributedString = attributedString
+    }
+    
+    func setWhiteCaret(viewController: NSViewController) {
+        let fieldEditor = viewController.view.window?.fieldEditor(true, forObject: viewController) as? NSTextView
+        fieldEditor?.insertionPointColor = NSColor.whiteColor()
+    }
+    
+    func updateProgressBar(vc: NSViewController, bar: NSBox, percentage: CGFloat) {
+        var updatedProgress: NSRect = bar.frame
+        updatedProgress.size.width = 2.0
+        updatedProgress.size.width = vc.view.frame.width - vc.view.frame.width * (percentage)
+        bar.frame = updatedProgress
     }
 }

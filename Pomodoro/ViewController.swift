@@ -46,13 +46,11 @@ class ViewController: NSViewController {
             timeTextField.stringValue = helper.toTimeString(count)
             
             // Update the progress bar
-            var updatedProgress: NSRect = progressBar.frame
-            updatedProgress.size.width = 2.0
-            updatedProgress.size.width = self.view.frame.width - self.view.frame.width * (CGFloat(count) / CGFloat(originalCount))
-            progressBar.frame = updatedProgress
+            helper.updateProgressBar(self, bar: progressBar, percentage: CGFloat(count) / CGFloat(originalCount))
         } else {
             stopTimer()
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ResultsViewController") as? ResultsViewController
+            nextViewController?.setWorkDetails(focusTextField.stringValue, workCount: originalCount)
             self.view.window?.contentViewController = nextViewController
         }
     }
@@ -65,16 +63,13 @@ class ViewController: NSViewController {
     }
 
     override func awakeFromNib() {
-        self.view.window?.backgroundColor = NSColor.init(red: 32/255, green: 34/255, blue: 38/255, alpha: 1.0)
-    
+        helper.setWindowBackground(self)
+        helper.setWhiteCaret(self)
+        
         focusTextField.textColor = NSColor.whiteColor()
         
         // Set TextField font and color
         helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
-        
-        // Make TextField caret white
-        let fieldEditor = self.view.window?.fieldEditor(true, forObject: self) as? NSTextView
-        fieldEditor?.insertionPointColor = NSColor.whiteColor()
     }
 
     override func keyUp(theEvent: NSEvent) {
