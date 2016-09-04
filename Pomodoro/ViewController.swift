@@ -37,6 +37,8 @@ class ViewController: NSViewController {
         gesture.target = self
         gesture.action = #selector(ViewController.validateFocusField)
         startButton.addGestureRecognizer(gesture)
+        
+        timeTextField.stringValue = helper.toTimeString(originalCount)
     }
     
     func updateTimer() {
@@ -50,8 +52,8 @@ class ViewController: NSViewController {
         } else {
             stopTimer()
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ResultsViewController") as? ResultsViewController
-            nextViewController?.setWorkDetails(focusTextField.stringValue, workCount: originalCount)
             self.view.window?.contentViewController = nextViewController
+            nextViewController?.setWorkDetails(focusTextField.stringValue, workCount: originalCount)
         }
     }
 
