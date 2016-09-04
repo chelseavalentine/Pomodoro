@@ -20,6 +20,7 @@ class ResultsViewController: NSViewController {
     @IBOutlet weak var test: NSBox!
     let breakCount = 6
     var workPercentage: CGFloat?
+    var workCount: Int?
     
     let helper = Helper.sharedInstance
     
@@ -35,6 +36,14 @@ class ResultsViewController: NSViewController {
             self.keyUp(aEvent)
             return aEvent
         }
+        
+        // Initialize start break button
+        let gesture = NSClickGestureRecognizer()
+        gesture.buttonMask = 0x1 // left mouse
+        gesture.target = self
+        gesture.action = #selector(ResultsViewController.validateResultField)
+        breakIcon.addGestureRecognizer(gesture)
+        breakText.addGestureRecognizer(gesture)
     }
     
     override func awakeFromNib() {
@@ -45,6 +54,7 @@ class ResultsViewController: NSViewController {
     func setWorkDetails(focus: String, workCount: Int) {
         workDuration.stringValue = helper.toTimeString(workCount)
         focusText.stringValue = focus
+        self.workCount = workCount
         workPercentage = CGFloat(workCount) / CGFloat(workCount + breakCount)
         helper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage!)
     }
@@ -59,17 +69,21 @@ class ResultsViewController: NSViewController {
         }
         
         if (theEvent.keyCode == 36) {
-            validateResultsField()
+            validateResultField()
         } else {
             helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
         }
     }
     
-    func validateResultsField() {
+    func validateResultField() {
         if (resultTextField.stringValue == "") {
             helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: true)
         } else {
             resultTextField.enabled = false
+            
+            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+            self.view.window?.contentViewController = nextViewController
+            nextViewController?.setWorkDetails(workCount!)
         }
     }
 }

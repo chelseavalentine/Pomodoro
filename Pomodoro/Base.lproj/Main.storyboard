@@ -878,6 +878,118 @@
             </objects>
             <point key="canvasLocation" x="576" y="611"/>
         </scene>
+        <!--Break View Controller-->
+        <scene sceneID="51g-i3-UgZ">
+            <objects>
+                <viewController storyboardIdentifier="BreakViewController" id="HN0-IA-6hU" customClass="BreakViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="b74-4D-fjy">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxS-Q0-jc0">
+                                <rect key="frame" x="7" y="171" width="407" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Break 3" id="9Zf-1h-yRY">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TpJ-SQ-wYg">
+                                <rect key="frame" x="31" y="56" width="357" height="110"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="00:00" id="M8b-yH-8rr">
+                                    <font key="font" size="72" name="PTMono-Bold"/>
+                                    <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="PCt-uf-aL1">
+                                <rect key="frame" x="0.0" y="30" width="10" height="2"/>
+                                <view key="contentView" ambiguous="YES" id="Ul3-f2-MCG">
+                                    <rect key="frame" x="0.0" y="0.0" width="10" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                            <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-B0-EVS">
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
+                                <view key="contentView" ambiguous="YES" id="Xam-ZF-3Eg">
+                                    <rect key="frame" x="0.0" y="0.5" width="420" height="29.5"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQb-VG-App">
+                                            <rect key="frame" x="390" y="1.5" width="25" height="27"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rUy-bu-WdS"/>
+                                        </imageView>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lRH-cv-026">
+                                            <rect key="frame" x="358" y="1.5" width="26" height="26"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="settingsIcon" id="Mny-qh-qBF"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="c6L-G7-tAk"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="B8p-1R-UI7">
+                                <rect key="frame" x="10" y="30" width="20" height="2"/>
+                                <view key="contentView" ambiguous="YES" id="vJr-Qw-gRa">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="ProgressBar" destination="PCt-uf-aL1" id="oes-zE-0nT"/>
+                        <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="tiq-An-fse"/>
+                        <outlet property="playButton" destination="lQb-VG-App" id="b8s-i9-dTD"/>
+                        <outlet property="progressBar" destination="PCt-uf-aL1" id="JdU-9M-Eem"/>
+                        <outlet property="startButton" destination="lQb-VG-App" id="iuc-IQ-WVf"/>
+                        <outlet property="timeField" destination="TpJ-SQ-wYg" id="TYI-lg-yc6"/>
+                        <outlet property="timeTextField" destination="TpJ-SQ-wYg" id="Ecq-PH-lqP"/>
+                        <outlet property="workProgressBar" destination="PCt-uf-aL1" id="izV-IJ-Plv"/>
+                    </connections>
+                </viewController>
+                <customObject id="YeQ-QC-hHf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="611"/>
+        </scene>
+        <!--CompletionViewController-->
+        <scene sceneID="NoC-kS-GVm">
+            <objects>
+                <viewController title="CompletionViewController" storyboardIdentifier="CompletionViewController" id="pO8-45-Mxn" customClass="CompletionViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ZMi-cB-Yoe">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ix8-6k-KnB">
+                                <rect key="frame" x="91" y="83" width="248" height="33"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Work session 3" id="lDd-bi-EfP">
+                                    <font key="font" size="24" name="PTMono-Bold"/>
+                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bd4-an-B0C">
+                                <rect key="frame" x="91" y="106" width="248" height="26"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nice job! You completed" id="DcT-Yh-5sA">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="m7D-9U-CzH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1538" y="611"/>
+        </scene>
     </scenes>
     <resources>
         <image name="playIcon" width="16" height="17"/>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */; };
+		5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */; };
 		5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE671D73048F002CA217 /* AppDelegate.swift */; };
 		5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE691D73048F002CA217 /* ViewController.swift */; };
 		5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE6B1D73048F002CA217 /* Pomodoro.xcdatamodeld */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
+		5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 		5EB6CE641D73048F002CA217 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB6CE671D73048F002CA217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EB6CE691D73048F002CA217 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */,
 				5EF7E4331D789E37000C9DB1 /* Helper.swift */,
 				5EF7E4351D78A644000C9DB1 /* Strings.swift */,
+				5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */,
+				5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -269,7 +275,9 @@
 			files = (
 				5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */,
 				5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */,
+				5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */,
 				5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */,
+				5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
 				5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */,
 				5EF7E4321D77F240000C9DB1 /* ResultsViewController.swift in Sources */,

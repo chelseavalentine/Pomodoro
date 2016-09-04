@@ -43,6 +43,8 @@ class Helper {
         
         while timeComponents.count > 0 {
             print(timeComponents.popLast())
+            count += 1
+            exponent += 1
 //            let timeComponent: Int = Int!(timeComponents.popLast())
 //            count += pow(timeComponents.popLast(), exponent)
 //            exponent += 1
@@ -83,7 +85,6 @@ class Helper {
     
     func updateProgressBar(vc: NSViewController, bar: NSBox, percentage: CGFloat) {
         var updatedProgress: NSRect = bar.frame
-        updatedProgress.size.height = 2.0
         updatedProgress.size.width = vc.view.frame.width - vc.view.frame.width * (percentage)
         bar.frame = updatedProgress
     }
