@@ -15,8 +15,8 @@ class BreakViewController: NSViewController {
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
     
-    var originalCount = 6
-    var count = 6
+    var originalCount = 1
+    var count = 1
     var pomodoroActive = false
     var timer: NSTimer?
     let helper = Helper.sharedInstance
