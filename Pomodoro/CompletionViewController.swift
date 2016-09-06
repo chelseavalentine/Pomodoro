@@ -9,6 +9,7 @@
 import Cocoa
 
 class CompletionViewController: NSViewController {
+    @IBOutlet weak var confettiView: NSView!
     let helper = Helper.sharedInstance
     
     override func viewDidLoad() {
@@ -28,12 +29,14 @@ class CompletionViewController: NSViewController {
         var genericFrame = NSRect(x: 0, y: 0, width: 8, height: 8)
         
         for _ in 1...NUM_STARS {
-            genericFrame.origin.x = CGFloat(random()) * CGFloat(self.view.frame.width)
-            genericFrame.origin.y = CGFloat(random()) * CGFloat(self.view.frame.width)
+            genericFrame.origin.x = CGFloat(arc4random_uniform(UInt32(confettiView.frame.width)))
+            genericFrame.origin.y = CGFloat(arc4random_uniform(UInt32(confettiView.frame.height)))
             confetti = NSImageView(frame: genericFrame)
-            // Int(random() * confettiNames.count)
-            confetti!.image = NSImage(named: confettiNames[0])
-            self.view.addSubview(confetti!)
+            confetti!.image = NSImage(named: confettiNames[Int(arc4random_uniform(UInt32(confettiNames.count)))])
+            confetti!.frame = genericFrame
+            print(confetti!.image)
+            print(confetti!.frame)
+            confettiView.addSubview(confetti!)
         }
     }
 }
