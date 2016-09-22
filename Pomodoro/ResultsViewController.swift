@@ -16,15 +16,21 @@ class ResultsViewController: NSViewController {
     @IBOutlet weak var breakText: NSTextField!
     @IBOutlet weak var breakIcon: NSImageView!
     @IBOutlet weak var workProgressBar: NSBox!
-    
     @IBOutlet weak var resultTextField: NSTextField!
-    
     @IBOutlet weak var test: NSBox!
+    
     let breakCount = 1
     var workPercentage: CGFloat?
     var workCount: Int?
     
     let helper = Helper.sharedInstance
+    
+//    var context = [ContextEntity]()
+    
+    override func viewWillAppear() {
+        // Do data stuff here
+    }
+    
     override func viewDidAppear() {
         // additional setup
         helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)

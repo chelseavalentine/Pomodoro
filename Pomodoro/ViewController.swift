@@ -20,6 +20,34 @@ class ViewController: NSViewController {
     var timer: NSTimer?
     let helper = Helper.sharedInstance
     
+    override func viewWillAppear() {
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let contextEntity = NSEntityDescription.entityForName("ContextEntity", inManagedObjectContext: managedContext)
+//        let cycleEntity = NSEntityDescription.entityForName("CycleEntity", inManagedObjectContext: managedContext)
+//        let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
+        
+        let currContext = ContextEntity(entity: contextEntity!, insertIntoManagedObjectContext: managedContext)
+        currContext.count = 1
+        
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Couldn't save our context. \(error), \(error.userInfo). :(")
+//        }
+        
+        // Get the data we just saved
+        let fetchRequest = NSFetchRequest(entityName: "ContextEntity")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            print(results)
+        } catch let error as NSError {
+            print("Couldn't fetch...\(error), \(error.userInfo)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

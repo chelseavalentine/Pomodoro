@@ -5,6 +5,8 @@
         <attribute name="cycleMode" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" syncable="YES"/>
         <attribute name="cycleNum" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="isBreak" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="cycleRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CycleEntity" syncable="YES"/>
+        <relationship name="sessionRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SessionEntity" syncable="YES"/>
     </entity>
     <entity name="CycleEntity" representedClassName=".CycleEntity" syncable="YES">
         <attribute name="breakCount" attributeType="Integer 16" minValueString="0" maxValueString="28800" defaultValueString="0" syncable="YES"/>
@@ -23,10 +25,11 @@
         <attribute name="numPausedTimes" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="started" optional="YES" attributeType="Date" minDateTimeInterval="496216860" syncable="YES"/>
+        <relationship name="cycleRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CycleEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ContextEntity" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="ContextEntity" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="CycleEntity" positionX="-63" positionY="9" width="128" height="150"/>
-        <element name="SessionEntity" positionX="-45" positionY="54" width="128" height="150"/>
+        <element name="SessionEntity" positionX="-45" positionY="54" width="128" height="165"/>
     </elements>
 </model>
