@@ -89,9 +89,26 @@ class Helper {
         bar.frame = updatedProgress
     }
     
-    func goToSettings(vc: ViewController) {
-        let nextViewController = vc.storyboard?.instantiateControllerWithIdentifier("SettingsViewController") as? SettingsViewController
-        vc.view.window?.contentViewController = nextViewController
-        SettingsViewController.className()
+    func goToSettings(vc: NSViewController) {
+        let settingsVC = vc.storyboard?.instantiateControllerWithIdentifier("SettingsViewController") as? SettingsViewController
+        vc.view.window?.contentViewController = settingsVC
+        settingsVC?.setPrevViewController(vc.className)
+    }
+    
+    func makeLeftClickGesture(vc: NSViewController) -> NSClickGestureRecognizer {
+        let gesture = NSClickGestureRecognizer()
+        gesture.buttonMask = 0x1 // left mouse
+        gesture.target = vc
+        return gesture;
+    }
+    
+    func returnToPrevViewController(vc: NSViewController, destination: String) {
+        if destination == "Pomodoro.ViewController" {
+            let nextViewController = vc.storyboard?.instantiateControllerWithIdentifier("ViewController") as? ViewController
+            vc.view.window?.contentViewController = nextViewController
+        } else if destination == "Pomodoro.BreakViewController" {
+            let nextViewController = vc.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+            vc.view.window?.contentViewController = nextViewController
+        }
     }
 }

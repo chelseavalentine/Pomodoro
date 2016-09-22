@@ -672,8 +672,8 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" identifier="ViewController" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -948,6 +948,7 @@
                         <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="tiq-An-fse"/>
                         <outlet property="playButton" destination="lQb-VG-App" id="b8s-i9-dTD"/>
                         <outlet property="progressBar" destination="PCt-uf-aL1" id="JdU-9M-Eem"/>
+                        <outlet property="settingsButton" destination="lRH-cv-026" id="tbg-ZT-EAU"/>
                         <outlet property="startButton" destination="lQb-VG-App" id="iuc-IQ-WVf"/>
                         <outlet property="timeField" destination="TpJ-SQ-wYg" id="TYI-lg-yc6"/>
                         <outlet property="timeTextField" destination="TpJ-SQ-wYg" id="Ecq-PH-lqP"/>

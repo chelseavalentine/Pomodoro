@@ -67,15 +67,11 @@ class ViewController: NSViewController {
     
     func initButtons() {
         // Initialize start button
-        let gesture = NSClickGestureRecognizer()
-        gesture.buttonMask = 0x1 // left mouse
-        gesture.target = self
+        let gesture = helper.makeLeftClickGesture(self)
         gesture.action = #selector(ViewController.validateFocusField)
         startButton.addGestureRecognizer(gesture)
         
-        let settingsGesture = NSClickGestureRecognizer()
-        settingsGesture.buttonMask = 0x1
-        settingsGesture.target = self
+        let settingsGesture = helper.makeLeftClickGesture(self)
         settingsGesture.action = #selector(ViewController.goToSettings)
         settingsButton.addGestureRecognizer(settingsGesture)
     }

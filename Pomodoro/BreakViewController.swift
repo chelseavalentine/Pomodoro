@@ -14,7 +14,8 @@ class BreakViewController: NSViewController {
     @IBOutlet weak var breakProgressBar: NSBox!
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
-
+    @IBOutlet weak var settingsButton: NSImageView!
+    
     var originalCount = 1
     var count = 1
     var pomodoroActive = false
@@ -37,6 +38,22 @@ class BreakViewController: NSViewController {
     
     override func awakeFromNib() {
         helper.setWindowBackground(self)
+    }
+    
+    func initButtons() {
+        let startGesture = helper.makeLeftClickGesture(self)
+        startGesture.action = #selector(BreakViewController.startPomodoro)
+        startButton.addGestureRecognizer(startGesture)
+        
+        let settingsGesture = helper.makeLeftClickGesture(self)
+        settingsGesture.action = #selector(BreakViewController.goToSettings)
+        settingsButton.addGestureRecognizer(settingsGesture)
+    }
+    
+    func goToSettings() {
+        // TODO: save state
+        
+        helper.goToSettings(self)
     }
     
     func setWorkDetails(workCount: Int) {

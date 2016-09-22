@@ -29,11 +29,13 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var returnIcon: NSImageView!
     @IBOutlet weak var returnText: NSTextField!
     
+    var previousViewController: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        initNavigationButtons()
-//        initCycleFields()
+        initNavigationButtons()
+        initCycleFields()
     }
     
     override func awakeFromNib() {
@@ -45,8 +47,20 @@ class SettingsViewController: NSViewController {
     }
     
     func initNavigationButtons() {
+        let returnGesture = helper.makeLeftClickGesture(self)
+        returnGesture.action = #selector(SettingsViewController.returnToPrevViewController)
+        returnIcon.addGestureRecognizer(returnGesture)
+        returnText.addGestureRecognizer(returnGesture)
+    }
+    
+    func returnToPrevViewController() {
+        helper.returnToPrevViewController(self, destination: previousViewController!)
     }
     
     func formatTimeInput() {
+    }
+    
+    func setPrevViewController(prevVc: String) {
+        previousViewController = prevVc
     }
 }
