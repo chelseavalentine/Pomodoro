@@ -79,7 +79,9 @@ class ViewController: NSViewController {
     func goToSettings() {
         // Save state
         // Go to settings
-        helper.goToSettings(self)
+//        helper.goToSettings(self)
+         let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("SettingsViewController") as? SettingsViewController
+        self.view.window?.contentViewController = nextViewController
     }
     
     func updateTimer() {

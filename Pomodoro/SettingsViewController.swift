@@ -6,14 +6,17 @@
 //  Copyright © 2016 Chelsea Valentine. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
-class SettingsViewController: ViewController {
+class SettingsViewController: NSViewController {
+    let helper = Helper.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func awakeFromNib() {
-        //
+        helper.setWindowBackground(self)
+        helper.setWhiteCaret(self)
     }
 }

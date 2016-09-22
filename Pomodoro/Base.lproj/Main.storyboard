@@ -1014,10 +1014,10 @@
             </objects>
             <point key="canvasLocation" x="1538" y="611"/>
         </scene>
-        <!--ViewController-->
+        <!--SettingsViewController-->
         <scene sceneID="gWy-M4-TBc">
             <objects>
-                <viewController title="ResultsViewController" storyboardIdentifier="ResultsViewController" id="MDY-2y-85u" userLabel="ViewController" customClass="ResultsViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ResultsViewController" storyboardIdentifier="SettingsViewController" id="MDY-2y-85u" userLabel="SettingsViewController" customClass="SettingsViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" identifier="ResultsViewController" id="8Oo-vd-H0q">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1245,13 +1245,6 @@
                             </textField>
                         </subviews>
                     </view>
-                    <connections>
-                        <outlet property="breakIcon" destination="67e-xa-ZWc" id="BvZ-b7-yJT"/>
-                        <outlet property="breakText" destination="5EE-42-Y92" id="a82-ip-gPJ"/>
-                        <outlet property="focusText" destination="6Au-g8-bc2" id="7iN-hO-zlf"/>
-                        <outlet property="test" destination="yqU-bo-AlN" id="j3r-Ga-zmB"/>
-                        <outlet property="workProgressBar" destination="qHl-03-TmK" id="XJz-6h-Mx2"/>
-                    </connections>
                 </viewController>
                 <customObject id="2cG-vN-ttg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
