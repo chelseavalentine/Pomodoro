@@ -60,6 +60,12 @@ class ViewController: NSViewController {
             return aEvent
         }
         
+        initButtons()
+        
+        timeTextField.stringValue = helper.toTimeString(originalCount)
+    }
+    
+    func initButtons() {
         // Initialize start button
         let gesture = NSClickGestureRecognizer()
         gesture.buttonMask = 0x1 // left mouse
@@ -72,16 +78,12 @@ class ViewController: NSViewController {
         settingsGesture.target = self
         settingsGesture.action = #selector(ViewController.goToSettings)
         settingsButton.addGestureRecognizer(settingsGesture)
-        
-        timeTextField.stringValue = helper.toTimeString(originalCount)
     }
     
     func goToSettings() {
-        // Save state
-        // Go to settings
-//        helper.goToSettings(self)
-         let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("SettingsViewController") as? SettingsViewController
-        self.view.window?.contentViewController = nextViewController
+        // TODO: Save state
+        
+        helper.goToSettings(self)
     }
     
     func updateTimer() {

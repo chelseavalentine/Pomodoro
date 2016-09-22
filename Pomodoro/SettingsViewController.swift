@@ -11,12 +11,42 @@ import Cocoa
 class SettingsViewController: NSViewController {
     let helper = Helper.sharedInstance
     
+    @IBOutlet weak var firstEditButton: NSImageView!
+    @IBOutlet weak var firstModeTitle: NSTextField!
+    @IBOutlet weak var firstWorkTime: NSTextField!
+    @IBOutlet weak var firstBreakTime: NSTextField!
+    
+    @IBOutlet weak var secondEditButton: NSImageView!
+    @IBOutlet weak var secondModeTitle: NSTextField!
+    @IBOutlet weak var secondBreakTime: NSTextField!
+    @IBOutlet weak var secondWorkTime: NSTextField!
+    
+    @IBOutlet weak var thirdEditButton: NSImageView!
+    @IBOutlet weak var thirdModeTitle: NSTextField!
+    @IBOutlet weak var thirdBreakTime: NSTextField!
+    @IBOutlet weak var thirdWorkTime: NSTextField!
+
+    @IBOutlet weak var returnIcon: NSImageView!
+    @IBOutlet weak var returnText: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        initNavigationButtons()
+//        initCycleFields()
     }
     
     override func awakeFromNib() {
         helper.setWindowBackground(self)
         helper.setWhiteCaret(self)
+    }
+    
+    func initCycleFields() {
+    }
+    
+    func initNavigationButtons() {
+    }
+    
+    func formatTimeInput() {
     }
 }
