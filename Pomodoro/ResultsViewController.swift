@@ -20,7 +20,7 @@ class ResultsViewController: NSViewController {
     @IBOutlet weak var resultTextField: NSTextField!
     
     @IBOutlet weak var test: NSBox!
-    let breakCount = 6
+    let breakCount = 1
     var workPercentage: CGFloat?
     var workCount: Int?
     

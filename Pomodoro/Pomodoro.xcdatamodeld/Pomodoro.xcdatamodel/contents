@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Automatic">
-    <entity name="ContextEntity" syncable="YES">
-        <attribute name="breakCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="cycleMode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="cycleNum" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="isBreak" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="workCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="ContextEntity" representedClassName=".ContextEntity" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="28800" defaultValueString="0" syncable="YES"/>
+        <attribute name="cycleMode" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" syncable="YES"/>
+        <attribute name="cycleNum" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="isBreak" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
     </entity>
-    <entity name="CycleEntity" syncable="YES">
-        <attribute name="breakCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="isArchived" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="orderNum" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="selected" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="workCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="CycleEntity" representedClassName=".CycleEntity" syncable="YES">
+        <attribute name="breakCount" attributeType="Integer 16" minValueString="0" maxValueString="28800" defaultValueString="0" syncable="YES"/>
+        <attribute name="created" attributeType="Date" minDateTimeInterval="496216500" syncable="YES"/>
+        <attribute name="isArchived" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="orderNum" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="selected" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="workCount" attributeType="Integer 16" minValueString="0" maxValueString="28800" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="SessionEntity" syncable="YES">
-        <attribute name="cycleMode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="SessionEntity" representedClassName=".SessionEntity" syncable="YES">
+        <attribute name="cycleMode" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="ended" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="goal" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="num" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="numPausedTimes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="goal" attributeType="String" syncable="YES"/>
+        <attribute name="num" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="numPausedTimes" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="started" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="started" optional="YES" attributeType="Date" minDateTimeInterval="496216860" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ContextEntity" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="ContextEntity" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="CycleEntity" positionX="-63" positionY="9" width="128" height="150"/>
         <element name="SessionEntity" positionX="-45" positionY="54" width="128" height="150"/>
     </elements>

@@ -14,8 +14,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var startButton: NSImageView!
     @IBOutlet weak var progressBar: NSBox!
     
-    var originalCount: Int = 3
-    var count: Int = 3
+    var originalCount: Int = 1
+    var count: Int = 1
     var pomodoroActive: Bool = false
     var timer: NSTimer?
     let helper = Helper.sharedInstance

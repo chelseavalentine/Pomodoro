@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E58C6921D93AC5E00E8B819 /* SessionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C68C1D93AC5E00E8B819 /* SessionEntity+CoreDataProperties.swift */; };
+		5E58C6931D93AC5E00E8B819 /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C68D1D93AC5E00E8B819 /* SessionEntity.swift */; };
+		5E58C6941D93AC5E00E8B819 /* CycleEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C68E1D93AC5E00E8B819 /* CycleEntity+CoreDataProperties.swift */; };
+		5E58C6951D93AC5E00E8B819 /* CycleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C68F1D93AC5E00E8B819 /* CycleEntity.swift */; };
+		5E58C6961D93AC5E00E8B819 /* ContextEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6901D93AC5E00E8B819 /* ContextEntity+CoreDataProperties.swift */; };
+		5E58C6971D93AC5E00E8B819 /* ContextEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6911D93AC5E00E8B819 /* ContextEntity.swift */; };
 		5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */; };
 		5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */; };
 		5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE671D73048F002CA217 /* AppDelegate.swift */; };
@@ -39,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E58C68C1D93AC5E00E8B819 /* SessionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E58C68D1D93AC5E00E8B819 /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
+		5E58C68E1D93AC5E00E8B819 /* CycleEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CycleEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E58C68F1D93AC5E00E8B819 /* CycleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleEntity.swift; sourceTree = "<group>"; };
+		5E58C6901D93AC5E00E8B819 /* ContextEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContextEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E58C6911D93AC5E00E8B819 /* ContextEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextEntity.swift; sourceTree = "<group>"; };
 		5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 		5EB6CE641D73048F002CA217 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E58C6981D93AC6E00E8B819 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5E58C68C1D93AC5E00E8B819 /* SessionEntity+CoreDataProperties.swift */,
+				5E58C68D1D93AC5E00E8B819 /* SessionEntity.swift */,
+				5E58C68E1D93AC5E00E8B819 /* CycleEntity+CoreDataProperties.swift */,
+				5E58C68F1D93AC5E00E8B819 /* CycleEntity.swift */,
+				5E58C6901D93AC5E00E8B819 /* ContextEntity+CoreDataProperties.swift */,
+				5E58C6911D93AC5E00E8B819 /* ContextEntity.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		5EB6CE5B1D73048F002CA217 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +132,7 @@
 		5EB6CE661D73048F002CA217 /* Pomodoro */ = {
 			isa = PBXGroup;
 			children = (
+				5E58C6981D93AC6E00E8B819 /* Entities */,
 				5EB6CE671D73048F002CA217 /* AppDelegate.swift */,
 				5EB6CE691D73048F002CA217 /* ViewController.swift */,
 				5EB6CE6E1D73048F002CA217 /* Assets.xcassets */,
@@ -274,11 +300,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */,
+				5E58C6961D93AC5E00E8B819 /* ContextEntity+CoreDataProperties.swift in Sources */,
+				5E58C6941D93AC5E00E8B819 /* CycleEntity+CoreDataProperties.swift in Sources */,
 				5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */,
 				5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */,
 				5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */,
+				5E58C6951D93AC5E00E8B819 /* CycleEntity.swift in Sources */,
+				5E58C6921D93AC5E00E8B819 /* SessionEntity+CoreDataProperties.swift in Sources */,
+				5E58C6971D93AC5E00E8B819 /* ContextEntity.swift in Sources */,
 				5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
+				5E58C6931D93AC5E00E8B819 /* SessionEntity.swift in Sources */,
 				5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */,
 				5EF7E4321D77F240000C9DB1 /* ResultsViewController.swift in Sources */,
 			);

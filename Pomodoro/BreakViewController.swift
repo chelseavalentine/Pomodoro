@@ -14,7 +14,7 @@ class BreakViewController: NSViewController {
     @IBOutlet weak var breakProgressBar: NSBox!
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
-    
+
     var originalCount = 1
     var count = 1
     var pomodoroActive = false
