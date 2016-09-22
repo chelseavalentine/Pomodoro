@@ -685,17 +685,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
-                                <rect key="frame" x="6" y="152" width="408" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Gm8-os-ZEx" secondAttribute="height" multiplier="195:11" id="4D7-gD-6ke"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
-                                    <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
                                 <rect key="frame" x="31" y="42" width="357" height="110"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="00:00" id="mTF-lU-g6Y">
@@ -738,15 +727,24 @@
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
+                                <rect key="frame" x="6" y="152" width="408" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gm8-os-ZEx" secondAttribute="height" multiplier="195:11" id="4D7-gD-6ke"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="ProgressBar" destination="QaP-sg-Gzg" id="iYZ-R1-HaF"/>
-                        <outlet property="focusField" destination="Gm8-os-ZEx" id="Civ-H8-YI3"/>
                         <outlet property="focusTextField" destination="Gm8-os-ZEx" id="da7-p5-S5W"/>
                         <outlet property="progressBar" destination="QaP-sg-Gzg" id="PII-su-TNM"/>
                         <outlet property="startButton" destination="mHF-fn-2fp" id="G9O-B9-iC6"/>
-                        <outlet property="timeField" destination="jXw-Iq-TDK" id="b5A-Zc-5Sp"/>
                         <outlet property="timeTextField" destination="jXw-Iq-TDK" id="yxe-06-MXa"/>
                     </connections>
                 </viewController>
@@ -784,17 +782,6 @@
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-vf-MFF" userLabel="Focus Text Field">
-                                <rect key="frame" x="6" y="76" width="394" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="LY4-NX-bq8"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What did you end up doing?" id="YOc-89-j7c">
-                                    <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="lrA-Xi-kVO">
@@ -859,6 +846,17 @@
                                 <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-vf-MFF" userLabel="Focus Text Field">
+                                <rect key="frame" x="6" y="76" width="394" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="LY4-NX-bq8"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What did you end up doing?" id="YOc-89-j7c">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="6fV-vf-MFF" firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="yuN-JK-sMf"/>
@@ -868,9 +866,9 @@
                         <outlet property="breakIcon" destination="2XR-0g-Zj6" id="DBw-Gz-Mas"/>
                         <outlet property="breakText" destination="QhR-oH-LBW" id="2W4-4F-78I"/>
                         <outlet property="focusText" destination="6br-fT-T4n" id="ehs-Qc-ofd"/>
-                        <outlet property="resultTextField" destination="6fV-vf-MFF" id="zVP-NH-8AN"/>
+                        <outlet property="resultTextField" destination="6fV-vf-MFF" id="EI9-fJ-u0r"/>
                         <outlet property="test" destination="AJV-lK-bee" id="SGN-Qu-800"/>
-                        <outlet property="workDuration" destination="FfM-uh-Y7P" id="aUV-7E-IHT"/>
+                        <outlet property="workDuration" destination="FfM-uh-Y7P" id="g7I-st-6kI"/>
                         <outlet property="workProgressBar" destination="sgM-WY-W1T" id="KF5-ed-TJb"/>
                     </connections>
                 </viewController>

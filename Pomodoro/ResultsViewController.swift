@@ -10,11 +10,13 @@ import Foundation
 import Cocoa
 
 class ResultsViewController: NSViewController {
+    
     @IBOutlet weak var workDuration: NSTextField!
     @IBOutlet weak var focusText: NSTextField!
     @IBOutlet weak var breakText: NSTextField!
     @IBOutlet weak var breakIcon: NSImageView!
     @IBOutlet weak var workProgressBar: NSBox!
+    
     @IBOutlet weak var resultTextField: NSTextField!
     
     @IBOutlet weak var test: NSBox!
@@ -23,10 +25,7 @@ class ResultsViewController: NSViewController {
     var workCount: Int?
     
     let helper = Helper.sharedInstance
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear() {
         // additional setup
         helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
         helper.updateProgressBar(self, bar: test, percentage: CGFloat(0.33333))
@@ -44,7 +43,12 @@ class ResultsViewController: NSViewController {
         gesture.action = #selector(ResultsViewController.validateResultField)
         breakIcon.addGestureRecognizer(gesture)
         breakText.addGestureRecognizer(gesture)
+
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+          }
     
     override func awakeFromNib() {
         helper.setWindowBackground(self)
