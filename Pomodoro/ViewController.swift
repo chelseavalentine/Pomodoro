@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var focusTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
     @IBOutlet weak var progressBar: NSBox!
+    @IBOutlet weak var settingsButton: NSImageView!
     
     var originalCount: Int = 1
     var count: Int = 1
@@ -66,7 +67,19 @@ class ViewController: NSViewController {
         gesture.action = #selector(ViewController.validateFocusField)
         startButton.addGestureRecognizer(gesture)
         
+        let settingsGesture = NSClickGestureRecognizer()
+        settingsGesture.buttonMask = 0x1
+        settingsGesture.target = self
+        settingsGesture.action = #selector(ViewController.goToSettings)
+        settingsButton.addGestureRecognizer(settingsGesture)
+        
         timeTextField.stringValue = helper.toTimeString(originalCount)
+    }
+    
+    func goToSettings() {
+        // Save state
+        // Go to settings
+        helper.goToSettings(self)
     }
     
     func updateTimer() {

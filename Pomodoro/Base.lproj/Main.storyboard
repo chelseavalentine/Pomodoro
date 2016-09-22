@@ -744,6 +744,7 @@
                         <outlet property="ProgressBar" destination="QaP-sg-Gzg" id="iYZ-R1-HaF"/>
                         <outlet property="focusTextField" destination="Gm8-os-ZEx" id="da7-p5-S5W"/>
                         <outlet property="progressBar" destination="QaP-sg-Gzg" id="PII-su-TNM"/>
+                        <outlet property="settingsButton" destination="p4R-RG-V5T" id="ryC-f6-kQa"/>
                         <outlet property="startButton" destination="mHF-fn-2fp" id="G9O-B9-iC6"/>
                         <outlet property="timeTextField" destination="jXw-Iq-TDK" id="yxe-06-MXa"/>
                     </connections>

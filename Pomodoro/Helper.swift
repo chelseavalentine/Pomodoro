@@ -88,4 +88,10 @@ class Helper {
         updatedProgress.size.width = vc.view.frame.width - vc.view.frame.width * (percentage)
         bar.frame = updatedProgress
     }
+    
+    func goToSettings(vc: ViewController) {
+        let nextViewController = vc.storyboard?.instantiateControllerWithIdentifier("SettingsViewController") as? SettingsViewController
+        vc.view.window?.contentViewController = nextViewController
+        SettingsViewController.className()
+    }
 }
