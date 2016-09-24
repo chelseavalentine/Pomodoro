@@ -41,9 +41,37 @@ class SettingsViewController: NSViewController {
     override func awakeFromNib() {
         helper.setWindowBackground(self)
         helper.setWhiteCaret(self)
+        
+        initTextFields()
+    }
+    
+    func initTextFields() {
+        // Set placeholder colors
+        helper.setPlaceholderFont(firstModeTitle, string: Strings.FirstModeTitle.rawValue, bold: false)
+        helper.setPlaceholderFont(firstWorkTime, string: Strings.TimePlaceholder.rawValue, bold: false)
+        helper.setPlaceholderFont(firstBreakTime, string: Strings.TimePlaceholder.rawValue, bold: false)
+        
+        helper.setPlaceholderFont(secondModeTitle, string: Strings.SecondModeTitle.rawValue, bold: false)
+        helper.setPlaceholderFont(secondWorkTime, string: Strings.TimePlaceholder.rawValue, bold: false)
+        helper.setPlaceholderFont(secondBreakTime, string: Strings.TimePlaceholder.rawValue, bold: false)
+        
+        helper.setPlaceholderFont(thirdModeTitle, string: Strings.ThirdModeTitle.rawValue, bold: false)
+        helper.setPlaceholderFont(thirdWorkTime, string: Strings.TimePlaceholder.rawValue, bold: false)
+        helper.setPlaceholderFont(thirdBreakTime, string: Strings.TimePlaceholder.rawValue, bold: false)
+        
+        // Set listeners to format & validate time inputs
+        NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) {(aEvent) -> NSEvent! in
+            self.keyUp(aEvent)
+            return aEvent
+        }
+    }
+    
+    override func keyUp(theEvent: NSEvent) {
+        thirdModeTitle.keyUp(<#T##theEvent: NSEvent##NSEvent#>)
     }
     
     func initCycleFields() {
+        
     }
     
     func initNavigationButtons() {

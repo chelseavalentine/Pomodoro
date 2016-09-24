@@ -11,4 +11,10 @@ import Foundation
 enum Strings: String {
     case EnterFocusPrompt = "What are you going to do?"
     case EnterResultPrompt = "What did you end up doing?"
+    
+    case FirstModeTitle = "Light mode"
+    case SecondModeTitle = "Normal mode"
+    case ThirdModeTitle = "Beast mode"
+    
+    case TimePlaceholder = "0:00:00"
 }
