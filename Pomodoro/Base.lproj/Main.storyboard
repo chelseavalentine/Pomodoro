@@ -796,7 +796,7 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="whiteResumeIcon" id="QFZ-TO-ctO"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QhR-oH-LBW">
-                                            <rect key="frame" x="373" y="9" width="37" height="17"/>
+                                            <rect key="frame" x="373" y="8" width="49" height="18"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Break" id="CIL-bv-pjg">
                                                 <font key="font" size="12" name="PTMono-Bold"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
@@ -828,8 +828,9 @@
                                 </textFieldCell>
                             </textField>
                             <box ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="2" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="sgM-WY-W1T">
-                                <rect key="frame" x="0.0" y="30" width="0.0" height="0.0"/>
+                                <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
                                 <view key="contentView" id="BCZ-wt-ESC">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
@@ -1010,7 +1011,7 @@
         <scene sceneID="gWy-M4-TBc">
             <objects>
                 <viewController title="ResultsViewController" storyboardIdentifier="SettingsViewController" id="MDY-2y-85u" userLabel="SettingsViewController" customClass="SettingsViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" identifier="ResultsViewController" id="8Oo-vd-H0q">
+                    <view key="view" id="8Oo-vd-H0q">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1057,17 +1058,15 @@
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <box ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="2" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qHl-03-TmK">
-                                <rect key="frame" x="0.0" y="30" width="0.0" height="0.0"/>
+                                <rect key="frame" x="10" y="30" width="30" height="2"/>
                                 <view key="contentView" id="hqa-tc-SeF">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="2"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="250" constant="2" id="siZ-dj-JUq"/>
-                                </constraints>
                                 <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yqU-bo-AlN">
+                            <box ambiguous="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yqU-bo-AlN">
                                 <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
                                 <view key="contentView" ambiguous="YES" id="XXV-V1-y9I">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
@@ -1268,6 +1267,12 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="qHl-03-TmK" firstAttribute="top" secondItem="8Oo-vd-H0q" secondAttribute="top" constant="168" id="hTB-cc-1q1"/>
+                            <constraint firstItem="UeJ-GJ-Ai6" firstAttribute="top" secondItem="qHl-03-TmK" secondAttribute="bottom" id="mqs-k8-VnG"/>
+                            <constraint firstItem="qHl-03-TmK" firstAttribute="top" secondItem="yqU-bo-AlN" secondAttribute="top" id="sPe-T9-8HG"/>
+                            <constraint firstItem="qHl-03-TmK" firstAttribute="bottom" secondItem="yqU-bo-AlN" secondAttribute="bottom" id="xFL-kL-NQn"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="firstBreakTime" destination="FJ5-eJ-74F" id="HTP-gC-9Ky"/>
