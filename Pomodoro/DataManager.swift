@@ -115,7 +115,6 @@ class DataManager {
         }
         
         do {
-            print(managedContext.hasChanges)
             try managedContext.save()
             
         } catch let error as NSError {
@@ -151,6 +150,15 @@ class DataManager {
         context.cycleRelationship = cycle
         context.sessionRelationship = session
         
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Couldn't save the context. \(error), \(error.userInfo) :(")
+        }
+    }
+    
+    static func saveManagedContext() {
+        let managedContext = appDelegate.managedObjectContext
         do {
             try managedContext.save()
         } catch let error as NSError {

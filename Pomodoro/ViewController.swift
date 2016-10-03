@@ -15,8 +15,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var progressBar: NSBox!
     @IBOutlet weak var settingsButton: NSImageView!
     
-    var originalCount: Int = 1
-    var count: Int = 1
+    var originalCount: Int = 900
+    var count: Int = 900
     var pomodoroActive: Bool = false
     var timer: NSTimer?
     let helper = Helper.sharedInstance
@@ -36,8 +36,7 @@ class ViewController: NSViewController {
         }
         
         initButtons()
-        
-        timeTextField.stringValue = helper.toTimeString(originalCount)
+        loadData()
     }
     
     func initButtons() {
@@ -49,6 +48,17 @@ class ViewController: NSViewController {
         let settingsGesture = helper.makeLeftClickGesture(self)
         settingsGesture.action = #selector(ViewController.goToSettings)
         settingsButton.addGestureRecognizer(settingsGesture)
+    }
+    
+    func loadData() {
+        var cycle = DataManager.getContext()?.cycleRelationship
+        
+        if cycle != nil {
+            originalCount = cycle!.workCount! as Int
+        }
+        
+        count = originalCount
+        timeTextField.stringValue = helper.toTimeString(originalCount)
     }
     
     func goToSettings() {
@@ -98,12 +108,22 @@ class ViewController: NSViewController {
         } else {
             startPomodoro()
             focusTextField.enabled = false
+            
+            // Save goal
+            let context = DataManager.getContext()
+            context!.sessionRelationship!.goal = focusTextField!.stringValue
+            DataManager.saveManagedContext()
         }
     }
     
     func startPomodoro() {
         if (!pomodoroActive) {
             startTimer()
+            
+            // First time starting this session
+            let session = DataManager.getContext()!.sessionRelationship!
+            session.started = NSDate()
+            DataManager.saveManagedContext()
         } else {
             // Todo: find a better way to protect against multiple starts
             // Start the timer again
@@ -125,6 +145,12 @@ class ViewController: NSViewController {
         timer = nil
         pomodoroActive = false
         startButton.image = NSImage(named: "playIcon")
+        
+        // Save paused
+        let context = DataManager.getContext()!
+        context.sessionRelationship!.numPausedTimes = (context.sessionRelationship!.numPausedTimes! as Int + 1) as NSNumber
+        context.count = count
+        DataManager.saveManagedContext()
     }
 }
 
