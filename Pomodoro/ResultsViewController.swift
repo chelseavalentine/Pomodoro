@@ -19,21 +19,13 @@ class ResultsViewController: NSViewController {
     @IBOutlet weak var resultTextField: NSTextField!
     
     let breakCount = 1
-    var workPercentage: CGFloat?
     var workCount: Int?
-    
+    var timer: NSTimer?
     let helper = Helper.sharedInstance
-    
-//    var context = [ContextEntity]()
-    
-    override func viewWillAppear() {
-        // Do data stuff here
-    }
     
     override func viewDidAppear() {
         // additional setup
         helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
-        helper.updateProgressBar(self, bar: workProgressBar, percentage: CGFloat(0.33333))
         
         // Listen for the keyup event
         NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
@@ -62,14 +54,28 @@ class ResultsViewController: NSViewController {
     override func awakeFromNib() {
         helper.setWindowBackground(self)
         helper.setWhiteCaret(self)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: #selector(ResultsViewController.initProgressBar), userInfo: nil, repeats: false)
+    }
+    
+    func initProgressBar() {
+        let mode = DataManager.getContext()!.modeRelationship
+        
+        workCount = mode.workCount as Int
+        
+        let totalCycleCount = CGFloat((mode.breakCount as Int) + workCount!)
+        let workPercentage: CGFloat = (CGFloat(workCount!) / totalCycleCount)
+        
+        var updatedProgress: NSRect = workProgressBar.frame
+        updatedProgress.size.width = self.view.frame.width - self.view.frame.width * workPercentage
+        workProgressBar.frame = updatedProgress
+        
+        timer?.invalidate()
     }
     
     func setWorkDetails(focus: String, workCount: Int) {
         workDuration.stringValue = helper.toTimeString(workCount)
         focusText.stringValue = focus
-        self.workCount = workCount
-        workPercentage = CGFloat(workCount) / CGFloat(workCount + breakCount)
-        helper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage!)
     }
     
     override func keyUp(theEvent: NSEvent) {

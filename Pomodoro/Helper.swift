@@ -85,8 +85,12 @@ class Helper {
     
     func updateProgressBar(vc: NSViewController, bar: NSBox, percentage: CGFloat) {
         var updatedProgress: NSRect = bar.frame
+        print("Before")
+        print(updatedProgress)
         updatedProgress.size.width = vc.view.frame.width - vc.view.frame.width * (percentage)
         bar.frame = updatedProgress
+        print("After")
+        print(bar.frame);
     }
     
     func goToSettings(vc: NSViewController) {

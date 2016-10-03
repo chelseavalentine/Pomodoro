@@ -827,18 +827,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="2" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="sgM-WY-W1T">
-                                <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
-                                <view key="contentView" id="BCZ-wt-ESC">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="250" constant="2" id="hhK-0T-Q5u"/>
-                                </constraints>
-                                <color key="borderColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </box>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-vf-MFF" userLabel="Focus Text Field">
                                 <rect key="frame" x="6" y="76" width="394" height="22"/>
                                 <constraints>
@@ -850,8 +838,22 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box ambiguous="YES" misplaced="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ge0-ON-yB1">
+                                <rect key="frame" x="0.0" y="30" width="30" height="2"/>
+                                <view key="contentView" ambiguous="YES" id="9LN-da-mGY">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Ge0-ON-yB1" firstAttribute="leading" secondItem="lrA-Xi-kVO" secondAttribute="leading" id="9UA-Zd-aax"/>
+                            <constraint firstItem="Ge0-ON-yB1" firstAttribute="leading" secondItem="P5e-ef-c9C" secondAttribute="leading" id="D6j-Ol-Uyi"/>
+                            <constraint firstItem="Ge0-ON-yB1" firstAttribute="top" secondItem="P5e-ef-c9C" secondAttribute="top" constant="168" id="G9n-MH-cMd"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ge0-ON-yB1" secondAttribute="trailing" constant="420" id="Uri-br-fzi"/>
+                            <constraint firstAttribute="bottom" secondItem="Ge0-ON-yB1" secondAttribute="bottom" constant="30" id="hkT-pl-3YK"/>
                             <constraint firstItem="6fV-vf-MFF" firstAttribute="width" secondItem="6fV-vf-MFF" secondAttribute="height" multiplier="195:11" id="yuN-JK-sMf"/>
                         </constraints>
                     </view>
@@ -861,7 +863,7 @@
                         <outlet property="focusText" destination="6br-fT-T4n" id="ehs-Qc-ofd"/>
                         <outlet property="resultTextField" destination="6fV-vf-MFF" id="EI9-fJ-u0r"/>
                         <outlet property="workDuration" destination="FfM-uh-Y7P" id="g7I-st-6kI"/>
-                        <outlet property="workProgressBar" destination="sgM-WY-W1T" id="KF5-ed-TJb"/>
+                        <outlet property="workProgressBar" destination="Ge0-ON-yB1" id="PqS-ak-UtO"/>
                     </connections>
                 </viewController>
                 <customObject id="CMk-0b-8oP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
