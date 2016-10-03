@@ -102,19 +102,22 @@ class DataManager {
     
     static func changeMode(num: Int) {
         let managedContext = appDelegate.managedObjectContext
+        let context = getContext()
         let modes = getCycles().filter({ $0.isArchived == false })
-        
-        print("changing mode to \(num)")
+    
         for mode in modes {
             if mode.orderNum == num {
                 mode.selected = true
+                context?.cycleRelationship = mode
             } else {
                 mode.selected = false
             }
         }
         
         do {
+            print(managedContext.hasChanges)
             try managedContext.save()
+            
         } catch let error as NSError {
             print("Couldn't save the context. \(error), \(error.userInfo) :(")
         }

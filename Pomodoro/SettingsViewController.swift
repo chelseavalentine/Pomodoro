@@ -133,16 +133,27 @@ class SettingsViewController: NSViewController {
     }
     
     func selectFirstMode() {
-        print("select first mode")
         DataManager.changeMode(0)
+        helper.setPlaceholderFont(selectedButton1, string: Strings.Selected.rawValue, bold: false)
+        selectedButton1.stringValue = Strings.Selected.rawValue
+        selectedButton2.stringValue = Strings.Unselected.rawValue
+        selectedButton3.stringValue = Strings.Unselected.rawValue
     }
     
     func selectSecondMode() {
         DataManager.changeMode(1)
+        helper.setPlaceholderFont(selectedButton2, string: Strings.Selected.rawValue, bold: false)
+        selectedButton1.stringValue = Strings.Unselected.rawValue
+        selectedButton2.stringValue = Strings.Selected.rawValue
+        selectedButton3.stringValue = Strings.Unselected.rawValue
     }
     
     func selectThirdMode() {
         DataManager.changeMode(2)
+        helper.setPlaceholderFont(selectedButton3, string: Strings.Selected.rawValue, bold: false)
+        selectedButton3.stringValue = Strings.Selected.rawValue
+        selectedButton1.stringValue = Strings.Unselected.rawValue
+        selectedButton2.stringValue = Strings.Unselected.rawValue
     }
     
     func returnToPrevViewController() {
