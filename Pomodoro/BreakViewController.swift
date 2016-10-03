@@ -67,11 +67,7 @@ class BreakViewController: NSViewController {
     
     func setWorkDetails(workCount: Int) {
         let workPercentage = CGFloat(workCount) / CGFloat(workCount + originalCount)
-        let workProgressWidth = self.view.frame.width - self.view.frame.width * (workPercentage)
         helper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage)
-        var breakProgressFrame: NSRect = breakProgressBar.frame
-        breakProgressFrame.size.width = 70.0
-        breakProgressFrame.origin.x = workProgressWidth
     }
     
     func startPomodoro() {
@@ -106,25 +102,26 @@ class BreakViewController: NSViewController {
     }
     
     func updateTimer() {
-        if (count > 0) {
-            // Update the time
-            count -= 1
-            timeTextField.stringValue = helper.toTimeString(count)
-            
-            // Update the progress bar
-            helper.updateProgressBar(self, bar: breakProgressBar, percentage: CGFloat(count) / CGFloat(originalCount))
-        } else {
-            stopTimer()
-            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
-            self.view.window?.contentViewController = nextViewController
-            
-            // set no longer break; save this session
-            let context = DataManager.getContext()!
-            context.isBreak = false
-            context.count = context.modeRelationship.workCount
-            context.sessionRelationship.ended = NSDate()
-            DataManager.saveManagedContext()
-            DataManager.createSession(context.modeRelationship, num: context.sessionRelationship.num as Int + 1)
-        }
+//        if (count > 0) {
+//            // Update the time
+//            count -= 1
+//            timeTextField.stringValue = helper.toTimeString(count)
+//            
+//            // Update the progress bar
+//            helper.updateProgressBar(self, bar: breakProgressBar, percentage: CGFloat(count) / CGFloat(originalCount))
+//        } else {
+//            stopTimer()
+//            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
+//            self.view.window?.contentViewController = nextViewController
+//            
+//            // set no longer break; save this session
+//            let context = DataManager.getContext()!
+//            context.isBreak = false
+//            context.count = context.modeRelationship.workCount
+//            context.sessionRelationship.ended = NSDate()
+//            DataManager.saveManagedContext()
+//            DataManager.createSession(context.modeRelationship, num: context.sessionRelationship.num as Int + 1)
+//        }
+        timer?.invalidate()
     }
 }

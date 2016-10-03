@@ -15,13 +15,15 @@ class ViewController: NSViewController {
     @IBOutlet weak var progressBar: NSBox!
     @IBOutlet weak var settingsButton: NSImageView!
     
-    var originalCount: Int = 900
-    var count: Int = 900
+    var originalCount: Int = 6
+    var count: Int = 6
     var pomodoroActive: Bool = false
     var timer: NSTimer?
     let helper = Helper.sharedInstance
     
     override func viewWillAppear() {
+        super.viewWillAppear()
+        loadData()
     }
     
     override func viewDidLoad() {
@@ -50,13 +52,13 @@ class ViewController: NSViewController {
     }
     
     func loadData() {
-        let context = DataManager.getContext()!
-        let mode = context.modeRelationship
+        let context = DataManager.getContext()
+        let mode = context?.modeRelationship
 
-        originalCount = mode.workCount as Int
+        originalCount = mode?.workCount as? Int ?? 6
         
         // If it we were in a break, go to the next screen
-        if context.isBreak == true {
+        if context?.isBreak == true {
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
             self.view.window?.contentViewController = nextViewController
             nextViewController?.setWorkDetails(originalCount)
@@ -64,6 +66,8 @@ class ViewController: NSViewController {
             count = originalCount
             timeTextField.stringValue = helper.toTimeString(originalCount)
         }
+        
+        timeTextField.lockFocus()
     }
     
     func goToSettings() {
@@ -96,7 +100,6 @@ class ViewController: NSViewController {
         
         // Set TextField font and color
         helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
-        loadData()
     }
 
     override func keyUp(theEvent: NSEvent) {

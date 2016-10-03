@@ -102,7 +102,7 @@ class ResultsViewController: NSViewController {
             
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
             self.view.window?.contentViewController = nextViewController
-            nextViewController?.setWorkDetails(workCount!)
+            nextViewController?.setWorkDetails(6)
         }
     }
 }
