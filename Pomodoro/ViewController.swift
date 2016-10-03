@@ -50,15 +50,15 @@ class ViewController: NSViewController {
     }
     
     func loadData() {
-        let context = DataManager.getContext()!
-        let cycle = context.cycleRelationship
+        let context = DataManager.getContext()
+        let cycle = context?.cycleRelationship
         
         if cycle?.workCount != nil {
             originalCount = cycle?.workCount! as! Int
         }
         
         // If it we were in a break, go to the next screen
-        if context.isBreak == false {
+        if context?.isBreak == true {
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
             self.view.window?.contentViewController = nextViewController
             nextViewController?.setWorkDetails(originalCount)

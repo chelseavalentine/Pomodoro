@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if cycles.count == 0 {
             // Initialize cycles
             DataManager.saveCycle(0, name: "Light mode", workCount: 60 * 15, breakCount: 60 * 5, selected: false)
-            DataManager.saveCycleWithCallback(1, name: "Normal mode", workCount: 60 * 30, breakCount: 60 * 10, selected: true, callback: createSessionAndContext)
+            DataManager.saveCycleWithCallback(1, name: "Normal mode", workCount: 6, breakCount: 2, selected: true, callback: createSessionAndContext)
             DataManager.saveCycle(2, name: "Beast mode", workCount: 60 * 45, breakCount: 60 * 15, selected: false)
         }
     }

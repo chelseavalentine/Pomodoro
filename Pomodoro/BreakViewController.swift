@@ -46,8 +46,6 @@ class BreakViewController: NSViewController {
         let context = DataManager.getContext()
         let cycle = context?.cycleRelationship
         
-        
-        
         if context?.count != nil {
             count = context!.count as! Int
         }
@@ -55,7 +53,7 @@ class BreakViewController: NSViewController {
         if cycle?.breakCount != nil {
             originalCount = cycle?.breakCount as! Int
         }
-        count = 15 * 60
+        
         callback()
     }
     
@@ -124,10 +122,13 @@ class BreakViewController: NSViewController {
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
             self.view.window?.contentViewController = nextViewController
             
-            // set no longer break
+            // set no longer break; save this session
             let context = DataManager.getContext()
             context?.isBreak = false
+            context?.count = context?.cycleRelationship?.workCount
+            context?.sessionRelationship?.ended = NSDate()
             DataManager.saveManagedContext()
+            DataManager.createSession(context!.cycleRelationship!, num: (context?.sessionRelationship?.num as! Int + 1) as Int)
         }
     }
 }

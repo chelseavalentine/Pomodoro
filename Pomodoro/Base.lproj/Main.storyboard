@@ -887,7 +887,7 @@
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pxS-Q0-jc0">
                                 <rect key="frame" x="7" y="171" width="407" height="23"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Break 3" id="9Zf-1h-yRY">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Break" id="9Zf-1h-yRY">
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -970,14 +970,6 @@
                             <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ej8-lr-knB" userLabel="ConfettiHolder">
                                 <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-w1-JTk">
-                                        <rect key="frame" x="92" y="83" width="248" height="33"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Work session 3" id="Rey-ET-1ra">
-                                            <font key="font" size="24" name="PTMono-Bold"/>
-                                            <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbd-Wk-UEf">
                                         <rect key="frame" x="92" y="106" width="248" height="26"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Nice job! You completed" id="N2w-84-ldO">
@@ -986,16 +978,16 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ix8-6k-KnB">
+                                        <rect key="frame" x="92" y="83" width="248" height="33"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="lDd-bi-EfP">
+                                            <font key="font" size="24" name="PTMono-Bold"/>
+                                            <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </view>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ix8-6k-KnB">
-                                <rect key="frame" x="92" y="83" width="248" height="33"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Work session 3" id="lDd-bi-EfP">
-                                    <font key="font" size="24" name="PTMono-Bold"/>
-                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bd4-an-B0C">
                                 <rect key="frame" x="92" y="106" width="248" height="26"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Nice job! You completed" id="DcT-Yh-5sA">
@@ -1009,6 +1001,7 @@
                     <connections>
                         <outlet property="confettiView" destination="Ej8-lr-knB" id="BxO-yz-RKz"/>
                         <outlet property="mainView" destination="ZMi-cB-Yoe" id="I9D-UR-HTE"/>
+                        <outlet property="sessionTitle" destination="Ix8-6k-KnB" id="Hhc-Bo-T2E"/>
                     </connections>
                 </viewController>
                 <customObject id="m7D-9U-CzH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

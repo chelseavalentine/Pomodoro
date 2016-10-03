@@ -12,14 +12,22 @@ class CompletionViewController: NSViewController {
     @IBOutlet weak var confettiView: NSView!
     let helper = Helper.sharedInstance
     var endTimer: NSTimer?
+    @IBOutlet weak var sessionTitle: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         generateConfetti()
+        
+        let gesture = helper.makeLeftClickGesture(self)
+        gesture.action = #selector(CompletionViewController.goToFirstView)
+        self.view.addGestureRecognizer(gesture)
     }
     
     override func awakeFromNib() {
         helper.setWindowBackground(self)
+        let sessionNum = DataManager.getContext()!.sessionRelationship!.num as! Int
+        sessionTitle.stringValue = "Work session \(sessionNum)"
+        print(sessionNum)
     }
     
     func generateConfetti() {
@@ -60,7 +68,9 @@ class CompletionViewController: NSViewController {
     
     func endAnimation(timer: NSTimer) {
         timer.invalidate()
-        
+    }
+    
+    func goToFirstView() {
         let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ViewController") as? ViewController
         self.view.window?.contentViewController = nextViewController
     }

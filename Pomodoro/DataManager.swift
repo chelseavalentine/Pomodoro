@@ -166,10 +166,12 @@ class DataManager {
         }
     }
     
-    static func createSession() {
+    static func createSession(cycle: CycleEntity, num: Int) {
         let managedContext = appDelegate.managedObjectContext
         let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
-        let _ = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
+        let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
+        session.cycleRelationship = cycle
+        session.num = num
         
         do {
             try managedContext.save()
