@@ -73,48 +73,41 @@ class SettingsViewController: NSViewController {
     }
     
     func loadInModes() {
-        let allModes = DataManager.getCycles()
+        let allModes = DataManager.getModes()
         let firstMode = allModes.filter{ $0.orderNum == 0}.first
         let secondMode = allModes.filter{ $0.orderNum == 1}.first
         let thirdMode = allModes.filter{ $0.orderNum == 2}.first
         
         // Mode 1
-        firstModeTitle.stringValue = firstMode!.name!
-        firstWorkTime.stringValue = helper.toTimeString(firstMode?.workCount as! Int)
-        firstBreakTime.stringValue = helper.toTimeString(firstMode?.breakCount as! Int)
+        firstModeTitle.stringValue = firstMode!.name
+        firstWorkTime.stringValue = helper.toTimeString(firstMode!.workCount as Int)
+        firstBreakTime.stringValue = helper.toTimeString(firstMode!.breakCount as Int)
         
         // Mode 2
-        secondModeTitle.stringValue = secondMode!.name!
-        secondWorkTime.stringValue = helper.toTimeString(secondMode?.workCount as! Int)
-        secondBreakTime.stringValue = helper.toTimeString(secondMode?.breakCount as! Int)
+        secondModeTitle.stringValue = secondMode!.name
+        secondWorkTime.stringValue = helper.toTimeString(secondMode!.workCount as Int)
+        secondBreakTime.stringValue = helper.toTimeString(secondMode!.breakCount as Int)
         
         // Mode 3
-        thirdModeTitle.stringValue = thirdMode!.name!
-        thirdWorkTime.stringValue = helper.toTimeString(thirdMode?.workCount as! Int)
-        thirdBreakTime.stringValue = helper.toTimeString(thirdMode?.breakCount as! Int)
+        thirdModeTitle.stringValue = thirdMode!.name
+        thirdWorkTime.stringValue = helper.toTimeString(thirdMode!.workCount as Int)
+        thirdBreakTime.stringValue = helper.toTimeString(thirdMode!.breakCount as Int)
         
         // Select current mode
-        let currentMode = DataManager.getContext()?.cycleRelationship
+        let currentMode = DataManager.getContext()!.modeRelationship
         
-        if currentMode == nil {
-            DataManager.setCurrentMode(secondMode!)
+        switch currentMode.orderNum {
+        case 0:
+            helper.setPlaceholderFont(selectedButton1, string: Strings.Selected.rawValue, bold: false)
+            selectedButton1.stringValue = Strings.Selected.rawValue
+        case 1:
             helper.setPlaceholderFont(selectedButton2, string: Strings.Selected.rawValue, bold: false)
             selectedButton2.stringValue = Strings.Selected.rawValue
-        } else {
-            // TODO: style text, not placeholder text
-            switch currentMode!.orderNum as! Int {
-            case 0:
-                helper.setPlaceholderFont(selectedButton1, string: Strings.Selected.rawValue, bold: false)
-                selectedButton1.stringValue = Strings.Selected.rawValue
-            case 1:
-                helper.setPlaceholderFont(selectedButton2, string: Strings.Selected.rawValue, bold: false)
-                selectedButton2.stringValue = Strings.Selected.rawValue
-            case 2:
-                helper.setPlaceholderFont(selectedButton3, string: Strings.Selected.rawValue, bold: false)
-                selectedButton3.stringValue = Strings.Selected.rawValue
-            default:
-                break
-            }
+        case 2:
+            helper.setPlaceholderFont(selectedButton3, string: Strings.Selected.rawValue, bold: false)
+            selectedButton3.stringValue = Strings.Selected.rawValue
+        default:
+            break
         }
     }
     

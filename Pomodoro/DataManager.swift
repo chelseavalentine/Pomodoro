@@ -20,64 +20,60 @@ class DataManager {
         return contexts.last
     }
     
-    static func getCycle(cycleNum: Int) -> CycleEntity {
-        let cycles = getObjects("CycleEntity") as! [CycleEntity]
-        return cycles[cycleNum]
+    static func getMode(modeNum: Int) -> ModeEntity {
+        let modes = getObjects("ModeEntity") as! [ModeEntity]
+        return modes[modeNum]
     }
     
-    static func getCycles() -> [CycleEntity] {
-        return getObjects("CycleEntity") as! [CycleEntity]
+    static func getModes() -> [ModeEntity] {
+        return getObjects("ModeEntity") as! [ModeEntity]
     }
     
-    static func createCycle(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool) -> (CycleEntity, NSManagedObjectContext) {
+    static func createMode(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool) -> (ModeEntity, NSManagedObjectContext) {
         let managedContext = appDelegate.managedObjectContext
-        let cycleEntity = NSEntityDescription.entityForName("CycleEntity", inManagedObjectContext: managedContext)
-        let cycle = CycleEntity(entity: cycleEntity!, insertIntoManagedObjectContext: managedContext)
+        let modeEntity = NSEntityDescription.entityForName("ModeEntity", inManagedObjectContext: managedContext)
+        let mode = ModeEntity(entity: modeEntity!, insertIntoManagedObjectContext: managedContext)
         
-        cycle.created = NSDate()
-        cycle.orderNum = order
-        cycle.name = name
-        cycle.workCount = workCount
-        cycle.breakCount = breakCount
-        cycle.selected = selected
+        mode.created = NSDate()
+        mode.orderNum = order
+        mode.name = name
+        mode.workCount = workCount
+        mode.breakCount = breakCount
+        mode.selected = selected
         
-        return (cycle, managedContext);
+        return (mode, managedContext);
     }
-    static func saveCycle(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool) {
-        let (_, managedContext) = createCycle(order, name: name, workCount: workCount, breakCount: breakCount, selected: selected)
+    static func saveMode(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool) {
+        let (_, managedContext) = createMode(order, name: name, workCount: workCount, breakCount: breakCount, selected: selected)
         
         do {
             try managedContext.save()
         } catch let error as NSError {
-            print("Couldn't save the cycle. \(error), \(error.userInfo) :(")
+            print("Couldn't save the mode. \(error), \(error.userInfo) :(")
         }
     }
     
-    static func saveCycleWithCallback(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool, callback: (CycleEntity) -> ()) {
-        let (cycle, managedContext) = createCycle(order, name: name, workCount: workCount, breakCount: breakCount, selected: selected)
+    static func saveModeWithCallback(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool, callback: (ModeEntity) -> ()) {
+        let (mode, managedContext) = createMode(order, name: name, workCount: workCount, breakCount: breakCount, selected: selected)
         
         do {
             try managedContext.save()
-            callback(cycle)
+            callback(mode)
         } catch let error as NSError {
-            print("Couldn't save the cycle. \(error), \(error.userInfo) :(")
+            print("Couldn't save the mode. \(error), \(error.userInfo) :(")
         }
-    }
-    
-    static func getSession() -> SessionEntity {
-        return getObjects("SessionEntity") as! SessionEntity
     }
     
     static func getSessions() -> [SessionEntity] {
         return getObjects("SessionEntity") as! [SessionEntity]
     }
     
-    static func initAndReturnSession(cycle: CycleEntity) -> SessionEntity {
+    static func initAndReturnSession(mode: ModeEntity) -> SessionEntity {
         let managedContext = appDelegate.managedObjectContext
         let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
         let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
         
-        session.cycleRelationship = cycle
+        session.modeRelationship = mode
         
         do {
             try managedContext.save()
@@ -88,10 +84,10 @@ class DataManager {
         return session
     }
     
-    static func setCurrentMode(cycle: CycleEntity) {
+    static func setCurrentMode(mode: ModeEntity) {
         let managedContext = appDelegate.managedObjectContext
         let context = getContext()
-        context?.cycleRelationship = cycle
+        context?.modeRelationship = mode
         
         do {
             try managedContext.save()
@@ -103,12 +99,12 @@ class DataManager {
     static func changeMode(num: Int) {
         let managedContext = appDelegate.managedObjectContext
         let context = getContext()
-        let modes = getCycles().filter({ $0.isArchived == false })
+        let modes = getModes().filter({ $0.isArchived == false })
     
         for mode in modes {
             if mode.orderNum == num {
                 mode.selected = true
-                context?.cycleRelationship = mode
+                context?.modeRelationship = mode
             } else {
                 mode.selected = false
             }
@@ -122,7 +118,7 @@ class DataManager {
         }
     }
     
-    static func saveSession(goal: String, result: String, started: NSDate, ended: NSDate, cycle: CycleEntity, numPaused: Int) {
+    static func saveSession(goal: String, result: String, started: NSDate, ended: NSDate, mode: ModeEntity, numPaused: Int) {
         let managedContext = appDelegate.managedObjectContext
         let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
         let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
@@ -131,7 +127,7 @@ class DataManager {
         session.result = result
         session.started = started
         session.ended = ended
-        session.cycleRelationship = cycle
+        session.modeRelationship = mode
         session.numPausedTimes = numPaused
         
         do {
@@ -142,13 +138,19 @@ class DataManager {
     }
     
     
-    static func createContext(cycle: CycleEntity, session: SessionEntity, isBreak: Bool) {
+    static func createContext(mode: ModeEntity, isBreak: Bool) {
         let managedContext = appDelegate.managedObjectContext
         let contextEntity = NSEntityDescription.entityForName("ContextEntity", inManagedObjectContext: managedContext)
         let context = ContextEntity(entity: contextEntity!, insertIntoManagedObjectContext: managedContext)
         
-        context.cycleRelationship = cycle
+        let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
+        let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        session.modeRelationship = mode
+        
+        context.modeRelationship = mode
         context.sessionRelationship = session
+        context.isBreak = isBreak
         
         do {
             try managedContext.save()
@@ -166,11 +168,11 @@ class DataManager {
         }
     }
     
-    static func createSession(cycle: CycleEntity, num: Int) {
+    static func createSession(mode: ModeEntity, num: Int) {
         let managedContext = appDelegate.managedObjectContext
         let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
         let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
-        session.cycleRelationship = cycle
+        session.modeRelationship = mode
         session.num = num
         
         do {

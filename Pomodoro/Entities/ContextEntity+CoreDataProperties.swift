@@ -2,7 +2,7 @@
 //  ContextEntity+CoreDataProperties.swift
 //  Pomodoro
 //
-//  Created by Chelsea Valentine on 9/22/16.
+//  Created by Chelsea Valentine on 10/3/16.
 //  Copyright © 2016 Chelsea Valentine. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,11 +14,9 @@ import CoreData
 
 extension ContextEntity {
 
-    @NSManaged var isBreak: NSNumber?
-    @NSManaged var count: NSNumber?
-    @NSManaged var cycleMode: NSNumber?
-    @NSManaged var cycleNum: NSNumber?
-    @NSManaged var cycleRelationship: CycleEntity?
-    @NSManaged var sessionRelationship: SessionEntity?
+    @NSManaged var count: NSNumber
+    @NSManaged var isBreak: NSNumber
+    @NSManaged var modeRelationship: ModeEntity
+    @NSManaged var sessionRelationship: SessionEntity
 
 }

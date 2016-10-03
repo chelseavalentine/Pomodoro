@@ -44,16 +44,11 @@ class BreakViewController: NSViewController {
     }
     
     func loadData(callback: () -> ()) {
-        let context = DataManager.getContext()
-        let cycle = context?.cycleRelationship
+        let context = DataManager.getContext()!
+        let cycle = context.modeRelationship
         
-        if context?.count != nil {
-            count = context!.count as! Int
-        }
-        
-        if cycle?.breakCount != nil {
-            originalCount = cycle?.breakCount as! Int
-        }
+        count = context.count as Int
+        originalCount = cycle.breakCount as Int
         
         callback()
     }
@@ -90,8 +85,8 @@ class BreakViewController: NSViewController {
                 startButton.image = NSImage(named: "playIcon")
                 
                 // Increase number of paused times
-                let session = DataManager.getContext()?.sessionRelationship
-                session?.numPausedTimes = (session?.numPausedTimes as! Int + 1) as NSNumber
+                let session = DataManager.getContext()!.sessionRelationship
+                session.numPausedTimes = (session.numPausedTimes as Int + 1) as NSNumber
                 DataManager.saveManagedContext()
             }
         }
@@ -124,12 +119,12 @@ class BreakViewController: NSViewController {
             self.view.window?.contentViewController = nextViewController
             
             // set no longer break; save this session
-            let context = DataManager.getContext()
-            context?.isBreak = false
-            context?.count = context?.cycleRelationship?.workCount
-            context?.sessionRelationship?.ended = NSDate()
+            let context = DataManager.getContext()!
+            context.isBreak = false
+            context.count = context.modeRelationship.workCount
+            context.sessionRelationship.ended = NSDate()
             DataManager.saveManagedContext()
-            DataManager.createSession(context!.cycleRelationship!, num: (context?.sessionRelationship?.num as! Int + 1) as Int)
+            DataManager.createSession(context.modeRelationship, num: context.sessionRelationship.num as Int + 1)
         }
     }
 }

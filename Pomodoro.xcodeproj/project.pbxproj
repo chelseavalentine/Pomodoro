@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5E4C95021D9AB3AA00E09594 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C95011D9AB3AA00E09594 /* Values.swift */; };
-		5E58C6A51D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C69F1D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift */; };
-		5E58C6A61D93AE8900E8B819 /* CycleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A01D93AE8900E8B819 /* CycleEntity.swift */; };
-		5E58C6A71D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A11D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift */; };
-		5E58C6A81D93AE8900E8B819 /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A21D93AE8900E8B819 /* SessionEntity.swift */; };
-		5E58C6A91D93AE8900E8B819 /* ContextEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A31D93AE8900E8B819 /* ContextEntity+CoreDataProperties.swift */; };
-		5E58C6AA1D93AE8900E8B819 /* ContextEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A41D93AE8900E8B819 /* ContextEntity.swift */; };
 		5E58C6AE1D941D1700E8B819 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */; };
 		5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */; };
 		5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */; };
 		5E86494D1DA2217A0059FC14 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86494C1DA2217A0059FC14 /* DataManager.swift */; };
+		5E8649641DA295D50059FC14 /* SessionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86495E1DA295D50059FC14 /* SessionEntity+CoreDataProperties.swift */; };
+		5E8649651DA295D50059FC14 /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86495F1DA295D50059FC14 /* SessionEntity.swift */; };
+		5E8649661DA295D50059FC14 /* ModeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8649601DA295D50059FC14 /* ModeEntity+CoreDataProperties.swift */; };
+		5E8649671DA295D50059FC14 /* ModeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8649611DA295D50059FC14 /* ModeEntity.swift */; };
+		5E8649681DA295D50059FC14 /* ContextEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8649621DA295D50059FC14 /* ContextEntity+CoreDataProperties.swift */; };
+		5E8649691DA295D50059FC14 /* ContextEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8649631DA295D50059FC14 /* ContextEntity.swift */; };
 		5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE671D73048F002CA217 /* AppDelegate.swift */; };
 		5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE691D73048F002CA217 /* ViewController.swift */; };
 		5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE6B1D73048F002CA217 /* Pomodoro.xcdatamodeld */; };
@@ -49,12 +49,6 @@
 
 /* Begin PBXFileReference section */
 		5E4C95011D9AB3AA00E09594 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
-		5E58C69F1D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CycleEntity+CoreDataProperties.swift"; path = "../CycleEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5E58C6A01D93AE8900E8B819 /* CycleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CycleEntity.swift; path = ../CycleEntity.swift; sourceTree = "<group>"; };
-		5E58C6A11D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SessionEntity+CoreDataProperties.swift"; path = "../SessionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5E58C6A21D93AE8900E8B819 /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionEntity.swift; path = ../SessionEntity.swift; sourceTree = "<group>"; };
-		5E58C6A31D93AE8900E8B819 /* ContextEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ContextEntity+CoreDataProperties.swift"; path = "../ContextEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5E58C6A41D93AE8900E8B819 /* ContextEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContextEntity.swift; path = ../ContextEntity.swift; sourceTree = "<group>"; };
 		5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +56,12 @@
 		5E86494E1DA234BB0059FC14 /* Pomodoro v1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pomodoro v1.0.0.xcdatamodel"; sourceTree = "<group>"; };
 		5E86494F1DA23C690059FC14 /* Pomodoro v1.0.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pomodoro v1.0.1.xcdatamodel"; sourceTree = "<group>"; };
 		5E8649501DA2922B0059FC14 /* Pomodoro v1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pomodoro v1.0.2.xcdatamodel"; sourceTree = "<group>"; };
+		5E86495E1DA295D50059FC14 /* SessionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SessionEntity+CoreDataProperties.swift"; path = "Entities/SessionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E86495F1DA295D50059FC14 /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionEntity.swift; path = Entities/SessionEntity.swift; sourceTree = "<group>"; };
+		5E8649601DA295D50059FC14 /* ModeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ModeEntity+CoreDataProperties.swift"; path = "Entities/ModeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E8649611DA295D50059FC14 /* ModeEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModeEntity.swift; path = Entities/ModeEntity.swift; sourceTree = "<group>"; };
+		5E8649621DA295D50059FC14 /* ContextEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ContextEntity+CoreDataProperties.swift"; path = "Entities/ContextEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E8649631DA295D50059FC14 /* ContextEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContextEntity.swift; path = Entities/ContextEntity.swift; sourceTree = "<group>"; };
 		5EB6CE641D73048F002CA217 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB6CE671D73048F002CA217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EB6CE691D73048F002CA217 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,15 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5E58C6981D93AC6E00E8B819 /* Entities */ = {
+		5E86495D1DA2959E0059FC14 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				5E58C69F1D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift */,
-				5E58C6A01D93AE8900E8B819 /* CycleEntity.swift */,
-				5E58C6A11D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift */,
-				5E58C6A21D93AE8900E8B819 /* SessionEntity.swift */,
-				5E58C6A31D93AE8900E8B819 /* ContextEntity+CoreDataProperties.swift */,
-				5E58C6A41D93AE8900E8B819 /* ContextEntity.swift */,
+				5E86495E1DA295D50059FC14 /* SessionEntity+CoreDataProperties.swift */,
+				5E86495F1DA295D50059FC14 /* SessionEntity.swift */,
+				5E8649601DA295D50059FC14 /* ModeEntity+CoreDataProperties.swift */,
+				5E8649611DA295D50059FC14 /* ModeEntity.swift */,
+				5E8649621DA295D50059FC14 /* ContextEntity+CoreDataProperties.swift */,
+				5E8649631DA295D50059FC14 /* ContextEntity.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 		5EB6CE661D73048F002CA217 /* Pomodoro */ = {
 			isa = PBXGroup;
 			children = (
-				5E58C6981D93AC6E00E8B819 /* Entities */,
+				5E86495D1DA2959E0059FC14 /* Entities */,
 				5EB6CE671D73048F002CA217 /* AppDelegate.swift */,
 				5EB6CE691D73048F002CA217 /* ViewController.swift */,
 				5EB6CE6E1D73048F002CA217 /* Assets.xcassets */,
@@ -312,21 +312,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */,
-				5E58C6A91D93AE8900E8B819 /* ContextEntity+CoreDataProperties.swift in Sources */,
+				5E8649641DA295D50059FC14 /* SessionEntity+CoreDataProperties.swift in Sources */,
+				5E8649651DA295D50059FC14 /* SessionEntity.swift in Sources */,
 				5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */,
 				5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */,
-				5E58C6A61D93AE8900E8B819 /* CycleEntity.swift in Sources */,
 				5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */,
 				5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */,
 				5E4C95021D9AB3AA00E09594 /* Values.swift in Sources */,
+				5E8649691DA295D50059FC14 /* ContextEntity.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
 				5E86494D1DA2217A0059FC14 /* DataManager.swift in Sources */,
 				5E58C6AE1D941D1700E8B819 /* SettingsViewController.swift in Sources */,
-				5E58C6AA1D93AE8900E8B819 /* ContextEntity.swift in Sources */,
-				5E58C6A81D93AE8900E8B819 /* SessionEntity.swift in Sources */,
-				5E58C6A71D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift in Sources */,
+				5E8649661DA295D50059FC14 /* ModeEntity+CoreDataProperties.swift in Sources */,
+				5E8649671DA295D50059FC14 /* ModeEntity.swift in Sources */,
 				5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */,
-				5E58C6A51D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift in Sources */,
+				5E8649681DA295D50059FC14 /* ContextEntity+CoreDataProperties.swift in Sources */,
 				5EF7E4321D77F240000C9DB1 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

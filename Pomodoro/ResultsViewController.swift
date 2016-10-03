@@ -52,8 +52,8 @@ class ResultsViewController: NSViewController {
         
         
         // Set context count to break count
-        let context = DataManager.getContext()
-        context?.count = context!.cycleRelationship!.breakCount! as NSNumber
+        let context = DataManager.getContext()!
+        context.count = context.modeRelationship.breakCount
         DataManager.saveManagedContext()
     }
     override func viewDidLoad() {

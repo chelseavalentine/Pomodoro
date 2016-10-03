@@ -50,15 +50,13 @@ class ViewController: NSViewController {
     }
     
     func loadData() {
-        let context = DataManager.getContext()
-        let cycle = context?.cycleRelationship
-        
-        if cycle?.workCount != nil {
-            originalCount = cycle?.workCount! as! Int
-        }
+        let context = DataManager.getContext()!
+        let mode = context.modeRelationship
+
+        originalCount = mode.workCount as Int
         
         // If it we were in a break, go to the next screen
-        if context?.isBreak == true {
+        if context.isBreak == true {
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
             self.view.window?.contentViewController = nextViewController
             nextViewController?.setWorkDetails(originalCount)
@@ -118,8 +116,8 @@ class ViewController: NSViewController {
             focusTextField.enabled = false
             
             // Save goal
-            let context = DataManager.getContext()
-            context!.sessionRelationship!.goal = focusTextField!.stringValue
+            let context = DataManager.getContext()!
+            context.sessionRelationship.goal = focusTextField!.stringValue
             DataManager.saveManagedContext()
         }
     }
@@ -129,7 +127,7 @@ class ViewController: NSViewController {
             startTimer()
             
             // First time starting this session
-            let session = DataManager.getContext()!.sessionRelationship!
+            let session = DataManager.getContext()!.sessionRelationship
             session.started = NSDate()
             DataManager.saveManagedContext()
         } else {
@@ -156,7 +154,9 @@ class ViewController: NSViewController {
         
         // Save paused
         let context = DataManager.getContext()!
-        context.sessionRelationship!.numPausedTimes = (context.sessionRelationship!.numPausedTimes! as Int + 1) as NSNumber
+        let session = context.sessionRelationship
+        
+        session.numPausedTimes = (session.numPausedTimes as Int + 1)
         context.count = count
         DataManager.saveManagedContext()
     }
