@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "36D979A6203331A701E4B913F5D66C87A1252467",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "36D979A6203331A701E4B913F5D66C87A1252467" : 0,
+    "E22D6DDADB71D40E57A2CADC32D7C98E08BCB4B1" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "03AD2A7F-14E4-4B9D-8CFE-3BCBB051A46B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "36D979A6203331A701E4B913F5D66C87A1252467" : "Pomodoro\/",
+    "E22D6DDADB71D40E57A2CADC32D7C98E08BCB4B1" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Pomodoro",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Pomodoro.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chelseavalentine\/Pomodoro.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36D979A6203331A701E4B913F5D66C87A1252467"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chelseavalentine\/Scripts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E22D6DDADB71D40E57A2CADC32D7C98E08BCB4B1"
+    }
+  ]
+}

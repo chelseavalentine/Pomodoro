@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E4C95021D9AB3AA00E09594 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C95011D9AB3AA00E09594 /* Values.swift */; };
 		5E58C6A51D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C69F1D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift */; };
 		5E58C6A61D93AE8900E8B819 /* CycleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A01D93AE8900E8B819 /* CycleEntity.swift */; };
 		5E58C6A71D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6A11D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E4C95011D9AB3AA00E09594 /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
 		5E58C69F1D93AE8900E8B819 /* CycleEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CycleEntity+CoreDataProperties.swift"; path = "../CycleEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5E58C6A01D93AE8900E8B819 /* CycleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CycleEntity.swift; path = ../CycleEntity.swift; sourceTree = "<group>"; };
 		5E58C6A11D93AE8900E8B819 /* SessionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SessionEntity+CoreDataProperties.swift"; path = "../SessionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */,
 				5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */,
 				5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */,
+				5E4C95011D9AB3AA00E09594 /* Values.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				5E58C6A61D93AE8900E8B819 /* CycleEntity.swift in Sources */,
 				5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */,
 				5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */,
+				5E4C95021D9AB3AA00E09594 /* Values.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
 				5E58C6AE1D941D1700E8B819 /* SettingsViewController.swift in Sources */,
 				5E58C6AA1D93AE8900E8B819 /* ContextEntity.swift in Sources */,

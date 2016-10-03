@@ -35,7 +35,6 @@ class SettingsViewController: NSViewController {
         super.viewDidLoad()
         
         initNavigationButtons()
-        initCycleFields()
     }
     
     override func awakeFromNib() {
@@ -47,32 +46,19 @@ class SettingsViewController: NSViewController {
     
     func initTextFields() {
         // Set placeholder colors
-        helper.setPlaceholderFont(firstModeTitle, string: Strings.FirstModeTitle.rawValue, bold: false)
+        helper.setPlaceholderFont(firstModeTitle, string: Strings.FirstModeTitle.rawValue, bold: true)
         helper.setPlaceholderFont(firstWorkTime, string: Strings.TimePlaceholder.rawValue, bold: false)
         helper.setPlaceholderFont(firstBreakTime, string: Strings.TimePlaceholder.rawValue, bold: false)
         
-        helper.setPlaceholderFont(secondModeTitle, string: Strings.SecondModeTitle.rawValue, bold: false)
+        helper.setPlaceholderFont(secondModeTitle, string: Strings.SecondModeTitle.rawValue, bold: true)
         helper.setPlaceholderFont(secondWorkTime, string: Strings.TimePlaceholder.rawValue, bold: false)
         helper.setPlaceholderFont(secondBreakTime, string: Strings.TimePlaceholder.rawValue, bold: false)
         
-        helper.setPlaceholderFont(thirdModeTitle, string: Strings.ThirdModeTitle.rawValue, bold: false)
+        helper.setPlaceholderFont(thirdModeTitle, string: Strings.ThirdModeTitle.rawValue, bold: true)
         helper.setPlaceholderFont(thirdWorkTime, string: Strings.TimePlaceholder.rawValue, bold: false)
         helper.setPlaceholderFont(thirdBreakTime, string: Strings.TimePlaceholder.rawValue, bold: false)
-        
-        // Set listeners to format & validate time inputs
-        NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) {(aEvent) -> NSEvent! in
-            self.keyUp(aEvent)
-            return aEvent
-        }
     }
     
-    override func keyUp(theEvent: NSEvent) {
-        thirdModeTitle.keyUp(<#T##theEvent: NSEvent##NSEvent#>)
-    }
-    
-    func initCycleFields() {
-        
-    }
     
     func initNavigationButtons() {
         let returnGesture = helper.makeLeftClickGesture(self)
@@ -81,13 +67,16 @@ class SettingsViewController: NSViewController {
         returnText.addGestureRecognizer(returnGesture)
     }
     
+    func loadInModes() {
+    }
+    
+    func initSelectButtons() {
+    }
+    
     func returnToPrevViewController() {
         helper.returnToPrevViewController(self, destination: previousViewController!)
     }
-    
-    func formatTimeInput() {
-    }
-    
+
     func setPrevViewController(prevVc: String) {
         previousViewController = prevVc
     }
