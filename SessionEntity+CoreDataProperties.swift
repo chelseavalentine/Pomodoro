@@ -17,7 +17,6 @@ extension SessionEntity {
     @NSManaged var started: NSDate?
     @NSManaged var ended: NSDate?
     @NSManaged var numPausedTimes: NSNumber?
-    @NSManaged var cycleMode: NSNumber?
     @NSManaged var num: NSNumber?
     @NSManaged var goal: String?
     @NSManaged var result: String?

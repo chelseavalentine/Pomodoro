@@ -66,8 +66,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if failError == nil {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
             let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("CocoaAppCD.storedata")
+            let options = [NSMigratePersistentStoresAutomaticallyOption: true,
+                          NSInferMappingModelAutomaticallyOption: true]
             do {
-                try coordinator!.addPersistentStoreWithType(NSXMLStoreType, configuration: nil, URL: url, options: nil)
+                try coordinator!.addPersistentStoreWithType(NSXMLStoreType, configuration: nil, URL: url, options: options)
             } catch {
                 failError = error as NSError
             }

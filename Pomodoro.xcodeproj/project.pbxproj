@@ -17,6 +17,7 @@
 		5E58C6AE1D941D1700E8B819 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */; };
 		5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */; };
 		5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */; };
+		5E86494D1DA2217A0059FC14 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86494C1DA2217A0059FC14 /* DataManager.swift */; };
 		5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE671D73048F002CA217 /* AppDelegate.swift */; };
 		5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE691D73048F002CA217 /* ViewController.swift */; };
 		5EB6CE6D1D73048F002CA217 /* Pomodoro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE6B1D73048F002CA217 /* Pomodoro.xcdatamodeld */; };
@@ -57,6 +58,8 @@
 		5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
+		5E86494C1DA2217A0059FC14 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		5E86494E1DA234BB0059FC14 /* Pomodoro v1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Pomodoro v1.0.0.xcdatamodel"; sourceTree = "<group>"; };
 		5EB6CE641D73048F002CA217 /* Pomodoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomodoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB6CE671D73048F002CA217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EB6CE691D73048F002CA217 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 				5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */,
 				5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */,
 				5E4C95011D9AB3AA00E09594 /* Values.swift */,
+				5E86494C1DA2217A0059FC14 /* DataManager.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -314,6 +318,7 @@
 				5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */,
 				5E4C95021D9AB3AA00E09594 /* Values.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
+				5E86494D1DA2217A0059FC14 /* DataManager.swift in Sources */,
 				5E58C6AE1D941D1700E8B819 /* SettingsViewController.swift in Sources */,
 				5E58C6AA1D93AE8900E8B819 /* ContextEntity.swift in Sources */,
 				5E58C6A81D93AE8900E8B819 /* SessionEntity.swift in Sources */,
@@ -568,9 +573,10 @@
 		5EB6CE6B1D73048F002CA217 /* Pomodoro.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5E86494E1DA234BB0059FC14 /* Pomodoro v1.0.0.xcdatamodel */,
 				5EB6CE6C1D73048F002CA217 /* Pomodoro.xcdatamodel */,
 			);
-			currentVersion = 5EB6CE6C1D73048F002CA217 /* Pomodoro.xcdatamodel */;
+			currentVersion = 5E86494E1DA234BB0059FC14 /* Pomodoro v1.0.0.xcdatamodel */;
 			path = Pomodoro.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
