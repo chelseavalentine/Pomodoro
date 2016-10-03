@@ -8,31 +8,6 @@
 
 import Cocoa
 
-extension NSManagedObjectContext
-{
-    func deleteAllData()
-    {
-        guard let persistentStore = persistentStoreCoordinator?.persistentStores.last else {
-            return
-        }
-        
-        guard let url = persistentStoreCoordinator?.URLForPersistentStore(persistentStore) else {
-            return
-        }
-        
-        performBlockAndWait { () -> Void in
-            self.reset()
-            do
-            {
-                try self.persistentStoreCoordinator?.removePersistentStore(persistentStore)
-                try NSFileManager.defaultManager().removeItemAtURL(url)
-                try self.persistentStoreCoordinator?.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
-            }
-            catch { /*dealing with errors up to the usage*/ }
-        }
-    }
-}
-
 class DataManager {
     static let sharedInstance = DataManager()
     static let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
@@ -41,27 +16,29 @@ class DataManager {
     }
     
     static func getContext() -> ContextEntity? {
-        
         let contexts = getObjects("ContextEntity") as! [ContextEntity]
         return contexts.last
     }
     
-    static func getCycle() {
+    static func getCycle(cycleNum: Int) -> CycleEntity {
         let cycles = getObjects("CycleEntity") as! [CycleEntity]
+        return cycles[cycleNum]
+    }
+    
+    static func getCycles() -> [CycleEntity] {
+        return getObjects("CycleEntity") as! [CycleEntity]
     }
     
     static func saveCycle(order: Int, name: String, workCount: Int, breakCount: Int) {
         let managedContext = appDelegate.managedObjectContext
-        let deleting = NSManagedObjectContext.deleteAllData(managedContext)
         let cycleEntity = NSEntityDescription.entityForName("CycleEntity", inManagedObjectContext: managedContext)
         let cycle = CycleEntity(entity: cycleEntity!, insertIntoManagedObjectContext: managedContext)
         
+        cycle.created = NSDate()
         cycle.orderNum = order
         cycle.name = name
         cycle.workCount = workCount
         cycle.breakCount = breakCount
-        
-        print(cycle)
         
         do {
             try managedContext.save()
@@ -78,6 +55,22 @@ class DataManager {
         let sessions = getObjects("SessionEntity") as! [SessionEntity]
     }
     
+    static func initAndReturnSession(cycle: CycleEntity) -> SessionEntity {
+        let managedContext = appDelegate.managedObjectContext
+        let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
+        let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        session.cycleRelationship = cycle
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Couldn't save the session. \(error), \(error.userInfo) :(")
+        }
+        
+        return session
+    }
+    
     static func saveSession(goal: String, result: String, started: NSDate, ended: NSDate, cycle: CycleEntity, numPaused: Int) {
         let managedContext = appDelegate.managedObjectContext
         let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
@@ -89,13 +82,22 @@ class DataManager {
         session.ended = ended
         session.cycleRelationship = cycle
         session.numPausedTimes = numPaused
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Couldn't save the session. \(error), \(error.userInfo) :(")
+        }
     }
     
     
-    static func createContext() {
+    static func createContext(cycle: CycleEntity, session: SessionEntity, isBreak: Bool) {
         let managedContext = appDelegate.managedObjectContext
         let contextEntity = NSEntityDescription.entityForName("ContextEntity", inManagedObjectContext: managedContext)
-        let _ = ContextEntity(entity: contextEntity!, insertIntoManagedObjectContext: managedContext)
+        let context = ContextEntity(entity: contextEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        context.cycleRelationship = cycle
+        context.sessionRelationship = session
         
         do {
             try managedContext.save()

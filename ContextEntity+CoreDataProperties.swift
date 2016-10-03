@@ -16,8 +16,6 @@ extension ContextEntity {
 
     @NSManaged var isBreak: NSNumber?
     @NSManaged var count: NSNumber?
-    @NSManaged var cycleMode: NSNumber?
-    @NSManaged var cycleNum: NSNumber?
     @NSManaged var cycleRelationship: CycleEntity?
     @NSManaged var sessionRelationship: SessionEntity?
 
