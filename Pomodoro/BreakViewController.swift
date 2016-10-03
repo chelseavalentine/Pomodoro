@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 class BreakViewController: NSViewController {
+    
     @IBOutlet weak var workProgressBar: NSBox!
     @IBOutlet weak var breakProgressBar: NSBox!
     @IBOutlet weak var timeTextField: NSTextField!

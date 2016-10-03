@@ -910,6 +910,15 @@
                                 <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="B8p-1R-UI7">
+                                <rect key="frame" x="10" y="30" width="20" height="2"/>
+                                <view key="contentView" ambiguous="YES" id="vJr-Qw-gRa">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
                             <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-B0-EVS">
                                 <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
                                 <view key="contentView" ambiguous="YES" id="Xam-ZF-3Eg">
@@ -932,27 +941,16 @@
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="B8p-1R-UI7">
-                                <rect key="frame" x="10" y="30" width="20" height="2"/>
-                                <view key="contentView" ambiguous="YES" id="vJr-Qw-gRa">
-                                    <rect key="frame" x="0.0" y="0.0" width="20" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <color key="borderColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="fillColor" red="1" green="0.91840672492980957" blue="0.25051292777061462" alpha="1" colorSpace="calibratedRGB"/>
-                            </box>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="ProgressBar" destination="PCt-uf-aL1" id="oes-zE-0nT"/>
-                        <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="tiq-An-fse"/>
+                        <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="9ZG-an-wOc"/>
                         <outlet property="playButton" destination="lQb-VG-App" id="b8s-i9-dTD"/>
-                        <outlet property="progressBar" destination="PCt-uf-aL1" id="JdU-9M-Eem"/>
                         <outlet property="settingsButton" destination="lRH-cv-026" id="tbg-ZT-EAU"/>
                         <outlet property="startButton" destination="lQb-VG-App" id="iuc-IQ-WVf"/>
                         <outlet property="timeField" destination="TpJ-SQ-wYg" id="TYI-lg-yc6"/>
                         <outlet property="timeTextField" destination="TpJ-SQ-wYg" id="Ecq-PH-lqP"/>
-                        <outlet property="workProgressBar" destination="PCt-uf-aL1" id="izV-IJ-Plv"/>
+                        <outlet property="workProgressBar" destination="PCt-uf-aL1" id="D5D-s2-8LN"/>
                     </connections>
                 </viewController>
                 <customObject id="YeQ-QC-hHf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -25,9 +25,8 @@ class CompletionViewController: NSViewController {
     
     override func awakeFromNib() {
         helper.setWindowBackground(self)
-        let sessionNum = DataManager.getContext()!.sessionRelationship!.num as! Int
+        let sessionNum = DataManager.getSessions().count
         sessionTitle.stringValue = "Work session \(sessionNum)"
-        print(sessionNum)
     }
     
     func generateConfetti() {
@@ -54,12 +53,7 @@ class CompletionViewController: NSViewController {
         let image: NSImageView = timer.userInfo as! NSImageView
         
         if (image.frame.origin.y >  0 - image.frame.height) {
-//            if (arc4random_uniform(10) == 0) {
-//                image.frame.origin.x += CGFloat(-3 + Int(arc4random_uniform(6)))
-//            } else {
-//            image.frame.origin.y -= CGFloat(arc4random_uniform(20))
             image.frame.origin.y -= 20
-//            }
         } else {
             image.removeFromSuperview()
             timer.invalidate()

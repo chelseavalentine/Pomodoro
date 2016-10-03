@@ -64,12 +64,12 @@ class DataManager {
         }
     }
     
-    static func getSession() {
-        let sessions = getObjects("SessionEntity") as! [SessionEntity]
+    static func getSession() -> SessionEntity {
+        return getObjects("SessionEntity") as! SessionEntity
     }
     
-    static func getSessions() {
-        let sessions = getObjects("SessionEntity") as! [SessionEntity]
+    static func getSessions() -> [SessionEntity] {
+        return getObjects("SessionEntity") as! [SessionEntity]
     }
     
     static func initAndReturnSession(cycle: CycleEntity) -> SessionEntity {
