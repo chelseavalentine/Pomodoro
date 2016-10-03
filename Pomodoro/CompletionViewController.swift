@@ -61,7 +61,7 @@ class CompletionViewController: NSViewController {
     func endAnimation(timer: NSTimer) {
         timer.invalidate()
         
-        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ResultsViewController") as? ResultsViewController
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ViewController") as? ViewController
         self.view.window?.contentViewController = nextViewController
     }
 }

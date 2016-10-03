@@ -21,19 +21,11 @@ class BreakViewController: NSViewController {
     var pomodoroActive = false
     var timer: NSTimer?
     let helper = Helper.sharedInstance
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initialize start button
-        let gesture = NSClickGestureRecognizer()
-        gesture.buttonMask = 0x1 // left mouse
-        gesture.target = self
-        gesture.action = #selector(BreakViewController.startPomodoro)
-        startButton.addGestureRecognizer(gesture)
-        
-        timeTextField.stringValue = helper.toTimeString(originalCount)
-        startPomodoro()
+        loadData(initView)
     }
     
     override func awakeFromNib() {
@@ -48,6 +40,29 @@ class BreakViewController: NSViewController {
         let settingsGesture = helper.makeLeftClickGesture(self)
         settingsGesture.action = #selector(BreakViewController.goToSettings)
         settingsButton.addGestureRecognizer(settingsGesture)
+    }
+    
+    func loadData(callback: () -> ()) {
+        let context = DataManager.getContext()
+        let cycle = context?.cycleRelationship
+        
+        
+        
+        if context?.count != nil {
+            count = context!.count as! Int
+        }
+        
+        if cycle?.breakCount != nil {
+            originalCount = cycle?.breakCount as! Int
+        }
+        count = 15 * 60
+        callback()
+    }
+    
+    func initView() {
+        timeTextField.stringValue = helper.toTimeString(originalCount)
+        initButtons()
+        startPomodoro()
     }
     
     func goToSettings() {
@@ -74,6 +89,11 @@ class BreakViewController: NSViewController {
             if (startButton.image == NSImage(named: "pauseIcon") && timer != nil && count % 60 != 0) {
                 stopTimer()
                 startButton.image = NSImage(named: "playIcon")
+                
+                // Increase number of paused times
+                let session = DataManager.getContext()?.sessionRelationship
+                session?.numPausedTimes = (session?.numPausedTimes as! Int + 1) as NSNumber
+                DataManager.saveManagedContext()
             }
         }
     }
@@ -103,6 +123,11 @@ class BreakViewController: NSViewController {
             stopTimer()
             let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
             self.view.window?.contentViewController = nextViewController
+            
+            // set no longer break
+            let context = DataManager.getContext()
+            context?.isBreak = false
+            DataManager.saveManagedContext()
         }
     }
 }

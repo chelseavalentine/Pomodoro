@@ -36,7 +36,6 @@ class ViewController: NSViewController {
         }
         
         initButtons()
-        loadData()
     }
     
     func initButtons() {
@@ -51,14 +50,22 @@ class ViewController: NSViewController {
     }
     
     func loadData() {
-        var cycle = DataManager.getContext()?.cycleRelationship
+        let context = DataManager.getContext()!
+        let cycle = context.cycleRelationship
         
-        if cycle != nil {
-            originalCount = cycle!.workCount! as Int
+        if cycle?.workCount != nil {
+            originalCount = cycle?.workCount! as! Int
         }
         
-        count = originalCount
-        timeTextField.stringValue = helper.toTimeString(originalCount)
+        // If it we were in a break, go to the next screen
+        if context.isBreak == false {
+            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+            self.view.window?.contentViewController = nextViewController
+            nextViewController?.setWorkDetails(originalCount)
+        } else {
+            count = originalCount
+            timeTextField.stringValue = helper.toTimeString(originalCount)
+        }
     }
     
     func goToSettings() {
@@ -91,6 +98,7 @@ class ViewController: NSViewController {
         
         // Set TextField font and color
         helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
+        loadData()
     }
 
     override func keyUp(theEvent: NSEvent) {

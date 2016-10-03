@@ -49,12 +49,16 @@ class ResultsViewController: NSViewController {
         gesture.action = #selector(ResultsViewController.validateResultField)
         breakIcon.addGestureRecognizer(gesture)
         breakText.addGestureRecognizer(gesture)
-
+        
+        
+        // Set context count to break count
+        let context = DataManager.getContext()
+        context?.count = context!.cycleRelationship!.breakCount! as NSNumber
+        DataManager.saveManagedContext()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-          }
+    }
     
     override func awakeFromNib() {
         helper.setWindowBackground(self)
