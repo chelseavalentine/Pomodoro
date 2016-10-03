@@ -839,15 +839,6 @@
                                 <color key="borderColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="AJV-lK-bee">
-                                <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
-                                <view key="contentView" ambiguous="YES" id="6Ag-Pi-1eU">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </box>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-vf-MFF" userLabel="Focus Text Field">
                                 <rect key="frame" x="6" y="76" width="394" height="22"/>
                                 <constraints>
@@ -869,7 +860,6 @@
                         <outlet property="breakText" destination="QhR-oH-LBW" id="2W4-4F-78I"/>
                         <outlet property="focusText" destination="6br-fT-T4n" id="ehs-Qc-ofd"/>
                         <outlet property="resultTextField" destination="6fV-vf-MFF" id="EI9-fJ-u0r"/>
-                        <outlet property="test" destination="AJV-lK-bee" id="SGN-Qu-800"/>
                         <outlet property="workDuration" destination="FfM-uh-Y7P" id="g7I-st-6kI"/>
                         <outlet property="workProgressBar" destination="sgM-WY-W1T" id="KF5-ed-TJb"/>
                     </connections>
@@ -946,10 +936,8 @@
                     </view>
                     <connections>
                         <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="9ZG-an-wOc"/>
-                        <outlet property="playButton" destination="lQb-VG-App" id="b8s-i9-dTD"/>
                         <outlet property="settingsButton" destination="lRH-cv-026" id="tbg-ZT-EAU"/>
                         <outlet property="startButton" destination="lQb-VG-App" id="iuc-IQ-WVf"/>
-                        <outlet property="timeField" destination="TpJ-SQ-wYg" id="TYI-lg-yc6"/>
                         <outlet property="timeTextField" destination="TpJ-SQ-wYg" id="Ecq-PH-lqP"/>
                         <outlet property="workProgressBar" destination="PCt-uf-aL1" id="D5D-s2-8LN"/>
                     </connections>
@@ -999,7 +987,6 @@
                     </view>
                     <connections>
                         <outlet property="confettiView" destination="Ej8-lr-knB" id="BxO-yz-RKz"/>
-                        <outlet property="mainView" destination="ZMi-cB-Yoe" id="I9D-UR-HTE"/>
                         <outlet property="sessionTitle" destination="Ix8-6k-KnB" id="Hhc-Bo-T2E"/>
                     </connections>
                 </viewController>
@@ -1056,24 +1043,6 @@
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
-                            </box>
-                            <box ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="2" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qHl-03-TmK">
-                                <rect key="frame" x="10" y="30" width="30" height="2"/>
-                                <view key="contentView" id="hqa-tc-SeF">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </box>
-                            <box ambiguous="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yqU-bo-AlN">
-                                <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
-                                <view key="contentView" ambiguous="YES" id="XXV-V1-y9I">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hkt-sk-BPZ">
                                 <rect key="frame" x="6" y="177" width="336" height="18"/>
@@ -1267,12 +1236,6 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="qHl-03-TmK" firstAttribute="top" secondItem="8Oo-vd-H0q" secondAttribute="top" constant="168" id="hTB-cc-1q1"/>
-                            <constraint firstItem="UeJ-GJ-Ai6" firstAttribute="top" secondItem="qHl-03-TmK" secondAttribute="bottom" id="mqs-k8-VnG"/>
-                            <constraint firstItem="qHl-03-TmK" firstAttribute="top" secondItem="yqU-bo-AlN" secondAttribute="top" id="sPe-T9-8HG"/>
-                            <constraint firstItem="qHl-03-TmK" firstAttribute="bottom" secondItem="yqU-bo-AlN" secondAttribute="bottom" id="xFL-kL-NQn"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="firstBreakTime" destination="FJ5-eJ-74F" id="HTP-gC-9Ky"/>

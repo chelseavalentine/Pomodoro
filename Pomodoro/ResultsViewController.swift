@@ -17,7 +17,6 @@ class ResultsViewController: NSViewController {
     @IBOutlet weak var breakIcon: NSImageView!
     @IBOutlet weak var workProgressBar: NSBox!
     @IBOutlet weak var resultTextField: NSTextField!
-    @IBOutlet weak var test: NSBox!
     
     let breakCount = 1
     var workPercentage: CGFloat?
@@ -34,7 +33,7 @@ class ResultsViewController: NSViewController {
     override func viewDidAppear() {
         // additional setup
         helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
-        helper.updateProgressBar(self, bar: test, percentage: CGFloat(0.33333))
+        helper.updateProgressBar(self, bar: workProgressBar, percentage: CGFloat(0.33333))
         
         // Listen for the keyup event
         NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
