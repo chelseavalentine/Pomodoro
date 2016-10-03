@@ -18,18 +18,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // App has never been initialized before
         if cycles.count == 0 {
             // Initialize cycles
-            DataManager.saveCycle(0, name: "Light mode", workCount: 60 * 15, breakCount: 60 * 5)
-            DataManager.saveCycle(1, name: "Normal mode", workCount: 60 * 30, breakCount: 60 * 10)
-            DataManager.saveCycle(2, name: "Beast mode", workCount: 60 * 45, breakCount: 60 * 15)
-            
-            let defaultCycleMode = DataManager.getCycle(1)
-            
-            // Initialize session
-            let session = DataManager.initAndReturnSession(defaultCycleMode)
-            
-            // Initialize context
-            DataManager.createContext(defaultCycleMode, session: session, isBreak: false)
+            DataManager.saveCycle(0, name: "Light mode", workCount: 60 * 15, breakCount: 60 * 5, selected: false)
+            DataManager.saveCycleWithCallback(1, name: "Normal mode", workCount: 60 * 30, breakCount: 60 * 10, selected: true, callback: createSessionAndContext)
+            DataManager.saveCycle(2, name: "Beast mode", workCount: 60 * 45, breakCount: 60 * 15, selected: false)
         }
+    }
+    
+    func createSessionAndContext(defaultCycle: CycleEntity) {
+        // Initialize session
+        let session = DataManager.initAndReturnSession(defaultCycle)
+        
+        // Initialize context
+        DataManager.createContext(defaultCycle, session: session, isBreak: false)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

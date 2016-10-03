@@ -29,7 +29,7 @@ class DataManager {
         return getObjects("CycleEntity") as! [CycleEntity]
     }
     
-    static func saveCycle(order: Int, name: String, workCount: Int, breakCount: Int) {
+    static func createCycle(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool) -> (CycleEntity, NSManagedObjectContext) {
         let managedContext = appDelegate.managedObjectContext
         let cycleEntity = NSEntityDescription.entityForName("CycleEntity", inManagedObjectContext: managedContext)
         let cycle = CycleEntity(entity: cycleEntity!, insertIntoManagedObjectContext: managedContext)
@@ -39,9 +39,26 @@ class DataManager {
         cycle.name = name
         cycle.workCount = workCount
         cycle.breakCount = breakCount
+        cycle.selected = selected
+        
+        return (cycle, managedContext);
+    }
+    static func saveCycle(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool) {
+        let (_, managedContext) = createCycle(order, name: name, workCount: workCount, breakCount: breakCount, selected: selected)
         
         do {
             try managedContext.save()
+        } catch let error as NSError {
+            print("Couldn't save the cycle. \(error), \(error.userInfo) :(")
+        }
+    }
+    
+    static func saveCycleWithCallback(order: Int, name: String, workCount: Int, breakCount: Int, selected: Bool, callback: (CycleEntity) -> ()) {
+        let (cycle, managedContext) = createCycle(order, name: name, workCount: workCount, breakCount: breakCount, selected: selected)
+        
+        do {
+            try managedContext.save()
+            callback(cycle)
         } catch let error as NSError {
             print("Couldn't save the cycle. \(error), \(error.userInfo) :(")
         }
@@ -69,6 +86,38 @@ class DataManager {
         }
         
         return session
+    }
+    
+    static func setCurrentMode(cycle: CycleEntity) {
+        let managedContext = appDelegate.managedObjectContext
+        let context = getContext()
+        context?.cycleRelationship = cycle
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Couldn't save the context. \(error), \(error.userInfo) :(")
+        }
+    }
+    
+    static func changeMode(num: Int) {
+        let managedContext = appDelegate.managedObjectContext
+        let modes = getCycles().filter({ $0.isArchived == false })
+        
+        print("changing mode to \(num)")
+        for mode in modes {
+            if mode.orderNum == num {
+                mode.selected = true
+            } else {
+                mode.selected = false
+            }
+        }
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Couldn't save the context. \(error), \(error.userInfo) :(")
+        }
     }
     
     static func saveSession(goal: String, result: String, started: NSDate, ended: NSDate, cycle: CycleEntity, numPaused: Int) {
@@ -124,7 +173,6 @@ class DataManager {
         
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
-            print(results)
             return results
         } catch let error as NSError {
             print("Couldn't fetch the context. \(error), \(error.userInfo)")

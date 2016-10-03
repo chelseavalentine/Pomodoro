@@ -15,17 +15,20 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var firstModeTitle: NSTextField!
     @IBOutlet weak var firstWorkTime: NSTextField!
     @IBOutlet weak var firstBreakTime: NSTextField!
+    @IBOutlet weak var selectedButton1: NSTextField!
     
     @IBOutlet weak var secondEditButton: NSImageView!
     @IBOutlet weak var secondModeTitle: NSTextField!
     @IBOutlet weak var secondBreakTime: NSTextField!
     @IBOutlet weak var secondWorkTime: NSTextField!
+    @IBOutlet weak var selectedButton2: NSTextField!
     
     @IBOutlet weak var thirdEditButton: NSImageView!
     @IBOutlet weak var thirdModeTitle: NSTextField!
     @IBOutlet weak var thirdBreakTime: NSTextField!
     @IBOutlet weak var thirdWorkTime: NSTextField!
-
+    @IBOutlet weak var selectedButton3: NSTextField!
+    
     @IBOutlet weak var returnIcon: NSImageView!
     @IBOutlet weak var returnText: NSTextField!
     
@@ -42,6 +45,8 @@ class SettingsViewController: NSViewController {
         helper.setWhiteCaret(self)
         
         initTextFields()
+        loadInModes()
+        initSelectButtons()
     }
     
     func initTextFields() {
@@ -68,9 +73,76 @@ class SettingsViewController: NSViewController {
     }
     
     func loadInModes() {
+        let allModes = DataManager.getCycles()
+        let firstMode = allModes.filter{ $0.orderNum == 0}.first
+        let secondMode = allModes.filter{ $0.orderNum == 1}.first
+        let thirdMode = allModes.filter{ $0.orderNum == 2}.first
+        
+        // Mode 1
+        firstModeTitle.stringValue = firstMode!.name!
+        firstWorkTime.stringValue = helper.toTimeString(firstMode?.workCount as! Int)
+        firstBreakTime.stringValue = helper.toTimeString(firstMode?.breakCount as! Int)
+        
+        // Mode 2
+        secondModeTitle.stringValue = secondMode!.name!
+        secondWorkTime.stringValue = helper.toTimeString(secondMode?.workCount as! Int)
+        secondBreakTime.stringValue = helper.toTimeString(secondMode?.breakCount as! Int)
+        
+        // Mode 3
+        thirdModeTitle.stringValue = thirdMode!.name!
+        thirdWorkTime.stringValue = helper.toTimeString(thirdMode?.workCount as! Int)
+        thirdBreakTime.stringValue = helper.toTimeString(thirdMode?.breakCount as! Int)
+        
+        // Select current mode
+        let currentMode = DataManager.getContext()?.cycleRelationship
+        
+        if currentMode == nil {
+            DataManager.setCurrentMode(secondMode!)
+            helper.setPlaceholderFont(selectedButton2, string: Strings.Selected.rawValue, bold: false)
+            selectedButton2.stringValue = Strings.Selected.rawValue
+        } else {
+            // TODO: style text, not placeholder text
+            switch currentMode!.orderNum as! Int {
+            case 0:
+                helper.setPlaceholderFont(selectedButton1, string: Strings.Selected.rawValue, bold: false)
+                selectedButton1.stringValue = Strings.Selected.rawValue
+            case 1:
+                helper.setPlaceholderFont(selectedButton2, string: Strings.Selected.rawValue, bold: false)
+                selectedButton2.stringValue = Strings.Selected.rawValue
+            case 2:
+                helper.setPlaceholderFont(selectedButton3, string: Strings.Selected.rawValue, bold: false)
+                selectedButton3.stringValue = Strings.Selected.rawValue
+            default:
+                break
+            }
+        }
     }
     
     func initSelectButtons() {
+        let gesture1 = helper.makeLeftClickGesture(self)
+        gesture1.action = #selector(SettingsViewController.selectFirstMode)
+        selectedButton1.addGestureRecognizer(gesture1)
+        
+        let gesture2 = helper.makeLeftClickGesture(self)
+        gesture2.action = #selector(SettingsViewController.selectSecondMode)
+        selectedButton2.addGestureRecognizer(gesture2)
+        
+        let gesture3 = helper.makeLeftClickGesture(self)
+        gesture3.action = #selector(SettingsViewController.selectThirdMode)
+        selectedButton3.addGestureRecognizer(gesture3)
+    }
+    
+    func selectFirstMode() {
+        print("select first mode")
+        DataManager.changeMode(0)
+    }
+    
+    func selectSecondMode() {
+        DataManager.changeMode(1)
+    }
+    
+    func selectThirdMode() {
+        DataManager.changeMode(2)
     }
     
     func returnToPrevViewController() {

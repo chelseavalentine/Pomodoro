@@ -22,7 +22,6 @@ class ViewController: NSViewController {
     let helper = Helper.sharedInstance
     
     override func viewWillAppear() {
-        DataManager.deleteObjects(DataManager.getCycles())
     }
     
     override func viewDidLoad() {

@@ -17,4 +17,7 @@ enum Strings: String {
     case ThirdModeTitle = "Beast mode"
     
     case TimePlaceholder = "0:00:00"
+    
+    case Unselected = "SELECT"
+    case Selected = "SELECTED"
 }

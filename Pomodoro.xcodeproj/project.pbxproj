@@ -151,8 +151,8 @@
 				5EF7E4331D789E37000C9DB1 /* Helper.swift */,
 				5EF7E4351D78A644000C9DB1 /* Strings.swift */,
 				5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */,
-				5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */,
 				5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */,
+				5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */,
 				5E4C95011D9AB3AA00E09594 /* Values.swift */,
 				5E86494C1DA2217A0059FC14 /* DataManager.swift */,
 			);

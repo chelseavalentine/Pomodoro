@@ -1123,17 +1123,6 @@
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-CV-keJ">
-                                <rect key="frame" x="64" y="131" width="55" height="18"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="0:00:00" id="G9e-bh-uQN">
-                                    <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="formatField:" target="MDY-2y-85u" id="RJ6-Ny-drs"/>
-                                </connections>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lmX-cg-AJH">
                                 <rect key="frame" x="146" y="132" width="44" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Break" id="StP-dp-T7T">
@@ -1215,6 +1204,14 @@
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RT4-im-7nb">
+                                <rect key="frame" x="191" y="39" width="60" height="18"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="0:00:00" id="5XN-dw-ZuA">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6hr-y3-Y4p">
                                 <rect key="frame" x="27" y="53" width="224" height="23"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" alignment="left" placeholderString="Beast mode" id="rb6-1l-D14">
@@ -1233,9 +1230,9 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CgC-1a-WWJ">
                                 <rect key="frame" x="334" y="95" width="68" height="18"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="SELECTED" id="hUz-m2-AIZ">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="SELECT" id="hUz-m2-AIZ">
                                     <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1263,9 +1260,17 @@
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RT4-im-7nb">
-                                <rect key="frame" x="191" y="39" width="60" height="18"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="0:00:00" id="5XN-dw-ZuA">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGl-US-gFp">
+                                <rect key="frame" x="64" y="86" width="55" height="18"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="0:00:00" id="QPq-OI-tqG">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-CV-keJ">
+                                <rect key="frame" x="64" y="131" width="55" height="18"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="0:00:00" id="G9e-bh-uQN">
                                     <font key="font" size="12" name="PTMono-Regular"/>
                                     <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
@@ -1284,6 +1289,9 @@
                         <outlet property="secondEditButton" destination="epH-Y0-Gjb" id="xUA-jt-D6g"/>
                         <outlet property="secondModeTitle" destination="5fI-Gm-kO0" id="c6c-tf-OJ5"/>
                         <outlet property="secondWorkTime" destination="yzY-id-JSM" id="TRF-fK-VUe"/>
+                        <outlet property="selectedButton1" destination="Wfz-p9-L7n" id="fJ8-sg-5d9"/>
+                        <outlet property="selectedButton2" destination="CgC-1a-WWJ" id="ctI-bI-YyM"/>
+                        <outlet property="selectedButton3" destination="viV-54-dVu" id="9mB-3Y-X9r"/>
                         <outlet property="thirdBreakTime" destination="RT4-im-7nb" id="EoB-Em-BWn"/>
                         <outlet property="thirdEditButton" destination="LBX-FH-cCd" id="7Ce-Jr-ojV"/>
                         <outlet property="thirdModeTitle" destination="6hr-y3-Y4p" id="YxL-N2-WWL"/>
