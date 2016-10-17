@@ -864,7 +864,7 @@
                         <outlet property="resultTextField" destination="6fV-vf-MFF" id="EI9-fJ-u0r"/>
                         <outlet property="sessionTitle" destination="xX6-14-dsY" id="CRL-14-XB5"/>
                         <outlet property="workDuration" destination="FfM-uh-Y7P" id="g7I-st-6kI"/>
-                        <outlet property="workProgressBar" destination="Ge0-ON-yB1" id="PqS-ak-UtO"/>
+                        <outlet property="workProgressBar" destination="Ge0-ON-yB1" id="NAb-rr-vGG"/>
                     </connections>
                 </viewController>
                 <customObject id="CMk-0b-8oP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

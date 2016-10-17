@@ -36,8 +36,12 @@ class ResultsViewController: NSViewController {
         
         focusText.stringValue = session.goal!
         workDuration.stringValue = TimeHelper.toTimeString(mode.workCount as Int)
-        sessionTitle.stringValue = Strings.WorkSessionTitle.rawValue + " " + String(session.num)
         
+        sessionTitle.stringValue = Strings.WorkSessionTitle.rawValue + " " + String(session.num)
+    }
+    
+    override func viewDidLayout() {
+        super.viewDidLayout()
         initProgressBar()
     }
     
@@ -60,8 +64,6 @@ class ResultsViewController: NSViewController {
         
         // Focus on result field
         resultTextField.lockFocus()
-        
-        initProgressBar()
     }
 
     private func initProgressBar() {
@@ -73,7 +75,12 @@ class ResultsViewController: NSViewController {
         let totalCycleCount = CGFloat(breakCount! + workCount!)
         let workPercentage: CGFloat = (CGFloat(workCount!) / totalCycleCount)
         
+        print(workProgressBar.frame)
+        
         ViewHelper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage, startX: 0)
+        
+        print(workPercentage)
+        print(workProgressBar.frame)
     }
     
     override func keyUp(theEvent: NSEvent) {

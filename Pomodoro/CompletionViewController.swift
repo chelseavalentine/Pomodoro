@@ -32,8 +32,9 @@ class CompletionViewController: NSViewController {
     override func awakeFromNib() {
         StyleHelper.setGeneralStyles(self)
         
+        // Subtract 1 because this session num refers to the new session
         let sessionNum = DataManager.getContext()!.sessionRelationship.num
-        sessionTitle.stringValue = "Work session \(sessionNum)"
+        sessionTitle.stringValue = "Work session \(sessionNum as Int - 1)"
     }
     
     func generateConfetti() {
