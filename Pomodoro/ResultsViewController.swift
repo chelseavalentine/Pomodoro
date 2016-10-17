@@ -20,8 +20,6 @@ class ResultsViewController: NSViewController {
     
     var breakCount: Int?
     var workCount: Int?
-    var timer: NSTimer?
-    let helper = Helper.sharedInstance
     
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -45,11 +43,6 @@ class ResultsViewController: NSViewController {
         workDuration.stringValue = TimeHelper.toTimeString(mode.workCount as Int)
     }
     
-    override func awakeFromNib() {
-//        timer = NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: #selector(ResultsViewController.initProgressBar), userInfo: nil, repeats: false)
-        
-    }
-    
     override func viewDidAppear() {
         super.viewDidLoad()
         
@@ -68,12 +61,11 @@ class ResultsViewController: NSViewController {
         gesture.action = #selector(ResultsViewController.validateResultField)
         breakIcon.addGestureRecognizer(gesture)
         breakText.addGestureRecognizer(gesture)
+        
+        // Focus on result field
+        resultTextField.lockFocus()
     }
-    
-    override func viewWillDisappear() {
-        // Save state
-    }
-    
+
     private func initProgressBar() {
         let mode = DataManager.getContext()!.modeRelationship
         
@@ -86,20 +78,15 @@ class ResultsViewController: NSViewController {
         var updatedProgress: NSRect = workProgressBar.frame
         updatedProgress.size.width = self.view.frame.width * workPercentage
         workProgressBar.frame = updatedProgress
-        
-        timer?.invalidate()
-    }
-    
-    func setWorkDetails(focus: String, workCount: Int) {
-        workDuration.stringValue = helper.toTimeString(workCount)
-        focusText.stringValue = focus
     }
     
     override func keyUp(theEvent: NSEvent) {
         if (resultTextField.stringValue != "") {
+            // User has inputted a valid value
             breakIcon.image = NSImage(named: "yellowResumeIcon")
             breakText.textColor = NSColor(red: 255, green: 234, blue: 64, alpha: 1.0)
         } else {
+            // Emphasize need to enter result
             breakIcon.image = NSImage(named: "whiteResumeIcon")
             breakText.textColor = NSColor(white: 1.0, alpha: 0.65)
         }
@@ -107,19 +94,25 @@ class ResultsViewController: NSViewController {
         if (theEvent.keyCode == Keys.ReturnKey.rawValue) {
             validateResultField()
         } else {
-            helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
+            // Emphasize need to enter result
+            StyleHelper.setPlaceholder(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
         }
     }
     
     func validateResultField() {
         if (resultTextField.stringValue == "") {
-            helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: true)
+            StyleHelper.setPlaceholder(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: true)
         } else {
             resultTextField.enabled = false
             
-//            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
-//            self.view.window?.contentViewController = nextViewController
-//            nextViewController?.setWorkDetails(6)
+            // Save results
+            let context = DataManager.getContext()!
+            let session = context.sessionRelationship
+            session.result = resultTextField.stringValue
+            
+            DataManager.saveManagedContext()
+            
+            goToBreakViewController()
         }
     }
     
