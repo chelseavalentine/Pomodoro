@@ -113,21 +113,14 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
             DataManager.saveManagedContext()
         }
     }
-
     
     override func viewWillDisappear() {
-        // Save state
-        let context = DataManager.getContext()
-        
-        // Indicate break mode if complete, or just save state
-        if totalWorkCount == currentCount {
-            context?.count = 0
+        // Indicate break mode if timer is complete
+        if totalWorkCount == 0 {
+            let context = DataManager.getContext()
             context?.isBreak = true
-        } else {
-            context?.count = currentCount
+            DataManager.saveManagedContext()
         }
-        
-        DataManager.saveManagedContext()
     }
     
     func setRunningMode() {

@@ -26,7 +26,16 @@ class PomodoroTimer {
         self.totalCount = totalCount
     }
     
-    func start() {
+    deinit {
+        // Stopping this session before it's complete
+        if currentCount > 0 {
+            let context = DataManager.getContext()!
+            context.count = currentCount
+            DataManager.saveManagedContext()
+        }
+    }
+    
+    @objc func start() {
         if isActive {
             // Stop the timer
             let timerWasJustStarted = currentCount != totalCount - 1

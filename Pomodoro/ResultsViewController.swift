@@ -28,12 +28,6 @@ class ResultsViewController: NSViewController {
         StyleHelper.setGeneralStyles(self)
         StyleHelper.setPlaceholder(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
         
-        // PREPARE FOR BREAK MODE
-//        let context = DataManager.getContext()!
-//        let mode = context.modeRelationship
-//        context.count = mode.breakCount
-//        DataManager.saveManagedContext()
-        
         // Load data
         let context = DataManager.getContext()!
         let mode = context.modeRelationship
@@ -107,8 +101,13 @@ class ResultsViewController: NSViewController {
             
             // Save results
             let context = DataManager.getContext()!
+            let mode = context.modeRelationship
             let session = context.sessionRelationship
             session.result = resultTextField.stringValue
+            
+            // Prepare for break part of session
+            context.count = mode.breakCount
+            context.isBreak = true
             
             DataManager.saveManagedContext()
             

@@ -9,119 +9,112 @@
 import Foundation
 import Cocoa
 
-class BreakViewController: NSViewController {
+class BreakViewController: NSViewController, PomodoroScreenProtocol {
     
     @IBOutlet weak var workProgressBar: NSBox!
     @IBOutlet weak var breakProgressBar: NSBox!
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
     @IBOutlet weak var settingsButton: NSImageView!
-    
-    var originalCount = 1
-    var count = 1
-    var pomodoroActive = false
-    var timer: NSTimer?
-    let helper = Helper.sharedInstance
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var pomodoroTimer: PomodoroTimer?
+    let helper = Helper.sharedInstance
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
         
-        loadData(initView)
+        // Initialize style
+        StyleHelper.setGeneralStyles(self)
     }
     
-    override func awakeFromNib() {
-        helper.setWindowBackground(self)
-    }
-    
-    func initButtons() {
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        // Load data
+        let context = DataManager.getContext()!
+        let mode = context.modeRelationship
+        
+        let totalCount = mode.breakCount as Int
+        
+        timeTextField.stringValue = TimeHelper.toTimeString(totalCount)
+        
+        // Initialize pomodoro timer
+        pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: totalCount, totalCount: totalCount)
+        pomodoroTimer?.start()
+        
+        // Initialize start button
         let startGesture = helper.makeLeftClickGesture(self)
-        startGesture.action = #selector(BreakViewController.startPomodoro)
+        startGesture.action = #selector(pomodoroTimer!.start)
         startButton.addGestureRecognizer(startGesture)
         
+        // Initialize settings button
         let settingsGesture = helper.makeLeftClickGesture(self)
         settingsGesture.action = #selector(BreakViewController.goToSettings)
         settingsButton.addGestureRecognizer(settingsGesture)
+        
+        // Set up progress bar
+        initProgressBars()
     }
     
-    func loadData(callback: () -> ()) {
+    private func initProgressBars() {
         let context = DataManager.getContext()!
-        let cycle = context.modeRelationship
+        let mode = context.modeRelationship
         
-        count = context.count as Int
-        originalCount = cycle.breakCount as Int
+        let workCount = mode.workCount as Int
+        let breakCount = mode.breakCount as Int
         
-        callback()
-    }
-    
-    func initView() {
-        timeTextField.stringValue = helper.toTimeString(originalCount)
-        initButtons()
-        startPomodoro()
+        let totalCycleCount = CGFloat(breakCount + workCount)
+        let workPercentage: CGFloat = (CGFloat(workCount) / totalCycleCount)
+        
+        // Update work progress bar
+        ViewHelper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage, startX: 0)
+        
+        // Update break progress bar
+        ViewHelper.updateProgressBar(self, bar: breakProgressBar, percentage: 0, startX: workProgressBar.frame.width)
     }
     
     func goToSettings() {
-        // TODO: save state
-        
         helper.goToSettings(self)
     }
     
-    func setWorkDetails(workCount: Int) {
-        let workPercentage = CGFloat(workCount) / CGFloat(workCount + originalCount)
-        helper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage)
-    }
-    
-    func startPomodoro() {
-        if (!pomodoroActive) {
-            startTimer()
-        } else {
-            // Todo: find a better way to protect against multiple starts
-            // Start the timer again
-            if (startButton.image == NSImage(named: "pauseIcon") && timer != nil && count % 60 != 0) {
-                stopTimer()
-                startButton.image = NSImage(named: "playIcon")
-                
-                // Increase number of paused times
-                let session = DataManager.getContext()!.sessionRelationship
-                session.numPausedTimes = (session.numPausedTimes as Int + 1) as NSNumber
-                DataManager.saveManagedContext()
-            }
-        }
-    }
-    
-    func startTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(BreakViewController.updateTimer), userInfo: nil, repeats: true)
-        pomodoroActive = true
+    func setRunningMode() {
         startButton.image = NSImage(named: "pauseIcon")
     }
     
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-        pomodoroActive = false
+    func setPausedMode() {
         startButton.image = NSImage(named: "playIcon")
     }
     
-    func updateTimer() {
-//        if (count > 0) {
-//            // Update the time
-//            count -= 1
-//            timeTextField.stringValue = helper.toTimeString(count)
-//            
-//            // Update the progress bar
-//            helper.updateProgressBar(self, bar: breakProgressBar, percentage: CGFloat(count) / CGFloat(originalCount))
-//        } else {
-//            stopTimer()
-//            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
-//            self.view.window?.contentViewController = nextViewController
-//            
-//            // set no longer break; save this session
-//            let context = DataManager.getContext()!
-//            context.isBreak = false
-//            context.count = context.modeRelationship.workCount
-//            context.sessionRelationship.ended = NSDate()
-//            DataManager.saveManagedContext()
-//            DataManager.createSession(context.modeRelationship, num: context.sessionRelationship.num as Int + 1)
-//        }
-        timer?.invalidate()
+    func setStoppedMode() {
+        let context = DataManager.getContext()!
+        let mode = context.modeRelationship
+        let session = context.sessionRelationship
+        
+        // Clean up this mode
+        context.isBreak = false
+        context.count = mode.workCount
+        
+        // Clean up this session
+        session.ended = NSDate()
+        
+        // End session, create a new one
+        let newSessionNum = session.num as Int + 1
+        
+        DataManager.createSession(mode, num: newSessionNum)
+        
+        goToCompletionViewController()
+    }
+    
+    func updateProgressBar(percentage: CGFloat) {
+        ViewHelper.updateProgressBar(self, bar: breakProgressBar, percentage: percentage, startX: workProgressBar.frame.width)
+    }
+
+    func isBreakView() -> Bool {
+        return true
+    }
+        
+    private func goToCompletionViewController() {
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
+        self.view.window?.contentViewController = nextViewController
     }
 }
