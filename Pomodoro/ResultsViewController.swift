@@ -69,9 +69,7 @@ class ResultsViewController: NSViewController {
         let totalCycleCount = CGFloat(breakCount! + workCount!)
         let workPercentage: CGFloat = (CGFloat(workCount!) / totalCycleCount)
         
-        var updatedProgress: NSRect = workProgressBar.frame
-        updatedProgress.size.width = self.view.frame.width * workPercentage
-        workProgressBar.frame = updatedProgress
+        ViewHelper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage, startX: 0)
     }
     
     override func keyUp(theEvent: NSEvent) {

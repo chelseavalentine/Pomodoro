@@ -168,18 +168,14 @@ class DataManager {
         }
     }
     
-    static func createSession(mode: ModeEntity, num: Int) {
+    static func createSession(mode: ModeEntity, num: Int) -> SessionEntity {
         let managedContext = appDelegate.managedObjectContext
         let sessionEntity = NSEntityDescription.entityForName("SessionEntity", inManagedObjectContext: managedContext)
         let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
         session.modeRelationship = mode
         session.num = num
         
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Couldn't save the context. \(error), \(error.userInfo) :(")
-        }
+        return session
     }
     
     static func getObjects(entityName: String) -> [AnyObject] {

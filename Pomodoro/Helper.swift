@@ -60,21 +60,6 @@ class Helper {
         textField.placeholderAttributedString = attributedString
     }
     
-    func setWhiteCaret(viewController: NSViewController) {
-        let fieldEditor = viewController.view.window?.fieldEditor(true, forObject: viewController) as? NSTextView
-        fieldEditor?.insertionPointColor = NSColor.whiteColor()
-    }
-    
-    func updateProgressBar(vc: NSViewController, bar: NSBox, percentage: CGFloat) {
-        var updatedProgress: NSRect = bar.frame
-        print("Before")
-        print(updatedProgress)
-        updatedProgress.size.width = vc.view.frame.width - vc.view.frame.width * (percentage)
-        bar.frame = updatedProgress
-        print("After")
-        print(bar.frame);
-    }
-    
     func goToSettings(vc: NSViewController) {
         let settingsVC = vc.storyboard?.instantiateControllerWithIdentifier("SettingsViewController") as? SettingsViewController
         vc.view.window?.contentViewController = settingsVC

@@ -84,7 +84,9 @@ class PomodoroTimer {
             currentCount -= 1
             textField.stringValue = TimeHelper.toTimeString(currentCount)
             
-            let progressPercentage: CGFloat = CGFloat(currentCount) / CGFloat(totalCount)
+            let progressCount: CGFloat = CGFloat(totalCount - currentCount)
+            
+            let progressPercentage: CGFloat = progressCount / CGFloat(totalCount)
             view.updateProgressBar(progressPercentage)
         } else {
             // Stop the timer

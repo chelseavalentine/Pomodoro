@@ -24,7 +24,8 @@ class CompletionViewController: NSViewController {
     }
     
     override func awakeFromNib() {
-        helper.setWindowBackground(self)
+        StyleHelper.setGeneralStyles(self)
+        
         let sessionNum = DataManager.getSessions().count
         sessionTitle.stringValue = "Work session \(sessionNum)"
     }

@@ -97,10 +97,20 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         // Clean up this session
         session.ended = NSDate()
         
+        
+        print("Before new session.")
+        print(context)
+        print(session)
+        
         // End session, create a new one
         let newSessionNum = session.num as Int + 1
         
-        DataManager.createSession(mode, num: newSessionNum)
+        let newSession = DataManager.createSession(mode, num: newSessionNum)
+        context.sessionRelationship = newSession
+        DataManager.saveManagedContext()
+        print("After new session.")
+        print(context)
+        print(context.sessionRelationship)
         
         goToCompletionViewController()
     }

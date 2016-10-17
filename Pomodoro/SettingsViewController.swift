@@ -41,8 +41,7 @@ class SettingsViewController: NSViewController {
     }
     
     override func awakeFromNib() {
-        helper.setWindowBackground(self)
-        helper.setWhiteCaret(self)
+        StyleHelper.setGeneralStyles(self)
         
         initTextFields()
         loadInModes()

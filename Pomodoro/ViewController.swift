@@ -15,10 +15,8 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     @IBOutlet weak var progressBar: NSBox!
     @IBOutlet weak var settingsButton: NSImageView!
     
-    var totalWorkCount: Int = 6
-    var currentCount: Int = 6
-    var pomodoroActive: Bool = false
-    var timer: NSTimer?
+    var totalWorkCount: Int!
+    var currentCount: Int!
     let helper = Helper.sharedInstance
     var pomodoroTimer: PomodoroTimer?
     
@@ -34,14 +32,22 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         totalWorkCount = mode?.workCount as? Int ?? 1
         
         if context?.isBreak == true && session?.result != nil {
+            print("User didn't have a session")
             // User was in a break
             goToBreakViewController()
         } else if context?.isBreak == true && session?.result == nil {
+            print("It's a break and there's no result")
             // User finished work session, but didn't report on what
             // they did
             goToResultsViewController()
         } else if session?.goal != nil {
-            // User had paused session
+            print("Session goal isnt nil")
+            
+            if session?.result == nil {
+                goToResultsViewController()
+            }
+            
+            // User had paused session OR completed session
             focusTextField.stringValue = context!.sessionRelationship.goal!
             focusTextField.enabled = false
             
@@ -49,6 +55,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
             currentCount = context!.count as Int
             totalWorkCount = mode!.workCount as Int
         } else {
+            print("User didn't have a session")
             // User didn't have a session
             currentCount = totalWorkCount
             timeTextField.stringValue = helper.toTimeString(totalWorkCount)
@@ -116,7 +123,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     
     override func viewWillDisappear() {
         // Indicate break mode if timer is complete
-        if totalWorkCount == 0 {
+        if currentCount == 0 {
             let context = DataManager.getContext()
             context?.isBreak = true
             DataManager.saveManagedContext()
@@ -132,7 +139,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     }
     
     func updateProgressBar(percentage: CGFloat) {
-        helper.updateProgressBar(self, bar: progressBar, percentage: percentage)
+        ViewHelper.updateProgressBar(self, bar: progressBar, percentage: percentage, startX: 0)
     }
     
     func setStoppedMode() {
