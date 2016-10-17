@@ -8,91 +8,57 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, PomodoroScreenProtocol {
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var focusTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
     @IBOutlet weak var progressBar: NSBox!
     @IBOutlet weak var settingsButton: NSImageView!
     
-    var originalCount: Int = 6
-    var count: Int = 6
+    var totalWorkCount: Int = 6
+    var currentCount: Int = 6
     var pomodoroActive: Bool = false
     var timer: NSTimer?
     let helper = Helper.sharedInstance
+    var pomodoroTimer: PomodoroTimer?
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        loadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        // Listen for the keyup event
-        NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
-            self.keyUp(aEvent)
-            return aEvent
-        }
-        
-        initButtons()
-    }
-    
-    func initButtons() {
-        // Initialize start button
-        let gesture = helper.makeLeftClickGesture(self)
-        gesture.action = #selector(ViewController.validateFocusField)
-        startButton.addGestureRecognizer(gesture)
-        
-        let settingsGesture = helper.makeLeftClickGesture(self)
-        settingsGesture.action = #selector(ViewController.goToSettings)
-        settingsButton.addGestureRecognizer(settingsGesture)
-    }
-    
-    func loadData() {
+        // Load data
         let context = DataManager.getContext()
+        let session = context?.sessionRelationship
         let mode = context?.modeRelationship
-
-        originalCount = mode?.workCount as? Int ?? 6
         
-        // If it we were in a break, go to the next screen
-        if context?.isBreak == true {
-            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
-            self.view.window?.contentViewController = nextViewController
-            nextViewController?.setWorkDetails(originalCount)
-        } else {
-            count = originalCount
-            timeTextField.stringValue = helper.toTimeString(originalCount)
-        }
+        // Set work conut
+        totalWorkCount = mode?.workCount as? Int ?? 1
         
-        timeTextField.lockFocus()
-    }
-    
-    func goToSettings() {
-        // TODO: Save state
-        
-        helper.goToSettings(self)
-    }
-    
-    func updateTimer() {
-        if (count > 0) {
-            // Update the time
-            count -= 1
-            timeTextField.stringValue = helper.toTimeString(count)
+        if context?.isBreak == true && session?.result != nil {
+            // User was in a break
+            goToBreakViewController()
+        } else if context?.isBreak == true && session?.result == nil {
+            // User finished work session, but didn't report on what
+            // they did
+            goToResultsViewController()
+        } else if session?.goal != nil {
+            // User had paused session
+            focusTextField.stringValue = context!.sessionRelationship.goal!
+            focusTextField.enabled = false
             
-            // Update the progress bar
-            helper.updateProgressBar(self, bar: progressBar, percentage: CGFloat(count) / CGFloat(originalCount))
+            // Set current counts
+            currentCount = context!.count as Int
+            totalWorkCount = mode!.workCount as Int
         } else {
-            stopTimer()
-            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ResultsViewController") as? ResultsViewController
-            self.view.window?.contentViewController = nextViewController
-            nextViewController?.setWorkDetails(focusTextField.stringValue, workCount: originalCount)
+            // User didn't have a session
+            currentCount = totalWorkCount
+            timeTextField.stringValue = helper.toTimeString(totalWorkCount)
         }
     }
-
+    
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Initialize style
         helper.setWindowBackground(self)
         helper.setWhiteCaret(self)
         
@@ -101,10 +67,32 @@ class ViewController: NSViewController {
         // Set TextField font and color
         helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
     }
-
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        // Init text field by focusing & listening for enter
+        focusTextField.lockFocus()
+        
+        NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
+            self.keyUp(aEvent)
+            return aEvent
+        }
+        
+        // Initialize start button
+        let gesture = helper.makeLeftClickGesture(self)
+        gesture.action = #selector(ViewController.validateFocusField)
+        startButton.addGestureRecognizer(gesture)
+        
+        // Initialize settings button
+        let settingsGesture = helper.makeLeftClickGesture(self)
+        settingsGesture.action = #selector(ViewController.goToSettings)
+        settingsButton.addGestureRecognizer(settingsGesture)
+    }
+    
     override func keyUp(theEvent: NSEvent) {
         // Return was pressed
-        if (theEvent.keyCode == 36) {
+        if (theEvent.keyCode == Keys.ReturnKey.rawValue) {
             validateFocusField()
         } else if (focusTextField!.stringValue == "") {
             helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
@@ -112,10 +100,14 @@ class ViewController: NSViewController {
     }
     
     func validateFocusField() {
-        if (focusTextField!.stringValue == "") {
+        if (focusTextField.stringValue == "") {
+            // Emphasize the focus field
             helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: true)
         } else {
-            startPomodoro()
+            pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: currentCount, totalCount: totalWorkCount)
+            pomodoroTimer?.start()
+            
+            // Disable text editing
             focusTextField.enabled = false
             
             // Save goal
@@ -124,44 +116,55 @@ class ViewController: NSViewController {
             DataManager.saveManagedContext()
         }
     }
+
     
-    func startPomodoro() {
-        if (!pomodoroActive) {
-            startTimer()
-            
-            // First time starting this session
-            let session = DataManager.getContext()!.sessionRelationship
-            session.started = NSDate()
-            DataManager.saveManagedContext()
+    override func viewWillDisappear() {
+        // Save state
+        let context = DataManager.getContext()
+        
+        // Indicate break mode if complete, or just save state
+        if totalWorkCount == currentCount {
+            context?.count = 0
+            context?.isBreak = true
         } else {
-            // Todo: find a better way to protect against multiple starts
-            // Start the timer again
-            if (startButton.image == NSImage(named: "pauseIcon") && timer != nil && count % 60 != 0) {
-                stopTimer()
-                startButton.image = NSImage(named: "playIcon")
-            }
+            context?.count = currentCount
         }
+        
+        DataManager.saveManagedContext()
     }
     
-    func startTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
-        pomodoroActive = true
+    func setRunningMode() {
         startButton.image = NSImage(named: "pauseIcon")
     }
     
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-        pomodoroActive = false
+    func setPausedMode() {
         startButton.image = NSImage(named: "playIcon")
-        
-        // Save paused
-        let context = DataManager.getContext()!
-        let session = context.sessionRelationship
-        
-        session.numPausedTimes = (session.numPausedTimes as Int + 1)
-        context.count = count
-        DataManager.saveManagedContext()
+    }
+    
+    func updateProgressBar(percentage: CGFloat) {
+        helper.updateProgressBar(self, bar: progressBar, percentage: percentage)
+    }
+    
+    func setStoppedMode() {
+        goToResultsViewController()
+    }
+    
+    func isBreakView() -> Bool {
+        return false
+    }
+    
+    func goToSettings() {
+        helper.goToSettings(self)
+    }
+    
+    private func goToResultsViewController() {
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ResultsViewController") as? ResultsViewController
+        self.view.window?.contentViewController = nextViewController
+    }
+    
+    private func goToBreakViewController() {
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+        self.view.window?.contentViewController = nextViewController
     }
 }
 

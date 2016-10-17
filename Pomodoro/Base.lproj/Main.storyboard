@@ -728,7 +728,7 @@
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
-                                <rect key="frame" x="6" y="152" width="408" height="22"/>
+                                <rect key="frame" x="7" y="152" width="408" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Gm8-os-ZEx" secondAttribute="height" multiplier="195:11" id="4D7-gD-6ke"/>
                                 </constraints>
@@ -742,7 +742,7 @@
                     </view>
                     <connections>
                         <outlet property="ProgressBar" destination="QaP-sg-Gzg" id="iYZ-R1-HaF"/>
-                        <outlet property="focusTextField" destination="Gm8-os-ZEx" id="da7-p5-S5W"/>
+                        <outlet property="focusTextField" destination="Gm8-os-ZEx" id="Gf4-ae-NhX"/>
                         <outlet property="progressBar" destination="QaP-sg-Gzg" id="PII-su-TNM"/>
                         <outlet property="settingsButton" destination="p4R-RG-V5T" id="ryC-f6-kQa"/>
                         <outlet property="startButton" destination="mHF-fn-2fp" id="G9O-B9-iC6"/>

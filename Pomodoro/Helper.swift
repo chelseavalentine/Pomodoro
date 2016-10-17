@@ -35,24 +35,6 @@ class Helper {
         return minutesString + ":" + secondsString
     }
     
-    // TODO: Fix me
-    func toTimeCount(time: String) -> Int {
-        var count = 0
-        var exponent = 0;
-        var timeComponents = time.characters.split{$0 == ":"}
-        
-        while timeComponents.count > 0 {
-            print(timeComponents.popLast())
-            count += 1
-            exponent += 1
-//            let timeComponent: Int = Int!(timeComponents.popLast())
-//            count += pow(timeComponents.popLast(), exponent)
-//            exponent += 1
-        }
-        
-        return count;
-    }
-    
     func setWindowBackground(viewController: NSViewController) {
         viewController.view.window?.backgroundColor = NSColor.init(red: 32/255, green: 34/255, blue: 38/255, alpha: 1.0)
     }

@@ -100,9 +100,9 @@ class ResultsViewController: NSViewController {
         } else {
             resultTextField.enabled = false
             
-            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
-            self.view.window?.contentViewController = nextViewController
-            nextViewController?.setWorkDetails(6)
+//            let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+//            self.view.window?.contentViewController = nextViewController
+//            nextViewController?.setWorkDetails(6)
         }
     }
 }

@@ -25,6 +25,9 @@
 		5EB6CE721D73048F002CA217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB6CE701D73048F002CA217 /* Main.storyboard */; };
 		5EB6CE7D1D73048F002CA217 /* PomodoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE7C1D73048F002CA217 /* PomodoroTests.swift */; };
 		5EB6CE881D73048F002CA217 /* PomodoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB6CE871D73048F002CA217 /* PomodoroUITests.swift */; };
+		5EEE4B221DB558E2002E731E /* PomodoroTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE4B211DB558E2002E731E /* PomodoroTimer.swift */; };
+		5EEE4B241DB55C13002E731E /* PomodoroScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE4B231DB55C13002E731E /* PomodoroScreenProtocol.swift */; };
+		5EEE4B271DB55EF8002E731E /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE4B261DB55EF8002E731E /* TimeHelper.swift */; };
 		5EF7E4321D77F240000C9DB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */; };
 		5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7E4331D789E37000C9DB1 /* Helper.swift */; };
 		5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7E4351D78A644000C9DB1 /* Strings.swift */; };
@@ -75,6 +78,9 @@
 		5EB6CE831D73048F002CA217 /* PomodoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB6CE871D73048F002CA217 /* PomodoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroUITests.swift; sourceTree = "<group>"; };
 		5EB6CE891D73048F002CA217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EEE4B211DB558E2002E731E /* PomodoroTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTimer.swift; sourceTree = "<group>"; };
+		5EEE4B231DB55C13002E731E /* PomodoroScreenProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroScreenProtocol.swift; sourceTree = "<group>"; };
+		5EEE4B261DB55EF8002E731E /* TimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		5EF7E4331D789E37000C9DB1 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5EF7E4351D78A644000C9DB1 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 		5EB6CE661D73048F002CA217 /* Pomodoro */ = {
 			isa = PBXGroup;
 			children = (
+				5EEE4B251DB55EE4002E731E /* Utils */,
 				5E86495D1DA2959E0059FC14 /* Entities */,
 				5EB6CE671D73048F002CA217 /* AppDelegate.swift */,
 				5EB6CE691D73048F002CA217 /* ViewController.swift */,
@@ -156,6 +163,8 @@
 				5E5A4AB91D7CCB93000F3758 /* CompletionViewController.swift */,
 				5E4C95011D9AB3AA00E09594 /* Values.swift */,
 				5E86494C1DA2217A0059FC14 /* DataManager.swift */,
+				5EEE4B211DB558E2002E731E /* PomodoroTimer.swift */,
+				5EEE4B231DB55C13002E731E /* PomodoroScreenProtocol.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -176,6 +185,14 @@
 				5EB6CE891D73048F002CA217 /* Info.plist */,
 			);
 			path = PomodoroUITests;
+			sourceTree = "<group>";
+		};
+		5EEE4B251DB55EE4002E731E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5EEE4B261DB55EF8002E731E /* TimeHelper.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,12 +334,15 @@
 				5EB6CE6A1D73048F002CA217 /* ViewController.swift in Sources */,
 				5E5A4ABA1D7CCB93000F3758 /* CompletionViewController.swift in Sources */,
 				5EF7E4341D789E37000C9DB1 /* Helper.swift in Sources */,
+				5EEE4B271DB55EF8002E731E /* TimeHelper.swift in Sources */,
 				5E5A4AB81D7CC4CD000F3758 /* BreakViewController.swift in Sources */,
 				5E4C95021D9AB3AA00E09594 /* Values.swift in Sources */,
+				5EEE4B241DB55C13002E731E /* PomodoroScreenProtocol.swift in Sources */,
 				5E8649691DA295D50059FC14 /* ContextEntity.swift in Sources */,
 				5EB6CE681D73048F002CA217 /* AppDelegate.swift in Sources */,
 				5E86494D1DA2217A0059FC14 /* DataManager.swift in Sources */,
 				5E58C6AE1D941D1700E8B819 /* SettingsViewController.swift in Sources */,
+				5EEE4B221DB558E2002E731E /* PomodoroTimer.swift in Sources */,
 				5E8649661DA295D50059FC14 /* ModeEntity+CoreDataProperties.swift in Sources */,
 				5E8649671DA295D50059FC14 /* ModeEntity.swift in Sources */,
 				5EF7E4361D78A644000C9DB1 /* Strings.swift in Sources */,
