@@ -32,17 +32,13 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         totalWorkCount = mode?.workCount as? Int ?? 1
         
         if context?.isBreak == true && session?.result != nil {
-            print("User didn't have a session")
             // User was in a break
             goToBreakViewController()
         } else if context?.isBreak == true && session?.result == nil {
-            print("It's a break and there's no result")
             // User finished work session, but didn't report on what
             // they did
             goToResultsViewController()
         } else if session?.goal != nil {
-            print("Session goal isnt nil")
-            
             if session?.result == nil {
                 goToResultsViewController()
             }
@@ -55,7 +51,6 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
             currentCount = context!.count as Int
             totalWorkCount = mode!.workCount as Int
         } else {
-            print("User didn't have a session")
             // User didn't have a session
             currentCount = totalWorkCount
             timeTextField.stringValue = helper.toTimeString(totalWorkCount)

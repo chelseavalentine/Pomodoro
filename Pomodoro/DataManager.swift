@@ -147,6 +147,7 @@ class DataManager {
         let session = SessionEntity(entity: sessionEntity!, insertIntoManagedObjectContext: managedContext)
         
         session.modeRelationship = mode
+        session.num = 1
         
         context.modeRelationship = mode
         context.sessionRelationship = session

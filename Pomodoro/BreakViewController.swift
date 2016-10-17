@@ -11,6 +11,7 @@ import Cocoa
 
 class BreakViewController: NSViewController, PomodoroScreenProtocol {
     
+    @IBOutlet weak var sessionTitle: NSTextField!
     @IBOutlet weak var workProgressBar: NSBox!
     @IBOutlet weak var breakProgressBar: NSBox!
     @IBOutlet weak var timeTextField: NSTextField!
@@ -33,10 +34,12 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         // Load data
         let context = DataManager.getContext()!
         let mode = context.modeRelationship
+        let session = context.sessionRelationship
         
         let totalCount = mode.breakCount as Int
         
         timeTextField.stringValue = TimeHelper.toTimeString(totalCount)
+        sessionTitle.stringValue = Strings.BreakSessionTitle.rawValue + " " + String(session.num)
         
         // Initialize pomodoro timer
         pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: totalCount, totalCount: totalCount)
@@ -97,20 +100,12 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         // Clean up this session
         session.ended = NSDate()
         
-        
-        print("Before new session.")
-        print(context)
-        print(session)
-        
         // End session, create a new one
         let newSessionNum = session.num as Int + 1
         
         let newSession = DataManager.createSession(mode, num: newSessionNum)
         context.sessionRelationship = newSession
         DataManager.saveManagedContext()
-        print("After new session.")
-        print(context)
-        print(context.sessionRelationship)
         
         goToCompletionViewController()
     }

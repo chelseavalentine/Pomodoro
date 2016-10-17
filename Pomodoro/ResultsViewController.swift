@@ -11,6 +11,7 @@ import Cocoa
 
 class ResultsViewController: NSViewController {
     
+    @IBOutlet weak var sessionTitle: NSTextField!
     @IBOutlet weak var workDuration: NSTextField!
     @IBOutlet weak var focusText: NSTextField!
     @IBOutlet weak var breakText: NSTextField!
@@ -35,12 +36,13 @@ class ResultsViewController: NSViewController {
         
         focusText.stringValue = session.goal!
         workDuration.stringValue = TimeHelper.toTimeString(mode.workCount as Int)
+        sessionTitle.stringValue = Strings.WorkSessionTitle.rawValue + " " + String(session.num)
+        
+        initProgressBar()
     }
     
     override func viewDidAppear() {
         super.viewDidLoad()
-        
-        initProgressBar()
         
         // Listen for the keyup event
         NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
@@ -58,6 +60,8 @@ class ResultsViewController: NSViewController {
         
         // Focus on result field
         resultTextField.lockFocus()
+        
+        initProgressBar()
     }
 
     private func initProgressBar() {

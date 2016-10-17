@@ -777,14 +777,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6br-fT-T4n">
-                                <rect key="frame" x="6" y="127" width="388" height="23"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="iIs-Vz-WAW">
-                                    <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="lrA-Xi-kVO">
                                 <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
                                 <view key="contentView" ambiguous="YES" id="eSo-GJ-CPE">
@@ -847,6 +839,14 @@
                                 <color key="borderColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.47643801569999999" green="0.72688108679999996" blue="0.77731716630000003" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6br-fT-T4n">
+                                <rect key="frame" x="6" y="125" width="388" height="23"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="iIs-Vz-WAW">
+                                    <font key="font" size="12" name="PTMono-Regular"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ge0-ON-yB1" firstAttribute="leading" secondItem="lrA-Xi-kVO" secondAttribute="leading" id="9UA-Zd-aax"/>
@@ -862,6 +862,7 @@
                         <outlet property="breakText" destination="QhR-oH-LBW" id="2W4-4F-78I"/>
                         <outlet property="focusText" destination="6br-fT-T4n" id="ehs-Qc-ofd"/>
                         <outlet property="resultTextField" destination="6fV-vf-MFF" id="EI9-fJ-u0r"/>
+                        <outlet property="sessionTitle" destination="xX6-14-dsY" id="CRL-14-XB5"/>
                         <outlet property="workDuration" destination="FfM-uh-Y7P" id="g7I-st-6kI"/>
                         <outlet property="workProgressBar" destination="Ge0-ON-yB1" id="PqS-ak-UtO"/>
                     </connections>
@@ -938,6 +939,7 @@
                     </view>
                     <connections>
                         <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="9ZG-an-wOc"/>
+                        <outlet property="sessionTitle" destination="pxS-Q0-jc0" id="oWn-Fi-vHg"/>
                         <outlet property="settingsButton" destination="lRH-cv-026" id="tbg-ZT-EAU"/>
                         <outlet property="startButton" destination="lQb-VG-App" id="iuc-IQ-WVf"/>
                         <outlet property="timeTextField" destination="TpJ-SQ-wYg" id="Ecq-PH-lqP"/>

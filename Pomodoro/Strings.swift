@@ -16,6 +16,9 @@ enum Strings: String {
     case SecondModeTitle = "Normal mode"
     case ThirdModeTitle = "Beast mode"
     
+    case WorkSessionTitle = "Work session"
+    case BreakSessionTitle = "Break"
+    
     case TimePlaceholder = "0:00:00"
     
     case Unselected = "SELECT"

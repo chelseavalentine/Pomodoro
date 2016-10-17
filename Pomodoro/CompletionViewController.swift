@@ -21,12 +21,18 @@ class CompletionViewController: NSViewController {
         let gesture = helper.makeLeftClickGesture(self)
         gesture.action = #selector(CompletionViewController.goToFirstView)
         self.view.addGestureRecognizer(gesture)
+        
+        // Init keyup
+        NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
+            self.keyUp(aEvent)
+            return aEvent
+        }
     }
     
     override func awakeFromNib() {
         StyleHelper.setGeneralStyles(self)
         
-        let sessionNum = DataManager.getSessions().count
+        let sessionNum = DataManager.getContext()!.sessionRelationship.num
         sessionTitle.stringValue = "Work session \(sessionNum)"
     }
     
@@ -47,7 +53,7 @@ class CompletionViewController: NSViewController {
             NSTimer.scheduledTimerWithTimeInterval(0.0000001, target: self, selector: #selector(CompletionViewController.floatDown), userInfo: confetti, repeats: true)
         }
         
-        endTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(CompletionViewController.endAnimation), userInfo: nil, repeats: true)
+        endTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(CompletionViewController.goToFirstView), userInfo: nil, repeats: true)
     }
     
     func floatDown(timer: NSTimer) {
@@ -61,11 +67,19 @@ class CompletionViewController: NSViewController {
         }
     }
     
-    func endAnimation(timer: NSTimer) {
-        timer.invalidate()
+    override func keyUp(theEvent: NSEvent) {
+        goToFirstView()
+    }
+    
+    func endAnimation(timer: NSTimer?) {
+        if timer != nil {
+            timer!.invalidate()
+        }
     }
     
     func goToFirstView() {
+        endAnimation(endTimer)
+        
         let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ViewController") as? ViewController
         self.view.window?.contentViewController = nextViewController
     }
