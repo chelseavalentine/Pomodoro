@@ -117,16 +117,23 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     }
     
     override func viewWillDisappear() {
-        // Indicate break mode if timer is complete
+        let context = DataManager.getContext()!
+        
+        // Indicate break mode if timer is complete, or save state
         if currentCount == 0 {
-            let context = DataManager.getContext()
-            context?.isBreak = true
-            DataManager.saveManagedContext()
+            context.isBreak = true
+        } else {
+            context.count = currentCount
         }
+        
+        DataManager.saveManagedContext()
+        
+        pomodoroTimer = nil
     }
     
     func setRunningMode() {
         startButton.image = NSImage(named: "pauseIcon")
+        settingsButton.hidden = true
     }
     
     func setPausedMode() {

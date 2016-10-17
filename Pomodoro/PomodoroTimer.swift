@@ -35,7 +35,8 @@ class PomodoroTimer {
         }
     }
     
-    @objc func start() {
+    func start() {
+
         if isActive {
             // Stop the timer
             let timerWasJustStarted = currentCount != totalCount - 1

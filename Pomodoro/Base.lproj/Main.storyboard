@@ -923,10 +923,6 @@
                                             <rect key="frame" x="390" y="1.5" width="25" height="27"/>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rUy-bu-WdS"/>
                                         </imageView>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lRH-cv-026">
-                                            <rect key="frame" x="358" y="1.5" width="26" height="26"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="settingsIcon" id="Mny-qh-qBF"/>
-                                        </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
@@ -940,7 +936,6 @@
                     <connections>
                         <outlet property="breakProgressBar" destination="B8p-1R-UI7" id="9ZG-an-wOc"/>
                         <outlet property="sessionTitle" destination="pxS-Q0-jc0" id="oWn-Fi-vHg"/>
-                        <outlet property="settingsButton" destination="lRH-cv-026" id="tbg-ZT-EAU"/>
                         <outlet property="startButton" destination="lQb-VG-App" id="iuc-IQ-WVf"/>
                         <outlet property="timeTextField" destination="TpJ-SQ-wYg" id="Ecq-PH-lqP"/>
                         <outlet property="workProgressBar" destination="PCt-uf-aL1" id="D5D-s2-8LN"/>

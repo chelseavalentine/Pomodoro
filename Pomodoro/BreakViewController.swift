@@ -16,7 +16,6 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
     @IBOutlet weak var breakProgressBar: NSBox!
     @IBOutlet weak var timeTextField: NSTextField!
     @IBOutlet weak var startButton: NSImageView!
-    @IBOutlet weak var settingsButton: NSImageView!
 
     var pomodoroTimer: PomodoroTimer?
     let helper = Helper.sharedInstance
@@ -47,18 +46,17 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         
         // Initialize start button
         let startGesture = helper.makeLeftClickGesture(self)
-        startGesture.action = #selector(pomodoroTimer!.start)
+        startGesture.action = #selector(BreakViewController.startPomodoro)
         startButton.addGestureRecognizer(startGesture)
-        
-        // Initialize settings button
-        let settingsGesture = helper.makeLeftClickGesture(self)
-        settingsGesture.action = #selector(BreakViewController.goToSettings)
-        settingsButton.addGestureRecognizer(settingsGesture)
         
         // Set up progress bar
         initProgressBars()
     }
     
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        pomodoroTimer = nil
+    }
     private func initProgressBars() {
         let context = DataManager.getContext()!
         let mode = context.modeRelationship
@@ -74,10 +72,6 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         
         // Update break progress bar
         ViewHelper.updateProgressBar(self, bar: breakProgressBar, percentage: 0, startX: workProgressBar.frame.width)
-    }
-    
-    func goToSettings() {
-        helper.goToSettings(self)
     }
     
     func setRunningMode() {
@@ -121,5 +115,9 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
     private func goToCompletionViewController() {
         let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
         self.view.window?.contentViewController = nextViewController
+    }
+    
+    @objc private func startPomodoro() {
+        pomodoroTimer?.start()
     }
 }
