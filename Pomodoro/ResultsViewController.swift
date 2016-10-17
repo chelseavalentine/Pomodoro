@@ -18,14 +18,42 @@ class ResultsViewController: NSViewController {
     @IBOutlet weak var workProgressBar: NSBox!
     @IBOutlet weak var resultTextField: NSTextField!
     
-    let breakCount = 1
+    var breakCount: Int?
     var workCount: Int?
     var timer: NSTimer?
     let helper = Helper.sharedInstance
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        // Initialize style
+        StyleHelper.setGeneralStyles(self)
+        StyleHelper.setPlaceholder(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
+        
+        // PREPARE FOR BREAK MODE
+//        let context = DataManager.getContext()!
+//        let mode = context.modeRelationship
+//        context.count = mode.breakCount
+//        DataManager.saveManagedContext()
+        
+        // Load data
+        let context = DataManager.getContext()!
+        let mode = context.modeRelationship
+        let session = context.sessionRelationship
+        
+        focusText.stringValue = session.goal!
+        workDuration.stringValue = TimeHelper.toTimeString(mode.workCount as Int)
+    }
+    
+    override func awakeFromNib() {
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: #selector(ResultsViewController.initProgressBar), userInfo: nil, repeats: false)
+        
+    }
+    
     override func viewDidAppear() {
-        // additional setup
-        helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
+        super.viewDidLoad()
+        
+        initProgressBar()
         
         // Listen for the keyup event
         NSEvent.addLocalMonitorForEventsMatchingMask(.KeyUpMask) { (aEvent) -> NSEvent! in
@@ -40,34 +68,23 @@ class ResultsViewController: NSViewController {
         gesture.action = #selector(ResultsViewController.validateResultField)
         breakIcon.addGestureRecognizer(gesture)
         breakText.addGestureRecognizer(gesture)
-        
-        
-        // Set context count to break count
-        let context = DataManager.getContext()!
-        context.count = context.modeRelationship.breakCount
-        DataManager.saveManagedContext()
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
-    override func awakeFromNib() {
-        helper.setWindowBackground(self)
-        helper.setWhiteCaret(self)
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.0, target: self, selector: #selector(ResultsViewController.initProgressBar), userInfo: nil, repeats: false)
+    override func viewWillDisappear() {
+        // Save state
     }
     
-    func initProgressBar() {
+    private func initProgressBar() {
         let mode = DataManager.getContext()!.modeRelationship
         
         workCount = mode.workCount as Int
+        breakCount = mode.breakCount as Int
         
-        let totalCycleCount = CGFloat((mode.breakCount as Int) + workCount!)
+        let totalCycleCount = CGFloat(breakCount! + workCount!)
         let workPercentage: CGFloat = (CGFloat(workCount!) / totalCycleCount)
         
         var updatedProgress: NSRect = workProgressBar.frame
-        updatedProgress.size.width = self.view.frame.width - self.view.frame.width * workPercentage
+        updatedProgress.size.width = self.view.frame.width * workPercentage
         workProgressBar.frame = updatedProgress
         
         timer?.invalidate()
@@ -87,7 +104,7 @@ class ResultsViewController: NSViewController {
             breakText.textColor = NSColor(white: 1.0, alpha: 0.65)
         }
         
-        if (theEvent.keyCode == 36) {
+        if (theEvent.keyCode == Keys.ReturnKey.rawValue) {
             validateResultField()
         } else {
             helper.setPlaceholderFont(resultTextField, string: Strings.EnterResultPrompt.rawValue, bold: false)
@@ -104,5 +121,10 @@ class ResultsViewController: NSViewController {
 //            self.view.window?.contentViewController = nextViewController
 //            nextViewController?.setWorkDetails(6)
         }
+    }
+    
+    private func goToBreakViewController() {
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+        self.view.window?.contentViewController = nextViewController
     }
 }

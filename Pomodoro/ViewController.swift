@@ -59,13 +59,10 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         super.awakeFromNib()
         
         // Initialize style
-        helper.setWindowBackground(self)
-        helper.setWhiteCaret(self)
+        StyleHelper.setGeneralStyles(self)
+        StyleHelper.setPlaceholder(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
         
         focusTextField.textColor = NSColor.whiteColor()
-        
-        // Set TextField font and color
-        helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
     }
     
     override func viewDidAppear() {
