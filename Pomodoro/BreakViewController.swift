@@ -37,11 +37,11 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         
         let totalCount = mode.breakCount as Int
         
-        timeTextField.stringValue = TimeHelper.toTimeString(totalCount)
+        timeTextField.stringValue = TimeHelper.toTimeString(context.count as Int)
         sessionTitle.stringValue = Strings.BreakSessionTitle.rawValue + " " + String(session.num)
         
         // Initialize pomodoro timer
-        pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: totalCount, totalCount: totalCount)
+        pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: context.count as Int, totalCount: totalCount)
         pomodoroTimer?.start()
         
         // Initialize start button
@@ -54,9 +54,17 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
     }
     
     override func viewWillDisappear() {
-        super.viewWillDisappear()
+        let currentCount = pomodoroTimer?.count()
+        
+        if currentCount != 0 {
+            let context = DataManager.getContext()!
+            context.count = currentCount!
+            DataManager.saveManagedContext()
+        }
+        
         pomodoroTimer = nil
     }
+    
     private func initProgressBars() {
         let context = DataManager.getContext()!
         let mode = context.modeRelationship

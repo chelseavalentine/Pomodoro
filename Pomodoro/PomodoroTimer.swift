@@ -10,14 +10,14 @@ import Foundation
 import Cocoa
 
 class PomodoroTimer {
-    var view: PomodoroScreenProtocol!
+    private var view: PomodoroScreenProtocol!
     
-    var textField: NSTextField!
-    var currentCount: Int
-    var totalCount: Int
+    private var textField: NSTextField!
+    private var currentCount: Int
+    private var totalCount: Int
     
-    var timer: NSTimer?
-    var isActive = false
+    private var timer: NSTimer?
+    private var isActive = false
     
     init(view: PomodoroScreenProtocol, textField: NSTextField, currentCount: Int, totalCount: Int) {
         self.view = view
@@ -27,7 +27,7 @@ class PomodoroTimer {
     }
     
     deinit {
-        // Stopping this session before it's complete
+        // Save incomplete session
         if currentCount > 0 {
             let context = DataManager.getContext()!
             context.count = currentCount
@@ -60,6 +60,14 @@ class PomodoroTimer {
                 initializeSession()
             }
         }
+    }
+    
+    func isRunning() -> Bool {
+        return isActive
+    }
+    
+    func count() -> Int {
+        return currentCount
     }
     
     private func initializeSession() {

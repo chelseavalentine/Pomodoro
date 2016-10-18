@@ -15,8 +15,8 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     @IBOutlet weak var progressBar: NSBox!
     @IBOutlet weak var settingsButton: NSImageView!
     
-    var totalWorkCount: Int!
-    var currentCount: Int!
+    var totalWorkCount: Int?
+    var currentCount: Int?
     let helper = Helper.sharedInstance
     var pomodoroTimer: PomodoroTimer?
     
@@ -38,13 +38,24 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
             // User finished work session, but didn't report on what
             // they did
             goToResultsViewController()
+        } else if context?.count != nil && context?.count as! Int > 0 && session?.goal != nil {
+            // Set current counts
+            currentCount = context!.count as Int
+            totalWorkCount = mode!.workCount as Int
+            
+            timeTextField.stringValue = TimeHelper.toTimeString(currentCount!)
+            
+            focusTextField.stringValue = session!.goal!
+            focusTextField.enabled = false
+            
+            settingsButton.hidden = true
         } else if session?.goal != nil {
             if session?.result == nil {
                 goToResultsViewController()
             }
             
             // User had paused session OR completed session
-            focusTextField.stringValue = context!.sessionRelationship.goal!
+            focusTextField.stringValue = session!.goal!
             focusTextField.enabled = false
             
             // Set current counts
@@ -53,7 +64,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         } else {
             // User didn't have a session
             currentCount = totalWorkCount
-            timeTextField.stringValue = helper.toTimeString(totalWorkCount)
+            timeTextField.stringValue = helper.toTimeString(totalWorkCount!)
         }
     }
     
@@ -102,8 +113,14 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         if (focusTextField.stringValue == "") {
             // Emphasize the focus field
             helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: true)
+        } else if pomodoroTimer?.isRunning() == true {
+            pomodoroTimer?.start()
         } else {
-            pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: currentCount, totalCount: totalWorkCount)
+            if totalWorkCount == nil || currentCount == nil {
+                return
+            }
+            
+            pomodoroTimer = PomodoroTimer(view: self, textField: timeTextField, currentCount: currentCount!, totalCount: totalWorkCount!)
             pomodoroTimer?.start()
             
             // Disable text editing
@@ -119,11 +136,14 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     override func viewWillDisappear() {
         let context = DataManager.getContext()!
         
+        currentCount = pomodoroTimer?.count()
+        
         // Indicate break mode if timer is complete, or save state
         if currentCount == 0 {
             context.isBreak = true
         } else {
-            context.count = currentCount
+            print(currentCount)
+            context.count = currentCount!
         }
         
         DataManager.saveManagedContext()
@@ -153,6 +173,12 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     }
     
     func goToSettings() {
+        if currentCount > 0 {
+            let context = DataManager.getContext()!
+            context.count = currentCount!
+            DataManager.saveManagedContext()
+        }
+        
         helper.goToSettings(self)
     }
     
