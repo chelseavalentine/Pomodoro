@@ -162,7 +162,6 @@
 				5EB6CE731D73048F002CA217 /* Info.plist */,
 				5EB6CE6B1D73048F002CA217 /* Pomodoro.xcdatamodeld */,
 				5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */,
-				5EF7E4331D789E37000C9DB1 /* Helper.swift */,
 				5EF7E4351D78A644000C9DB1 /* Strings.swift */,
 				5E5A4AB71D7CC4CD000F3758 /* BreakViewController.swift */,
 				5E58C6AD1D941D1700E8B819 /* SettingsViewController.swift */,
@@ -196,6 +195,7 @@
 		5EEE4B251DB55EE4002E731E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5EF7E4331D789E37000C9DB1 /* Helper.swift */,
 				5EEE4B261DB55EF8002E731E /* TimeHelper.swift */,
 				5EEE4B281DB56C7C002E731E /* StyleHelper.swift */,
 				5EEE4B2A1DB58639002E731E /* ViewHelper.swift */,

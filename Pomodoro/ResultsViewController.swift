@@ -120,7 +120,7 @@ class ResultsViewController: NSViewController {
     }
     
     private func goToBreakViewController() {
-        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier(ViewControllerName.Break.rawValue) as? BreakViewController
         self.view.window?.contentViewController = nextViewController
     }
 }

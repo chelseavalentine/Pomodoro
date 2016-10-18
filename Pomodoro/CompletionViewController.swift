@@ -10,7 +10,6 @@ import Cocoa
 
 class CompletionViewController: NSViewController {
     @IBOutlet weak var confettiView: NSView!
-    let helper = Helper.sharedInstance
     var endTimer: NSTimer?
     @IBOutlet weak var sessionTitle: NSTextField!
     
@@ -18,7 +17,7 @@ class CompletionViewController: NSViewController {
         super.viewDidLoad()
         generateConfetti()
         
-        let gesture = helper.makeLeftClickGesture(self)
+        let gesture = Helper.makeLeftClickGesture(self)
         gesture.action = #selector(CompletionViewController.goToFirstView)
         self.view.addGestureRecognizer(gesture)
         
@@ -81,7 +80,7 @@ class CompletionViewController: NSViewController {
     func goToFirstView() {
         endAnimation(endTimer)
         
-        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ViewController") as? ViewController
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier(ViewControllerName.Main.rawValue) as? ViewController
         self.view.window?.contentViewController = nextViewController
     }
 }

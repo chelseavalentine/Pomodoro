@@ -18,7 +18,6 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
     @IBOutlet weak var startButton: NSImageView!
 
     var pomodoroTimer: PomodoroTimer?
-    let helper = Helper.sharedInstance
     
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -45,7 +44,7 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         pomodoroTimer?.start()
         
         // Initialize start button
-        let startGesture = helper.makeLeftClickGesture(self)
+        let startGesture = Helper.makeLeftClickGesture(self)
         startGesture.action = #selector(BreakViewController.startPomodoro)
         startButton.addGestureRecognizer(startGesture)
         
@@ -121,7 +120,7 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
     }
         
     private func goToCompletionViewController() {
-        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("CompletionViewController") as? CompletionViewController
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier(ViewControllerName.Complete.rawValue) as? CompletionViewController
         self.view.window?.contentViewController = nextViewController
     }
     

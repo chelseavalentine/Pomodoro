@@ -17,7 +17,6 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     
     var totalWorkCount: Int?
     var currentCount: Int?
-    let helper = Helper.sharedInstance
     var pomodoroTimer: PomodoroTimer?
     
     override func viewWillAppear() {
@@ -64,7 +63,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         } else {
             // User didn't have a session
             currentCount = totalWorkCount
-            timeTextField.stringValue = helper.toTimeString(totalWorkCount!)
+            timeTextField.stringValue = TimeHelper.toTimeString(totalWorkCount!)
         }
     }
     
@@ -90,12 +89,12 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         }
         
         // Initialize start button
-        let gesture = helper.makeLeftClickGesture(self)
+        let gesture = Helper.makeLeftClickGesture(self)
         gesture.action = #selector(ViewController.validateFocusField)
         startButton.addGestureRecognizer(gesture)
         
         // Initialize settings button
-        let settingsGesture = helper.makeLeftClickGesture(self)
+        let settingsGesture = Helper.makeLeftClickGesture(self)
         settingsGesture.action = #selector(ViewController.goToSettings)
         settingsButton.addGestureRecognizer(settingsGesture)
     }
@@ -105,14 +104,14 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         if (theEvent.keyCode == Keys.ReturnKey.rawValue) {
             validateFocusField()
         } else if (focusTextField!.stringValue == "") {
-            helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
+            StyleHelper.setPlaceholder(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: false)
         }
     }
     
     func validateFocusField() {
         if (focusTextField.stringValue == "") {
             // Emphasize the focus field
-            helper.setPlaceholderFont(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: true)
+            StyleHelper.setPlaceholder(focusTextField, string: Strings.EnterFocusPrompt.rawValue, bold: true)
         } else if pomodoroTimer?.isRunning() == true {
             pomodoroTimer?.start()
         } else {
@@ -152,12 +151,12 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     }
     
     func setRunningMode() {
-        startButton.image = NSImage(named: "pauseIcon")
+        startButton.image = NSImage(named: IconName.Pause.rawValue)
         settingsButton.hidden = true
     }
     
     func setPausedMode() {
-        startButton.image = NSImage(named: "playIcon")
+        startButton.image = NSImage(named: IconName.Start.rawValue)
     }
     
     func updateProgressBar(percentage: CGFloat) {
@@ -179,16 +178,16 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
             DataManager.saveManagedContext()
         }
         
-        helper.goToSettings(self)
+        Helper.goToSettings(self)
     }
     
     private func goToResultsViewController() {
-        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("ResultsViewController") as? ResultsViewController
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier(ViewControllerName.Results.rawValue) as? ResultsViewController
         self.view.window?.contentViewController = nextViewController
     }
     
     private func goToBreakViewController() {
-        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier("BreakViewController") as? BreakViewController
+        let nextViewController = self.storyboard?.instantiateControllerWithIdentifier(ViewControllerName.Break.rawValue) as? BreakViewController
         self.view.window?.contentViewController = nextViewController
     }
 }

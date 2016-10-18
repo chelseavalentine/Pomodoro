@@ -18,9 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // App has never been initialized before
         if modes.count == 0 {
             // Initialize cycles
-            DataManager.saveMode(0, name: "Light mode", workCount: 60 * 15, breakCount: 60 * 5, selected: false)
-            DataManager.saveModeWithCallback(1, name: "Normal mode", workCount: 6, breakCount: 2, selected: true, callback: createContext)
-            DataManager.saveMode(2, name: "Beast mode", workCount: 60 * 45, breakCount: 60 * 15, selected: false)
+            DataManager.saveMode(DefaultModeNum.Light.rawValue, name: DefaultModeName.Light.rawValue, workCount: DefaultWorkCount.Light.rawValue, breakCount: DefaultBreakCount.Light.rawValue, selected: false)
+            DataManager.saveModeWithCallback(DefaultModeNum.Normal.rawValue, name: DefaultModeName.Normal.rawValue, workCount: DefaultWorkCount.Normal.rawValue, breakCount: DefaultBreakCount.Normal.rawValue, selected: true, callback: createContext)
+            DataManager.saveMode(DefaultModeNum.Beast.rawValue, name: DefaultModeName.Beast.rawValue, workCount: DefaultWorkCount.Beast.rawValue, breakCount: DefaultBreakCount.Beast.rawValue, selected: false)
         }
     }
     

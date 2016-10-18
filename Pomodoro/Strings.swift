@@ -24,3 +24,21 @@ enum Strings: String {
     case Unselected = "SELECT"
     case Selected = "SELECTED"
 }
+
+enum DefaultModeName: String {
+    case Light = "Light mode"
+    case Normal = "Normal mode"
+    case Beast = "Beast mode"
+}
+
+enum IconName: String {
+    case Pause = "pauseIcon"
+    case Start = "playIcon"
+}
+
+enum ViewControllerName: String {
+    case Main = "ViewController"
+    case Results = "ResultsViewController"
+    case Break = "BreakViewController"
+    case Complete = "CompletionViewController"
+}
