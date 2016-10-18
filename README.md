@@ -3,7 +3,7 @@ A Mac app to suit my pomodoro needs. Released version 1.0.0. Will update in futu
 
 ### Details
 
-* Xcode 3.2-compatible
+* Xcode 3.2-compatible, but written using Xcode 7.3.1.
 * Written in Swift 2.2, targeting x86_64-apple-macosx10.9.
 
 <img width="1404" src="https://cloud.githubusercontent.com/assets/8227437/19464234/8bc5096a-94c8-11e6-86c8-b972ce625d81.png">
