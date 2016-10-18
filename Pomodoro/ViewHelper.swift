@@ -14,13 +14,13 @@ class ViewHelper {
     
     static func updateProgressBar(vc: NSViewController, bar: NSBox, percentage: Double, startX: CGFloat) {
         let maxBarWidth: Double = Double(vc.view.frame.width) - Double(startX)
-        let roundedPercentage: Double = round(10 * (1 + percentage))/10
+        let roundedPercentage: Double = round(100 * percentage)/100
         let newWidth = maxBarWidth * roundedPercentage
         
-        if newWidth > Double(bar.frame.width) {
+        if round(newWidth) > Double(bar.frame.width) {
             var newBarFrame: NSRect = bar.frame
             newBarFrame.origin.x = startX
-            newBarFrame.size.width = CGFloat(newWidth)
+            newBarFrame.size.width = CGFloat(round(newWidth))
             
             bar.frame = newBarFrame
         }
