@@ -1,3 +1,5 @@
+<img align="center" src="https://cloud.githubusercontent.com/assets/8227437/19464700/820a9f9e-94cc-11e6-82dd-4083dbbbd721.png">
+
 # Pomodoro
 A Mac app to suit my pomodoro needs. Released version 1.0.0. Will update in future.
 
