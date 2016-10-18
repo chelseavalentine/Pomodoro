@@ -87,6 +87,7 @@
 		5EEE4B281DB56C7C002E731E /* StyleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleHelper.swift; sourceTree = "<group>"; };
 		5EEE4B2A1DB58639002E731E /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		5EEE4B2C1DB58A42002E731E /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
+		5EEE4B2E1DB5D332002E731E /* Pomodoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pomodoro.entitlements; sourceTree = "<group>"; };
 		5EF7E4311D77F240000C9DB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		5EF7E4331D789E37000C9DB1 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5EF7E4351D78A644000C9DB1 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		5EB6CE661D73048F002CA217 /* Pomodoro */ = {
 			isa = PBXGroup;
 			children = (
+				5EEE4B2E1DB5D332002E731E /* Pomodoro.entitlements */,
 				5EEE4B251DB55EE4002E731E /* Utils */,
 				5E86495D1DA2959E0059FC14 /* Entities */,
 				5EB6CE671D73048F002CA217 /* AppDelegate.swift */,
@@ -276,6 +278,14 @@
 					5EB6CE631D73048F002CA217 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = SJTKPSP946;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					5EB6CE771D73048F002CA217 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -493,13 +503,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Chelsea Valentine (SJTKPSP946)";
+				CODE_SIGN_ENTITLEMENTS = Pomodoro/Pomodoro.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Chelsea Valentine (VDT5JGVQ78)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Pomodoro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chelseavday.Pomodoro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "72790a41-42e8-4323-a69d-feed77d886ad";
 			};
 			name = Debug;
 		};
@@ -507,13 +520,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Chelsea Valentine (SJTKPSP946)";
+				CODE_SIGN_ENTITLEMENTS = Pomodoro/Pomodoro.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Chelsea Valentine (VDT5JGVQ78)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Pomodoro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chelseavday.Pomodoro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "72790a41-42e8-4323-a69d-feed77d886ad";
 			};
 			name = Release;
 		};
