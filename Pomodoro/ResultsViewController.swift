@@ -72,8 +72,8 @@ class ResultsViewController: NSViewController {
         workCount = mode.workCount as Int
         breakCount = mode.breakCount as Int
         
-        let totalCycleCount = CGFloat(breakCount! + workCount!)
-        let workPercentage: CGFloat = (CGFloat(workCount!) / totalCycleCount)
+        let totalCycleCount = Double(breakCount! + workCount!)
+        let workPercentage: Double = (Double(workCount!) / totalCycleCount)
         
         ViewHelper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage, startX: 0)
     }

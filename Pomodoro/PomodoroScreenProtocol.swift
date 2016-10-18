@@ -12,6 +12,6 @@ protocol PomodoroScreenProtocol {
     func setPausedMode()
     func setRunningMode()
     func setStoppedMode()
-    func updateProgressBar(percentage: CGFloat)
+    func updateProgressBar(percentage: Double)
     func isBreakView() -> Bool
 }

@@ -162,7 +162,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         startButton.image = NSImage(named: IconName.Start.rawValue)
     }
     
-    func updateProgressBar(percentage: CGFloat) {
+    func updateProgressBar(percentage: Double) {
         ViewHelper.updateProgressBar(self, bar: progressBar, percentage: percentage, startX: 0)
     }
     

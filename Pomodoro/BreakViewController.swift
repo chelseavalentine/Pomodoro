@@ -76,7 +76,7 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         let breakCount = mode.breakCount as Int
         
         let totalCycleCount = CGFloat(breakCount + workCount)
-        let workPercentage: CGFloat = (CGFloat(workCount) / totalCycleCount)
+        let workPercentage: Double = Double(workCount) / Double(totalCycleCount)
         
         // Update work progress bar
         ViewHelper.updateProgressBar(self, bar: workProgressBar, percentage: workPercentage, startX: 0)
@@ -115,7 +115,7 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
         goToCompletionViewController()
     }
     
-    func updateProgressBar(percentage: CGFloat) {
+    func updateProgressBar(percentage: Double) {
         ViewHelper.updateProgressBar(self, bar: breakProgressBar, percentage: percentage, startX: workProgressBar.frame.width)
     }
 
