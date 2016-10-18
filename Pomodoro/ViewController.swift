@@ -28,7 +28,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         let mode = context?.modeRelationship
         
         // Set work conut
-        totalWorkCount = mode?.workCount as? Int ?? 1
+        totalWorkCount = mode?.workCount as? Int ?? DefaultWorkCount.Normal.rawValue
         
         if context?.isBreak == true && session?.result != nil {
             // User was in a break
