@@ -135,13 +135,16 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
     override func viewWillDisappear() {
         let context = DataManager.getContext()!
         
+        if pomodoroTimer == nil {
+            return
+        }
+        
         currentCount = pomodoroTimer?.count()
         
         // Indicate break mode if timer is complete, or save state
         if currentCount == 0 {
             context.isBreak = true
         } else {
-            print(currentCount)
             context.count = currentCount!
         }
         

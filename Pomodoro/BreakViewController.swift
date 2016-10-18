@@ -53,6 +53,10 @@ class BreakViewController: NSViewController, PomodoroScreenProtocol {
     }
     
     override func viewWillDisappear() {
+        if pomodoroTimer == nil {
+            return
+        }
+        
         let currentCount = pomodoroTimer?.count()
         
         if currentCount != 0 {
