@@ -3,6 +3,8 @@
 # Pomodoro
 A Mac app to suit my pomodoro needs. Released version 1.0.0. Will update in future.
 
+Download the Pomodoro v1.0.0 through the [App Store](https://itunes.apple.com/us/app/pomodoro/id1166412723?mt=12).
+
 ### Details
 
 * Xcode 3.2-compatible, but written using Xcode 7.3.1.
