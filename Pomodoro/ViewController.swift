@@ -10,11 +10,11 @@ import Cocoa
 
 class ViewController: NSViewController, PomodoroScreenProtocol {
     @IBOutlet weak var timeTextField: NSTextField!
-    @IBOutlet weak var focusTextField: NSTextField!
-    @IBOutlet weak var startButton: NSImageView!
+    @IBOutlet weak var settingsButton: NSButton!
     @IBOutlet weak var progressBar: NSBox!
-    @IBOutlet weak var settingsButton: NSImageView!
+    @IBOutlet weak var focusTextField: NSTextField!
     
+    @IBOutlet weak var startButton: NSButtonCell!
     var totalWorkCount: Int?
     var currentCount: Int?
     var pomodoroTimer: PomodoroTimer?
@@ -29,42 +29,42 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         
         // Set work conut
         totalWorkCount = mode?.workCount as? Int ?? DefaultWorkCount.Normal.rawValue
-        
-        if context?.isBreak == true && session?.result != nil {
-            // User was in a break
-            goToBreakViewController()
-        } else if context?.isBreak == true && session?.result == nil {
-            // User finished work session, but didn't report on what
-            // they did
-            goToResultsViewController()
-        } else if context?.count != nil && context?.count as! Int > 0 && session?.goal != nil {
-            // Set current counts
-            currentCount = context!.count as Int
-            totalWorkCount = mode!.workCount as Int
-            
-            timeTextField.stringValue = TimeHelper.toTimeString(currentCount!)
-            
-            focusTextField.stringValue = session!.goal!
-            focusTextField.enabled = false
-            
-            settingsButton.hidden = true
-        } else if session?.goal != nil {
-            if session?.result == nil {
-                goToResultsViewController()
-            }
-            
-            // User had paused session OR completed session
-            focusTextField.stringValue = session!.goal!
-            focusTextField.enabled = false
-            
-            // Set current counts
-            currentCount = context!.count as Int
-            totalWorkCount = mode!.workCount as Int
-        } else {
+//        
+//        if context?.isBreak == true && session?.result != nil {
+//            // User was in a break
+//            goToBreakViewController()
+//        } else if context?.isBreak == true && session?.result == nil {
+//            // User finished work session, but didn't report on what
+//            // they did
+//            goToResultsViewController()
+//        } else if context?.count != nil && context?.count as! Int > 0 && session?.goal != nil {
+//            // Set current counts
+//            currentCount = context!.count as Int
+//            totalWorkCount = mode!.workCount as Int
+//            
+//            timeTextField.stringValue = TimeHelper.toTimeString(currentCount!)
+//            
+//            focusTextField.stringValue = session!.goal!
+//            focusTextField.enabled = false
+//            
+//            settingsButton.hidden = true
+//        } else if session?.goal != nil {
+//            if session?.result == nil {
+//                goToResultsViewController()
+//            }
+//            
+//            // User had paused session OR completed session
+//            focusTextField.stringValue = session!.goal!
+//            focusTextField.enabled = false
+//            
+//            // Set current counts
+//            currentCount = context!.count as Int
+//            totalWorkCount = mode!.workCount as Int
+//        } else {
             // User didn't have a session
             currentCount = totalWorkCount
             timeTextField.stringValue = TimeHelper.toTimeString(totalWorkCount!)
-        }
+//        }
     }
     
     override func awakeFromNib() {
@@ -91,7 +91,7 @@ class ViewController: NSViewController, PomodoroScreenProtocol {
         // Initialize start button
         let gesture = Helper.makeLeftClickGesture(self)
         gesture.action = #selector(ViewController.validateFocusField)
-        startButton.addGestureRecognizer(gesture)
+//        startButton.(gesture)
         
         // Initialize settings button
         let settingsGesture = Helper.makeLeftClickGesture(self)

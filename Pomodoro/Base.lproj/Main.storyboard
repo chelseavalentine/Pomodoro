@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -653,13 +654,11 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
+                    <window key="window" title="Pomdoro" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="420" height="200"/>
+                        <rect key="contentRect" x="500" y="800" width="0.0" height="0.0"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="420" height="200"/>
-                        <value key="maxSize" type="size" width="420" height="200"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -673,85 +672,132 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="Pomodoro" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" identifier="ViewController" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                    <view key="view" identifier="ViewController" misplaced="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="516" height="284"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-Cx-3ky">
-                                <rect key="frame" x="7" y="171" width="56" height="23"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Focus" id="Ew3-MJ-mwl">
-                                    <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-Cx-3ky">
+                                <rect key="frame" x="14" y="241" width="160" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="xpc-TR-88s"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This session's goal" id="Ew3-MJ-mwl">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
-                                <rect key="frame" x="31" y="42" width="357" height="110"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghJ-hW-GPO">
+                                <rect key="frame" x="16" y="185" width="484" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="r2v-Iu-8Rm"/>
+                                </constraints>
+                                <textFieldCell key="cell" truncatesLastVisibleLine="YES" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What are you going to do?" drawsBackground="YES" usesSingleLineMode="YES" id="2gZ-Oh-sET">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="0.059999999999999998" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-Iq-TDK">
+                                <rect key="frame" x="116" y="77" width="285" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="7zF-PU-Ilv"/>
+                                    <constraint firstAttribute="width" constant="281" id="eiQ-pK-uBN"/>
+                                </constraints>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="00:00" id="mTF-lU-g6Y">
-                                    <font key="font" size="72" name="PTMono-Bold"/>
-                                    <color key="textColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="font" metaFont="systemSemibold" size="96"/>
+                                    <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
                                     <segue destination="dRj-qb-8hP" kind="show" id="QQQ-cI-epN"/>
                                 </connections>
                             </textField>
-                            <box fixedFrame="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QaP-sg-Gzg">
-                                <rect key="frame" x="0.0" y="30" width="0.0" height="2"/>
+                            <box ambiguous="YES" misplaced="YES" borderWidth="0.0" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QaP-sg-Gzg">
+                                <rect key="frame" x="0.0" y="7" width="20" height="2"/>
                                 <view key="contentView" ambiguous="YES" id="YmJ-p1-3qT">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="2"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="2"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="BVz-g0-lSE"/>
+                                </constraints>
                                 <color key="borderColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="fillColor" red="0.4764380156993866" green="0.72688108682632446" blue="0.77731716632843018" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <box ambiguous="YES" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="J67-od-744">
-                                <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
-                                <view key="contentView" ambiguous="YES" id="8yD-ts-VbB">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="30"/>
+                            <box horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="30" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="J67-od-744">
+                                <rect key="frame" x="0.0" y="0.0" width="516" height="42"/>
+                                <view key="contentView" id="8yD-ts-VbB">
+                                    <rect key="frame" x="0.0" y="0.0" width="516" height="42"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHF-fn-2fp">
-                                            <rect key="frame" x="390" y="2" width="25" height="27"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="playIcon" id="rlA-PG-sOh"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XgL-Re-kwz">
+                                            <rect key="frame" x="43" y="10" width="99" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Pomodoro" id="z0U-F4-Z5q">
+                                                <font key="font" metaFont="system" size="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ips-cS-BwQ">
+                                            <rect key="frame" x="9" y="7" width="28" height="28"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="viJ-kb-CJp"/>
                                         </imageView>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-RG-V5T">
-                                            <rect key="frame" x="358" y="2" width="26" height="26"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="settingsIcon" id="UDz-s1-sL3"/>
-                                        </imageView>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y2P-bD-LyX">
+                                            <rect key="frame" x="380" y="8" width="125" height="25"/>
+                                            <buttonCell key="cell" type="roundTextured" title="Start session" bezelStyle="texturedRounded" image="DarkStartIcon" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nMd-Fe-5E6">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system" size="16"/>
+                                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                            </buttonCell>
+                                        </button>
+                                        <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIh-33-oDW">
+                                            <rect key="frame" x="276" y="8" width="96" height="25"/>
+                                            <buttonCell key="cell" type="roundTextured" title="Settings" bezelStyle="texturedRounded" image="DarkSettingsIcon" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="TTh-GB-67A">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system" size="16"/>
+                                            </buttonCell>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6cN-cJ-nEP"/>
+                                    <constraint firstAttribute="height" constant="42" id="WE2-AC-paj"/>
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.065484777090000001" green="0.066769659519999996" blue="0.069621935489999995" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-os-ZEx" userLabel="Focus Text Field">
-                                <rect key="frame" x="7" y="152" width="408" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Gm8-os-ZEx" secondAttribute="height" multiplier="195:11" id="4D7-gD-6ke"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="What are you going to do?" id="MUs-sh-HTS">
-                                    <font key="font" size="12" name="PTMono-Regular"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="9cU-Cx-3ky" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="16" id="2U6-gd-GpR"/>
+                            <constraint firstItem="J67-od-744" firstAttribute="top" secondItem="QaP-sg-Gzg" secondAttribute="baseline" id="2bx-AO-M3D"/>
+                            <constraint firstItem="ghJ-hW-GPO" firstAttribute="leading" secondItem="9cU-Cx-3ky" secondAttribute="leading" id="C0M-qX-ycU"/>
+                            <constraint firstItem="jXw-Iq-TDK" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="FLd-92-sUf"/>
+                            <constraint firstAttribute="trailing" secondItem="ghJ-hW-GPO" secondAttribute="trailing" constant="16" id="KLL-Ua-03G"/>
+                            <constraint firstAttribute="bottom" secondItem="J67-od-744" secondAttribute="bottom" id="US3-cT-FTN"/>
+                            <constraint firstItem="QaP-sg-Gzg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="168" id="WJy-b0-9YE"/>
+                            <constraint firstItem="QaP-sg-Gzg" firstAttribute="leading" secondItem="J67-od-744" secondAttribute="leading" id="Zzf-je-lI5"/>
+                            <constraint firstItem="J67-od-744" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jXw-Iq-TDK" secondAttribute="bottom" constant="36" id="f57-7u-hbQ"/>
+                            <constraint firstItem="jXw-Iq-TDK" firstAttribute="centerX" secondItem="J67-od-744" secondAttribute="centerX" id="rnk-Yc-M8e"/>
+                            <constraint firstItem="ghJ-hW-GPO" firstAttribute="top" secondItem="9cU-Cx-3ky" secondAttribute="bottom" constant="9" id="shj-VF-DYL"/>
+                            <constraint firstItem="jXw-Iq-TDK" firstAttribute="centerX" secondItem="ghJ-hW-GPO" secondAttribute="centerX" id="tIT-U9-eKP"/>
+                            <constraint firstItem="9cU-Cx-3ky" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="yOU-NX-jXN"/>
+                            <constraint firstItem="jXw-Iq-TDK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ghJ-hW-GPO" secondAttribute="bottom" priority="750" constant="24" id="ykq-Zv-LSp"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ProgressBar" destination="QaP-sg-Gzg" id="iYZ-R1-HaF"/>
-                        <outlet property="focusTextField" destination="Gm8-os-ZEx" id="Gf4-ae-NhX"/>
+                        <outlet property="focusTextField" destination="ghJ-hW-GPO" id="HbN-MT-HvC"/>
                         <outlet property="progressBar" destination="QaP-sg-Gzg" id="PII-su-TNM"/>
-                        <outlet property="settingsButton" destination="p4R-RG-V5T" id="ryC-f6-kQa"/>
-                        <outlet property="startButton" destination="mHF-fn-2fp" id="G9O-B9-iC6"/>
+                        <outlet property="settingsButton" destination="NIh-33-oDW" id="Vrw-tw-SJU"/>
+                        <outlet property="startButton" destination="nMd-Fe-5E6" id="ctJ-2h-c4I"/>
                         <outlet property="timeTextField" destination="jXw-Iq-TDK" id="yxe-06-MXa"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="611"/>
+            <point key="canvasLocation" x="27" y="531"/>
         </scene>
         <!--ResultsViewController-->
         <scene sceneID="Y66-S4-WvH">
@@ -1254,12 +1300,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DarkSettingsIcon" width="14" height="14"/>
+        <image name="DarkStartIcon" width="10" height="12"/>
         <image name="editIcon" width="12" height="13"/>
         <image name="leftIcon" width="8" height="12"/>
+        <image name="logo" width="24" height="24"/>
         <image name="playIcon" width="16" height="17"/>
         <image name="returnIcon" width="15" height="9"/>
         <image name="rightIcon" width="8" height="12"/>
-        <image name="settingsIcon" width="16" height="16"/>
         <image name="whiteResumeIcon" width="12" height="12"/>
     </resources>
 </document>
